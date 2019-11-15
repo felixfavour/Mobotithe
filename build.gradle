@@ -3,36 +3,25 @@
 buildscript {
     ext {
         versionName = '1.0.0-dev'
-        kotlin_version = '1.3.50'
-        appcompat_version = '1.1.0'
-        libvlcVersion = '3.2.0'
-        medialibraryVersion = '0.6.0'
-        minSdkVersion = 17
-        targetSdkVersion = 29
-        compileSdkVersion = 29
-        androidxLegacyVersion = '1.0.0'
-        androidxCoreVersion = '1.1.0'
-        lifecycleViewmodelVersion = '2.2.0-rc01'
-        lifecycleRuntimeVersion = '2.2.0-rc01'
-        androidxPreferencesVersion = '1.1.0'
-        androidxVersion = '1.1.0'
-        androidxActivityVersion = '1.1.0-rc01'
-        androidxFragmentVersion = '1.2.0-rc01'
-        androidxAnnotationVersion = '1.1.0'
-        androidxAppcompatVersion = '1.1.0'
-        androidxRecyclerviewVersion = '1.1.0-rc01'
-        androidxLeanbackVersion = '1.0.0'
-        androidxMaterialVersion = '1.1.0-beta01'
-        constraintLayoutVersion = '1.1.3'
-        archVersion = '2.1.0'
-        roomVersion = '2.2.1'
-        pagingVersion = '2.1.0'
-        junitVersion = '4.12'
-        mockito = '2.8.9'
-        powerMock = '1.7.4'
-        retrofit = '2.6.1'
-        espressoVersion = '3.1.1'
-        supportTest = '1.1.0'
+        version_core = "1.0.1"
+        version_google_services = "4.3.3"
+        version_coroutine = "1.1.0"
+        version_retrofit_coroutines_adapter = "0.9.2"
+        version_navigation = '1.0.0'
+        version_constraint_layout = "2.0.0-alpha3"
+        version_gradle = '3.5.1'
+        version_kotlin = "1.3.21"
+        version_lifecycle_extensions = "2.0.0"
+        version_room = "2.0.0"
+        version_appcompat = "1.0.2"
+        version_fragment = "1.0.0"
+        version_retrofit = "2.5.0"
+        version_kotlin_coroutines = "1.1.0"
+        version_moshi = "1.8.0"
+        version_glide = "4.8.0"
+        version_joda = "2.10"
+        version_work = "1.0.0-alpha11"
+        version_timber = "4.7.1"
     }
     repositories {
         google()
@@ -40,8 +29,10 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:$version_gradle"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin"
+        classpath "com.google.gms:google-services:$version_google_services"
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

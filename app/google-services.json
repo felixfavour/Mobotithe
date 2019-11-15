@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "949693992836",
+    "firebase_url": "https://mobotithe.firebaseio.com",
+    "project_id": "mobotithe",
+    "storage_bucket": "mobotithe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949693992836:android:c85f4b1c0b5995a09ed7d1",
+        "android_client_info": {
+          "package_name": "com.felixfavour.mobotithe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949693992836-8av5r27oocbvbnudnngd0grkvod37llh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.felixfavour.mobotithe",
+            "certificate_hash": "cc8751ac0c9cc93ab7c1a7ef94e01650e00ad7d0"
+          }
+        },
+        {
+          "client_id": "949693992836-14u9htc941kb03p8uetip361ig3a92bk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6cFvWmM-lbdXbJB7PBBKf9kqZ2WDhr8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949693992836-14u9htc941kb03p8uetip361ig3a92bk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
