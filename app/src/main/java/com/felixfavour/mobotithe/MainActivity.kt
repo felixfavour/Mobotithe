@@ -1,4 +1,4 @@
-package com.example.mobotithe
+package com.felixfavour.mobotithe
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

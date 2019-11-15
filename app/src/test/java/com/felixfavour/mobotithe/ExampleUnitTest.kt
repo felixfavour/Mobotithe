@@ -1,4 +1,4 @@
-package com.example.mobotithe
+package com.felixfavour.mobotithe
 
 import org.junit.Test
 
