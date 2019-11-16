@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Mobotithe</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="motto">Let us keep track of your income for you</string>
+    <string name="i_already_have_an_account">I already have an account</string>
+    <string name="sign_in_with">Sign In with:</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
 </resources>
