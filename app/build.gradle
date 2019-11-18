@@ -8,7 +8,7 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: "androidx.navigation.safeargs"
 
-apply plugin: "com.ic_google.gms.ic_google-services"
+apply plugin: "com.google.gms.google-services"
 
 android {
     compileSdkVersion 29
@@ -57,7 +57,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$version_core"
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
     implementation "androidx.room:room-runtime:$version_room"
-    implementation "com.ic_google.android.material:material:$version_material"
+    implementation "com.google.android.material:material:$version_material"
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
     implementation "androidx.vectordrawable:vectordrawable:1.0.1"
     implementation "androidx.navigation:navigation-ui:$version_navigation"
@@ -68,6 +68,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.preference:preference:1.1.0'
     kapt "androidx.room:room-compiler:$version_room"
     implementation "androidx.multidex:multidex:$version_multidex"
 
@@ -83,10 +85,10 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$version_glide"
 
     // Firebase
-    implementation "com.ic_google.firebase:firebase-analytics:17.2.1"
-    implementation "com.ic_google.firebase:firebase-auth:19.1.0"
-    implementation "com.ic_google.firebase:firebase-firestore:21.3.0"
-    implementation "com.ic_google.firebase:firebase-database:19.2.0"
+    implementation "com.google.firebase:firebase-analytics:17.2.1"
+    implementation "com.google.firebase:firebase-auth:19.1.0"
+    implementation "com.google.firebase:firebase-firestore:21.3.0"
+    implementation "com.google.firebase:firebase-database:19.2.0"
 
     //Logging
     implementation "com.jakewharton.timber:timber:$version_timber"

@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/go_to_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -105,8 +105,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="@color/primaryTextColor"
-                android:drawableLeft="@drawable/ic_google"
                 android:drawableStart="@drawable/ic_google"
+                android:drawablePadding="@dimen/drawable_gap"
+                android:drawableLeft="@drawable/ic_google"
                 android:fontFamily="@font/segoeuib"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
@@ -125,6 +126,7 @@
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="@color/primaryTextColor"
                 android:drawableLeft="@drawable/ic_facebook"
+                android:drawablePadding="@dimen/drawable_gap"
                 android:drawableStart="@drawable/ic_facebook"
                 android:fontFamily="@font/segoeuib"
                 android:paddingStart="15dp"
