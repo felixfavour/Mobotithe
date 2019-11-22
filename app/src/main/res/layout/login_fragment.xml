@@ -1,129 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login_fragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.login.LoginFragment">
-
-    <ImageView
-        android:id="@+id/imageView2"
+<layout>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/login_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/onboardingColor"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        tools:context=".gui.View.login.LoginFragment">
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="70dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_mobotithe_logo" />
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/onboardingColor"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/editText_padding"
-            android:layout_marginLeft="@dimen/editText_padding"
-            android:layout_marginEnd="@dimen/editText_padding"
-            android:layout_marginRight="@dimen/editText_padding"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="70dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_mobotithe_logo" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/loginTextInputLayoutStyle"
-                android:layout_marginBottom="10dp"
-                android:textColorHint="@color/primaryTextColor">
+                android:layout_marginStart="@dimen/editText_padding"
+                android:layout_marginLeft="@dimen/editText_padding"
+                android:layout_marginEnd="@dimen/editText_padding"
+                android:layout_marginRight="@dimen/editText_padding"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email_input"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_user_icon"
-                    android:drawableLeft="@drawable/ic_user_icon"
-                    android:drawablePadding="@dimen/drawable_gap"
-                    android:ems="10"
-                    android:fontFamily="@font/segoeuib"
-                    android:hint="@string/e_mail"
-                    android:inputType="textEmailAddress"
-                    android:textColorHint="@color/primaryTextColor" />
+                    style="@style/loginTextInputLayoutStyle"
+                    android:layout_marginBottom="10dp"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    android:textColorHint="@color/primaryTextColor">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_input"
+                        android:textColor="@color/primaryTextColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_user_icon"
+                        android:drawableLeft="@drawable/ic_user_icon"
+                        android:drawablePadding="@dimen/drawable_gap"
+                        android:ems="10"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/e_mail"
+                        android:inputType="textEmailAddress"
+                        android:textColorHint="@color/primaryTextColor" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/loginTextInputLayoutStyle"
-                android:textColorHint="@color/primaryTextColor">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passwordInput"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_password"
-                    android:drawableLeft="@drawable/ic_password"
-                    android:drawablePadding="@dimen/drawable_gap"
-                    android:ems="10"
-                    android:fontFamily="@font/segoeuib"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:textColorHint="@color/primaryTextColor" />
+                    style="@style/loginTextInputLayoutStyle"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    android:textColorHint="@color/primaryTextColor">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passwordInput"
+                        android:textColor="@color/primaryTextColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_password"
+                        android:drawableLeft="@drawable/ic_password"
+                        android:drawablePadding="@dimen/drawable_gap"
+                        android:ems="10"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/primaryTextColor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/forgotten_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/segoeuib"
+                    android:text="@string/forgot_password"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primaryTextColor" />
+
+            </LinearLayout>
 
             <Button
-                android:id="@+id/forgotten_password"
-                android:layout_width="match_parent"
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@color/transparent"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@color/primaryTextColor"
                 android:fontFamily="@font/segoeuib"
-                android:text="@string/forgot_password"
+                android:paddingStart="@dimen/button_padding"
+                android:paddingLeft="@dimen/button_padding"
+                android:paddingEnd="@dimen/button_padding"
+                android:paddingRight="@dimen/button_padding"
+                android:text="@string/login"
                 android:textAllCaps="false"
-                android:textColor="@color/primaryTextColor" />
+                android:textColor="@color/onboardingColor"
+                android:textSize="@dimen/onboarding_texts"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="@color/primaryTextColor"
-            android:fontFamily="@font/segoeuib"
-            android:paddingStart="@dimen/button_padding"
-            android:paddingLeft="@dimen/button_padding"
-            android:paddingEnd="@dimen/button_padding"
-            android:paddingRight="@dimen/button_padding"
-            android:text="@string/login"
-            android:textAllCaps="false"
-            android:textColor="@color/onboardingColor"
-            android:textSize="@dimen/onboarding_texts"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</FrameLayout>
+    </FrameLayout>
+</layout>

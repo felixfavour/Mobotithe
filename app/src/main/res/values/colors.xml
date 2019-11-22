@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="primaryColor">#0054c7</color>
     <color name="primaryLightColor">#5c80fb</color>
     <color name="primaryDarkColor">#002d95</color>
@@ -10,4 +10,8 @@
     <color name="secondaryTextColor">#000000</color>
     <color name="onboardingColor">#003B8C</color>
     <color name="transparent">#00FFFFFF</color>
+
+    Changing the boxStrokeColor in TextInputLayout to work
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/primaryTextColor</color>
+    <color name="PrimaryGreyColor">#969696</color>
 </resources>

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/onboardingColor"
-        tools:context=".ui.onboardingwelcome.OnboardingWelcomeFragment">
+        tools:context=".gui.View.onboarding.OnboardingWelcomeFragment">
 
 
         <ImageView
@@ -20,22 +20,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/go_to_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/rounded_button"
-            android:fontFamily="@font/segoeuib"
-            android:paddingStart="50dp"
-            android:paddingEnd="50dp"
-            android:text="@string/i_already_have_an_account"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/onboarding_texts"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -74,8 +58,7 @@
             android:id="@+id/tableRow"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/login"
+            app:layout_constraintBottom_toTopOf="@+id/go_to_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,9 +88,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="@color/primaryTextColor"
-                android:drawableStart="@drawable/ic_google"
-                android:drawablePadding="@dimen/drawable_gap"
                 android:drawableLeft="@drawable/ic_google"
+                android:drawablePadding="@dimen/drawable_gap"
                 android:fontFamily="@font/segoeuib"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
@@ -127,7 +109,6 @@
                 android:backgroundTint="@color/primaryTextColor"
                 android:drawableLeft="@drawable/ic_facebook"
                 android:drawablePadding="@dimen/drawable_gap"
-                android:drawableStart="@drawable/ic_facebook"
                 android:fontFamily="@font/segoeuib"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
@@ -138,6 +119,22 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/googleLogin" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/go_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/segoeuib"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
+            android:text="@string/i_already_have_an_account"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/onboarding_texts"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

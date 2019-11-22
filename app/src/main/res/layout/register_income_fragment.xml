@@ -5,7 +5,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RegisterIncomeFragment">
+        tools:context=".gui.View.income.RegisterIncomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,45 +27,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+
+                <Spinner
+                    android:id="@+id/income_category"
+                    style="@style/GenericText.SettingsSubtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/income_category_source"
-                    app:boxStrokeColor="@color/primaryColor"
-                    app:boxStrokeWidth="2dp">
+                    android:padding="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    tools:listitem="@layout/spinner_popup_item" />
 
-                    <AutoCompleteTextView
-                        android:id="@+id/income_category"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/segoeuib"
-                        android:textColorHint="@color/primaryColor"
-                        tools:text="@string/income_category_source" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                <Spinner
+                    android:id="@+id/interval"
+                    style="@style/GenericText.SettingsSubtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/monthly_weekly_daily"
-                    app:boxStrokeColor="@color/primaryColor"
-                    app:boxStrokeWidth="2dp">
+                    android:padding="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:entries="@array/intervals"
+                    tools:listitem="@layout/spinner_popup_item" />
 
-                    <AutoCompleteTextView
-                        android:id="@+id/interval"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/segoeuib"
-                        android:textColorHint="@color/primaryColor"
-                        tools:text="@string/monthly_weekly_daily" />
 
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"

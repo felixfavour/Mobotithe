@@ -1,7 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".onboardingWelcome" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/onboardingColor"
+        tools:context=".gui.View.onboarding.OnboardingWelcomeFragment">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_onboard_image"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/tableRow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+            <TextView
+                android:id="@+id/mobotitheText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeuib"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/onboarding_title" />
+
+            <TextView
+                android:id="@+id/motto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeuib"
+                android:text="@string/motto"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/onboarding_texts" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tableRow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/go_to_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <TextView
+                android:id="@+id/signIn_options"
+                android:layout_width="0dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/segoeuib"
+                android:text="@string/sign_in_with"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/onboarding_texts"
+                app:layout_constraintBottom_toTopOf="@+id/facebookLogin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.808" />
+
+            <Button
+                android:id="@+id/googleLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@color/primaryTextColor"
+                android:drawableLeft="@drawable/ic_google"
+                android:drawablePadding="@dimen/drawable_gap"
+                android:fontFamily="@font/segoeuib"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="@string/google"
+                android:textColor="@color/onboardingColor"
+                app:layout_constraintBaseline_toBaselineOf="@+id/facebookLogin"
+                app:layout_constraintEnd_toStartOf="@+id/facebookLogin"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/facebookLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@color/primaryTextColor"
+                android:drawableLeft="@drawable/ic_facebook"
+                android:drawablePadding="@dimen/drawable_gap"
+                android:fontFamily="@font/segoeuib"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="@string/facebook"
+                android:textColor="@color/onboardingColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/googleLogin" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/go_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/segoeuib"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
+            android:text="@string/i_already_have_an_account"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/onboarding_texts"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

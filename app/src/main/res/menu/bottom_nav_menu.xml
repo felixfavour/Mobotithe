@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/Income"
+        android:id="@+id/Menu"
         android:icon="@drawable/ic_menu"
         android:title="@string/title_dashboard" />
 
     <item
-        android:id="@+id/navigation_income"
+        android:id="@+id/Income"
         android:icon="@drawable/ic_add"
         android:title="@string/title_income" />
 
     <item
-        android:id="@+id/navigation_History"
+        android:id="@+id/History"
         android:icon="@drawable/ic_history"
         android:title="@string/title_history" />
 

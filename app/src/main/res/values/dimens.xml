@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="onboarding_title">50sp</dimen>
-    <dimen name="onboarding_texts">17</dimen>
+    <dimen name="onboarding_texts">17sp</dimen>
     <dimen name="drawable_gap">10dp</dimen>
     <dimen name="button_padding">30dp</dimen>
     <dimen name="editText_padding">40dp</dimen>
@@ -13,4 +13,5 @@
     <dimen name="really_large_text">50sp</dimen>
     <dimen name="cardview_padding">20dp</dimen>
     <dimen name="cardview_radius">15dp</dimen>
+    <dimen name="bottomNavBar_Height">60dp</dimen>
 </resources>

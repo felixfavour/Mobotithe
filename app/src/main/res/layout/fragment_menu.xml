@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:fillViewport="true"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="28dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -54,7 +54,7 @@
                     tools:text="John" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/register_new_income"
                     style="@style/RoundedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

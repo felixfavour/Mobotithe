@@ -2,31 +2,39 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.felixfavour.mobotithe">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.felixfavour.mobotithe.MainActivity" />
-        </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".onboardingWelcome" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main">
+        android:theme="@style/AppTheme.NoActionBar.SplashActivity">
+        <activity android:name=".gui.View.onboarding.OnboardingWelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".gui.View.SplashActivity"/>
+        <activity
+            android:name=".gui.View.settings.SettingsActivity"
+            android:configChanges="uiMode"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".gui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.felixfavour.mobotithe.gui.MainActivity" />
+        </activity>
+        <activity android:name=".gui.View.login.LoginActivity" />
+        <activity
+            android:name=".gui.MainActivity"
+            android:configChanges="uiMode"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/title_activity_main">
         </activity>
     </application>
 

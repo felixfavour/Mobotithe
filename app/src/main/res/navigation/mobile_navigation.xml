@@ -7,27 +7,53 @@
 
     <fragment
         android:id="@+id/Menu"
-        android:name="com.felixfavour.mobotithe.ui.Menu.MenuFragment"
+        android:name="com.felixfavour.mobotithe.gui.View.Menu.MenuFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_menu" >
         <action
             android:id="@+id/action_Menu_to_registerIncomeFragment"
-            app:destination="@id/registerIncomeFragment" />
+            app:destination="@id/registerIncomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/Income"
-        android:name="com.felixfavour.mobotithe.ui.income.IncomeFragment"
-        android:label="@string/title_income"
-        tools:layout="@layout/fragment_income" />
+        android:name="com.felixfavour.mobotithe.gui.View.income.IncomeFragment"
+        android:label="Income Sources"
+        tools:layout="@layout/fragment_income" >
+        <action
+            android:id="@+id/action_Income_to_submitIncomeFragment"
+            app:destination="@id/submitIncomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_Income_to_registerIncomeFragment"
+            app:destination="@id/registerIncomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
 
     <fragment
         android:id="@+id/History"
-        android:name="com.felixfavour.mobotithe.ui.history.HistoryFragment"
+        android:name="com.felixfavour.mobotithe.gui.View.history.HistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
+
     <fragment
         android:id="@+id/registerIncomeFragment"
-        android:name="com.felixfavour.mobotithe.RegisterIncomeFragment"
-        android:label="RegisterIncomeFragment" />
+        android:name="com.felixfavour.mobotithe.gui.View.income.RegisterIncomeFragment"
+        android:label="Register Income" />
+    <fragment
+        android:id="@+id/submitIncomeFragment"
+        android:name="com.felixfavour.mobotithe.gui.View.income.SubmitIncomeFragment"
+        android:label="Submit Income" />
 </navigation>
