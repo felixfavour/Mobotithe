@@ -19,7 +19,7 @@
     <string-array name="ui_mode">
         <item>Light Theme</item>
         <item>Dark Theme</item>
-        <item>System-defined</item>
+        <item>On Low Battery</item>
     </string-array>
 
 </resources>

@@ -23,6 +23,7 @@
                 android:id="@+id/add_income_category"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
+                android:backgroundTint="@color/secondaryColor"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"

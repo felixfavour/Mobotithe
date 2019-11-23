@@ -8,7 +8,6 @@ import com.felixfavour.mobotithe.gui.MainActivity
 import com.felixfavour.mobotithe.gui.View.login.LoginActivity
 import com.felixfavour.mobotithe.gui.View.onboarding.OnboardingWelcomeActivity
 import com.felixfavour.mobotithe.util.LoginTokens
-import com.felixfavour.mobotithe.util.SharedPref
 import com.felixfavour.mobotithe.util.loginToken
 
 class SplashActivity : AppCompatActivity() {
@@ -16,10 +15,6 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
-
-        if (!isOnboardingProcessComplete()) {
-            startActivity(Intent(applicationContext, OnboardingWelcomeActivity::class.java))
-        }
 
         var activityIntent: Intent
 
@@ -32,7 +27,5 @@ class SplashActivity : AppCompatActivity() {
         startActivity(activityIntent)
         finish()
     }
-
-    private fun isOnboardingProcessComplete() = SharedPref.getInstance(this).isOnboardingFragmentViewed()
 
 }
