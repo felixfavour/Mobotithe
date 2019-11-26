@@ -5,7 +5,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".gui.View.income.RegisterIncomeFragment">
+        tools:context=".gui.view.income.RegisterIncomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                     android:padding="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    tools:listitem="@layout/spinner_popup_item" />
+                    tools:listitem="@layout/spinner_dropdown_popup_item" />
 
                 <Spinner
                     android:id="@+id/interval"
@@ -47,7 +47,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     android:entries="@array/intervals"
-                    tools:listitem="@layout/spinner_popup_item" />
+                    tools:listitem="@layout/spinner_dropdown_popup_item" />
 
 
 

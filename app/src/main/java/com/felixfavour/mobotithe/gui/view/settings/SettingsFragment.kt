@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.settings
+package com.felixfavour.mobotithe.gui.view.settings
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.felixfavour.mobotithe.R
@@ -19,17 +18,20 @@ import com.felixfavour.mobotithe.util.ThemeHelper
 
 class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
-
     companion object {
         private const val PREF = "theme_preferences"
+        private const val SPINNER_STATE = "current_spinner_selection"
+        private lateinit var preferences: SharedPreferences
     }
 
     private lateinit var binding: FragmentSettingsBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val preferences = context!!.getSharedPreferences(PREF, Context.MODE_PRIVATE)
-        ThemeHelper.setDefaultTheme(preferences)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        preferences = context!!.getSharedPreferences(PREF, Context.MODE_PRIVATE)
+    }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false)
 
@@ -43,27 +45,27 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         val spinner = binding.uiMode
 
-        ArrayAdapter.createFromResource(this.context!!.applicationContext, R.array.ui_mode, R.layout.support_simple_spinner_dropdown_item).also {adapter ->
-            adapter.setDropDownViewResource(R.layout.spinner_popup_item)
+        ArrayAdapter.createFromResource(this.context!!.applicationContext, R.array.ui_mode, R.layout.spinner_popup_item).also {adapter ->
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_popup_item)
             spinner.adapter = adapter
         }
 
         spinner.onItemSelectedListener = this
+        spinner.setSelection(preferences.getInt(SPINNER_STATE, 0))
 
         return binding.root
     }
 
     @SuppressLint("CommitPrefEdits")
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val preferences = context!!.getSharedPreferences(PREF, Context.MODE_PRIVATE)
         when(position) {
-            0 -> ThemeHelper.setLightTheme(preferences)
-            1 -> ThemeHelper.setDarkTheme(preferences)
-            2 -> ThemeHelper.setThemeByBatterySaver(preferences)
+            0 -> ThemeHelper.setLightTheme(preferences, position)
+            1 -> ThemeHelper.setDarkTheme(preferences, position)
+            2 -> ThemeHelper.setThemeByBatterySaver(preferences, position)
         }
     }
 
-    override fun onNothingSelected(p0: AdapterView<*>?) {
+    override fun onNothingSelected(parent: AdapterView<*>?) {
         // Do Nothing
     }
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/Menu"
-        android:name="com.felixfavour.mobotithe.gui.View.Menu.MenuFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.Menu.MenuFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/Income"
-        android:name="com.felixfavour.mobotithe.gui.View.income.IncomeFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.income.IncomeFragment"
         android:label="Income Sources"
         tools:layout="@layout/fragment_income" >
         <action
@@ -46,16 +46,16 @@
 
     <fragment
         android:id="@+id/History"
-        android:name="com.felixfavour.mobotithe.gui.View.history.HistoryFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.history.HistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/registerIncomeFragment"
-        android:name="com.felixfavour.mobotithe.gui.View.income.RegisterIncomeFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.income.RegisterIncomeFragment"
         android:label="Register Income" />
     <fragment
         android:id="@+id/submitIncomeFragment"
-        android:name="com.felixfavour.mobotithe.gui.View.income.SubmitIncomeFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.income.SubmitIncomeFragment"
         android:label="Submit Income" />
 </navigation>

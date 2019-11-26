@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.income
+package com.felixfavour.mobotithe.gui.view.income
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.Menu
+package com.felixfavour.mobotithe.gui.view.Menu
 
 import android.os.Bundle
 import android.view.LayoutInflater

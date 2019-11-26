@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.settings
+package com.felixfavour.mobotithe.gui.view.settings
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,10 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.SettingsActivityBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.settings_activity.*
 
 class SettingsActivity : AppCompatActivity() {

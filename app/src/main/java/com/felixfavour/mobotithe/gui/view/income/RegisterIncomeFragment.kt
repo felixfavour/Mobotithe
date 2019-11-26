@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.income
+package com.felixfavour.mobotithe.gui.view.income
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -23,7 +23,23 @@ class RegisterIncomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.register_income_fragment,container, false)
         viewModel = ViewModelProviders.of(this).get(RegisterIncomeViewModel::class.java)
 
-//        val spinnerAdapter = ArrayAdapter(context, )
+        val incomeCategorySpinner = binding.incomeCategory
+/*
+        Array Adapter for Income Category Spinner Spinner
+*/
+//        ArrayAdapter.createFromResource(this.context!!.applicationContext, R.array.intervals, R.layout.spinner_popup_item).also {adapter ->
+//            intervalsSpinner.adapter = adapter
+//            adapter.setDropDownViewResource(R.layout.spinner_dropdown_popup_item)
+//        }
+
+        val intervalsSpinner = binding.interval
+/*
+        Array Adapter for Intervals Spinner
+*/
+        ArrayAdapter.createFromResource(this.context!!.applicationContext, R.array.intervals, R.layout.spinner_popup_item).also {adapter ->
+            intervalsSpinner.adapter = adapter
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_popup_item)
+        }
 
         return binding.root
     }

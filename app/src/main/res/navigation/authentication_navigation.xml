@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.felixfavour.mobotithe.gui.View.login.LoginFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.login.LoginFragment"
         tools:layout="@layout/login_fragment"
         android:label="LoginFragment" />
 </navigation>

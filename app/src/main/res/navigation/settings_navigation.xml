@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.felixfavour.mobotithe.gui.View.settings.SettingsFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.settings.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -29,12 +29,12 @@
     </fragment>
     <fragment
         android:id="@+id/licensesFragment"
-        android:name="com.felixfavour.mobotithe.gui.View.settings.LicensesFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.settings.LicensesFragment"
         android:label="License"
         tools:layout="@layout/fragment_licenses" />
     <fragment
         android:id="@+id/webFragment"
-        android:name="com.felixfavour.mobotithe.gui.View.settings.WebFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.settings.WebFragment"
         android:label="fragment_web"
         tools:layout="@layout/fragment_web" />
 </navigation>

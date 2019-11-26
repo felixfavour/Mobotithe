@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.onboarding
+package com.felixfavour.mobotithe.gui.view.onboarding
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,8 +8,8 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.OnboardingWelcomeActivityBinding
-import com.felixfavour.mobotithe.gui.View.SplashActivity
-import com.felixfavour.mobotithe.gui.View.login.LoginActivity
+import com.felixfavour.mobotithe.gui.view.SplashActivity
+import com.felixfavour.mobotithe.gui.view.login.LoginActivity
 import kotlinx.android.synthetic.main.onboarding_welcome_activity.*
 
 class OnboardingWelcomeActivity : AppCompatActivity() {

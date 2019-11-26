@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.income
+package com.felixfavour.mobotithe.gui.view.income
 
 import android.os.Bundle
 import android.view.LayoutInflater

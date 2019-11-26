@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:prompt="@string/amount"
                     android:entries="@array/ui_mode"
-                    tools:listitem="@layout/spinner_popup_item" />
+                    tools:listitem="@layout/spinner_dropdown_popup_item" />
 
 
             </LinearLayout>
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/account" />
 
-                <TextView
+                <Button
                     android:id="@+id/log_out"
                     style="@style/GenericText.SettingsSubtext"
                     android:layout_width="match_parent"
@@ -103,28 +103,28 @@
                     android:layout_height="wrap_content"
                     android:text="@string/about" />
 
-                <TextView
+                <Button
                     android:id="@+id/visit_developer"
                     style="@style/GenericText.SettingsSubtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/visit_developer_s_page" />
 
-                <TextView
+                <Button
                     android:id="@+id/getSupport"
                     style="@style/GenericText.SettingsSubtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/get_support" />
 
-                <TextView
+                <Button
                     android:id="@+id/donate"
                     style="@style/GenericText.SettingsSubtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/donate" />
 
-                <TextView
+                <Button
                     android:id="@+id/license"
                     style="@style/GenericText.SettingsSubtext"
                     android:layout_width="match_parent"

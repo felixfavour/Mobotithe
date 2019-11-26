@@ -6,7 +6,7 @@
         android:id="@+id/login_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".gui.View.login.LoginFragment">
+        tools:context=".gui.view.login.LoginFragment">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -50,7 +50,10 @@
                     android:layout_height="wrap_content"
                     style="@style/loginTextInputLayoutStyle"
                     android:layout_marginBottom="10dp"
+                    app:startIconDrawable="@drawable/ic_user_icon"
+                    app:startIconTint="@color/primaryTextColor"
                     app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
                     android:textColorHint="@color/primaryTextColor">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -59,14 +62,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawableStart="@drawable/ic_user_icon"
-                        android:drawableLeft="@drawable/ic_user_icon"
                         android:drawablePadding="@dimen/drawable_gap"
                         android:ems="10"
                         android:fontFamily="@font/segoeuib"
                         android:hint="@string/e_mail"
-                        android:inputType="textEmailAddress"
-                        android:textColorHint="@color/primaryTextColor" />
+                        android:inputType="textEmailAddress"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,6 +75,9 @@
                     android:layout_height="wrap_content"
                     style="@style/loginTextInputLayoutStyle"
                     app:boxStrokeColor="@color/primaryTextColor"
+                    app:startIconDrawable="@drawable/ic_password"
+                    app:startIconTint="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
                     android:textColorHint="@color/primaryTextColor">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -83,14 +86,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawableStart="@drawable/ic_password"
-                        android:drawableLeft="@drawable/ic_password"
                         android:drawablePadding="@dimen/drawable_gap"
                         android:ems="10"
                         android:fontFamily="@font/segoeuib"
                         android:hint="@string/password"
                         android:inputType="textPassword"
-                        android:textColorHint="@color/primaryTextColor" />
+                        app:hintTextColor="@color/primaryTextColor"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:background="@color/transparent"
+                    android:backgroundTint="@color/primaryLightColor"
                     android:fontFamily="@font/segoeuib"
                     android:text="@string/forgot_password"
                     android:textAllCaps="false"

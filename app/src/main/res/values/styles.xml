@@ -4,7 +4,6 @@
     <style name="AppTheme.ActionBar" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
     </style>
 
@@ -13,10 +12,16 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar.SplashActivity" parent="AppTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/mobotithe_splash</item>
+    </style>
+
+    <style name="OverflowMenuStyle" parent="Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:fontFamily">@font/segoeuib</item>
+        <item name="android:textColor">@color/primaryColor</item>
     </style>
 
     <style name="loginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
@@ -74,8 +79,11 @@
     </style>
 
     <style name="GenericText.SettingsSubtext" parent="GenericText">
-        <item name="android:textColor">@color/primaryLightColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:drawableRight">@drawable/ic_arrow_right</item>
+        <item name="android:drawableEnd">@drawable/ic_arrow_right</item>
         <item name="android:fontFamily">@font/segoeuib</item>
+        <item name="android:textAlignment" tools:ignore="NewApi">textStart</item>
         <item name="android:textSize">17sp</item>
         <item name="android:clickable">true</item>
         <item name="background">?attr/selectableItemBackgroundBorderless</item>

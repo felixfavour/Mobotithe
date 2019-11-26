@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.settings
+package com.felixfavour.mobotithe.gui.view.settings
 
 
 import android.os.Bundle

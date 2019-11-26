@@ -1,12 +1,11 @@
-package com.felixfavour.mobotithe.gui.View
+package com.felixfavour.mobotithe.gui.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.gui.MainActivity
-import com.felixfavour.mobotithe.gui.View.login.LoginActivity
-import com.felixfavour.mobotithe.gui.View.onboarding.OnboardingWelcomeActivity
+import com.felixfavour.mobotithe.gui.view.login.LoginActivity
 import com.felixfavour.mobotithe.util.LoginTokens
 import com.felixfavour.mobotithe.util.loginToken
 

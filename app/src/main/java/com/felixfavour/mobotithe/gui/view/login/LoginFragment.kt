@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.login
+package com.felixfavour.mobotithe.gui.view.login
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.LoginFragmentBinding
-import com.felixfavour.mobotithe.databinding.OnboardingWelcomeFragmentBinding
 import com.felixfavour.mobotithe.gui.MainActivity
 import com.felixfavour.mobotithe.gui.ViewModel.LoginViewModel
 

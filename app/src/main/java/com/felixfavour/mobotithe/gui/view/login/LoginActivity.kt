@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.login
+package com.felixfavour.mobotithe.gui.view.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

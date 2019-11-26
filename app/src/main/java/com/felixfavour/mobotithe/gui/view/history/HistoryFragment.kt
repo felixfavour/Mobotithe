@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.View.history
+package com.felixfavour.mobotithe.gui.view.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
