@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="match_parent"
+        tools:context=".SignUpFragment"
+        android:id="@+id/scrollView2">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primaryColor">
+
+            <LinearLayout
+                android:id="@+id/full_registration_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/submit_user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView9"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/loginTextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/primaryTextColor"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputFirstname"
+                        style="@style/loginTextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/first_name"
+                        android:inputType="text"
+                        android:textColor="@color/primaryTextColor"
+                        app:hintTextColor="@color/primaryTextColor"
+                        tools:layout_conversion_absoluteHeight="0dp"
+                        tools:layout_conversion_absoluteWidth="0dp"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/loginTextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/primaryTextColor"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputLastname"
+                        style="@style/loginTextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/last_name"
+                        android:inputType="text"
+                        android:textColor="@color/primaryTextColor"
+                        app:hintTextColor="@color/primaryTextColor"
+                        tools:layout_conversion_absoluteHeight="0dp"
+                        tools:layout_conversion_absoluteWidth="0dp"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/loginTextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/primaryTextColor"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputMiddleName"
+                        style="@style/loginTextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/middle_name"
+                        android:inputType="text"
+                        android:textColor="@color/primaryTextColor"
+                        app:hintTextColor="@color/primaryTextColor"
+                        tools:layout_conversion_absoluteHeight="0dp"
+                        tools:layout_conversion_absoluteWidth="0dp"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/loginTextInputLayoutStyle"
+                    android:id="@+id/inputUsernameLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/primaryTextColor"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputUsername"
+                        style="@style/loginTextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/username"
+                        android:inputType="text"
+                        android:textColor="@color/primaryTextColor"
+                        app:hintTextColor="@color/primaryTextColor"
+                        tools:layout_conversion_absoluteHeight="0dp"
+                        tools:layout_conversion_absoluteWidth="0dp"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/loginTextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/primaryTextColor"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputEmail"
+                        style="@style/loginTextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/primaryTextColor"
+                        app:hintTextColor="@color/primaryTextColor"
+                        tools:layout_conversion_absoluteHeight="0dp"
+                        tools:layout_conversion_absoluteWidth="0dp"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/loginTextInputLayoutStyle"
+                    android:id="@+id/passwordTextLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/primaryTextColor"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
+                    app:endIconCheckable="true"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/primaryTextColor"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/primaryTextColor"
+                        app:hintTextColor="@color/primaryTextColor"
+                        tools:layout_conversion_absoluteHeight="0dp"
+                        tools:layout_conversion_absoluteWidth="0dp"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/loginTextInputLayoutStyle"
+                    android:id="@+id/confirmPasswordTextLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/primaryTextColor"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
+                    app:endIconCheckable="true"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/primaryTextColor"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputConfirmpassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/confirm_password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/primaryTextColor"
+                        app:hintTextColor="@color/primaryTextColor"
+                        tools:layout_conversion_absoluteHeight="0dp"
+                        tools:layout_conversion_absoluteWidth="0dp"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/loginTextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/primaryTextColor"
+                    app:boxStrokeColor="@color/primaryTextColor"
+                    app:hintTextColor="@color/primaryTextColor"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputBirthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/dob"
+                        android:inputType="date"
+                        android:textColor="@color/primaryTextColor"
+                        app:hintTextColor="@color/primaryTextColor"
+                        tools:layout_conversion_absoluteHeight="0dp"
+                        tools:layout_conversion_absoluteWidth="0dp"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submit_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@color/primaryTextColor"
+                android:fontFamily="@font/segoeuib"
+                android:paddingStart="@dimen/button_padding"
+                android:paddingLeft="@dimen/button_padding"
+                android:paddingEnd="@dimen/button_padding"
+                android:paddingRight="@dimen/button_padding"
+                android:text="@string/sign_up"
+                android:textAllCaps="false"
+                android:textColor="@color/onboardingColor"
+                android:textSize="@dimen/onboarding_texts"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_conversion_absoluteHeight="0dp"
+                tools:layout_conversion_absoluteWidth="0dp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/luckiestguy"
+                android:text="@string/track_every_penny"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/large_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </ScrollView>
+</layout>

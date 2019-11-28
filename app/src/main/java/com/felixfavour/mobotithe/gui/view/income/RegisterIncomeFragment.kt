@@ -1,5 +1,6 @@
 package com.felixfavour.mobotithe.gui.view.income
 
+import android.graphics.Typeface
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.RegisterIncomeFragmentBinding
@@ -39,6 +41,7 @@ class RegisterIncomeFragment : Fragment() {
         ArrayAdapter.createFromResource(this.context!!.applicationContext, R.array.intervals, R.layout.spinner_popup_item).also {adapter ->
             intervalsSpinner.adapter = adapter
             adapter.setDropDownViewResource(R.layout.spinner_dropdown_popup_item)
+
         }
 
         return binding.root

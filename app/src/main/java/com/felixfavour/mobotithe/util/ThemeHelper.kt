@@ -17,7 +17,7 @@ object ThemeHelper {
     @SuppressLint("CommitPrefEdits")
     fun setLightTheme(preferences: SharedPreferences, position: Int) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        val editor = preferences!!.edit()
+        val editor = preferences.edit()
         editor.putInt(SPINNER_STATE, position).apply()
         editor.putInt(THEME_PREFERENCE, AppCompatDelegate.MODE_NIGHT_NO).apply()
     }
@@ -25,7 +25,7 @@ object ThemeHelper {
     @SuppressLint("CommitPrefEdits")
     fun setDarkTheme(preferences: SharedPreferences, position: Int) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        val editor = preferences!!.edit()
+        val editor = preferences.edit()
         editor.putInt(SPINNER_STATE, position).apply()
         editor.putInt(THEME_PREFERENCE, AppCompatDelegate.MODE_NIGHT_YES).apply()
     }
@@ -33,7 +33,7 @@ object ThemeHelper {
     @SuppressLint("CommitPrefEdits")
     fun setThemeByBatterySaver(preferences: SharedPreferences, position: Int) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
-        val editor = preferences!!.edit()
+        val editor = preferences.edit()
         editor.putInt(SPINNER_STATE, position).apply()
         editor.putInt(THEME_PREFERENCE, AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY).apply()
     }

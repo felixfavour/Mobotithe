@@ -18,12 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gui.view.SplashActivity"/>
+        <activity android:name=".gui.view.SplashActivity" />
         <activity
             android:name=".gui.view.settings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".gui.MainActivity">
+            android:parentActivityName=".gui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.felixfavour.mobotithe.gui.MainActivity" />
@@ -31,8 +31,7 @@
         <activity android:name=".gui.view.login.LoginActivity" />
         <activity
             android:name=".gui.MainActivity"
-            android:label="@string/title_activity_main">
-        </activity>
+            android:label="@string/title_activity_main"></activity>
     </application>
 
 </manifest>

@@ -26,6 +26,12 @@
 
     <style name="loginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/primaryTextColor</item>
+        <item name="android:fontFamily">@font/segoeuib</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
+
+    <style name="signupTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="boxBackgroundColor">@color/PrimaryGreyColor</item>
         <item name="boxStrokeWidth">2dp</item>
     </style>
 
@@ -34,6 +40,11 @@
         <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/primaryColor</item>
         <item name="android:textColorHint">@color/primaryColor</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.OutlinedButton.Mobotithe" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/primaryTextColor</item>
     </style>
 
     <style name="RoundedButton">
@@ -90,6 +101,7 @@
         <item name="android:padding">10dp</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
 
 
 </resources>

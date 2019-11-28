@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "949693992836",
-    "firebase_url": "https://mobotithe.firebaseio.com",
-    "project_id": "mobotithe",
-    "storage_bucket": "mobotithe.appspot.com"
+    "project_number": "690691892891",
+    "firebase_url": "https://mobotithe-90238.firebaseio.com",
+    "project_id": "mobotithe-90238",
+    "storage_bucket": "mobotithe-90238.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:949693992836:android:c85f4b1c0b5995a09ed7d1",
+        "mobilesdk_app_id": "1:690691892891:android:d70cfca7a8379110c9c83e",
         "android_client_info": {
           "package_name": "com.felixfavour.mobotithe"
         }
       },
       "oauth_client": [
         {
-          "client_id": "949693992836-8av5r27oocbvbnudnngd0grkvod37llh.apps.googleusercontent.com",
+          "client_id": "690691892891-7d775l4sorf91vvnjh0nepcpog6r1j7p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.felixfavour.mobotithe",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "949693992836-14u9htc941kb03p8uetip361ig3a92bk.apps.googleusercontent.com",
+          "client_id": "690691892891-81g09laae6h13rgj6ps22etvpp66sqst.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD6cFvWmM-lbdXbJB7PBBKf9kqZ2WDhr8Q"
+          "current_key": "AIzaSyCnCOwcWXzoKMpYlB_eZ5xys2yWGi4w1NE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "949693992836-14u9htc941kb03p8uetip361ig3a92bk.apps.googleusercontent.com",
+              "client_id": "690691892891-81g09laae6h13rgj6ps22etvpp66sqst.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
