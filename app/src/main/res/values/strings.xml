@@ -69,4 +69,8 @@
     <string name="create_new_account">Create New Account</string>
     <string name="track_every_penny">Track Every Penny!</string>
     <string name="middle_name">Middle Name</string>
+    <string name="change_picture">Update Picture</string>
+    <string name="view_profile_picture">View Picture</string>
+    <string name="delete_profile_picture">Delete Picture</string>
+    <string name="save_user_data">Save Data</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.felixfavour.mobotithe.gui.view.income
 
-import android.graphics.Typeface
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,11 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.RegisterIncomeFragmentBinding
-import com.felixfavour.mobotithe.gui.ViewModel.RegisterIncomeViewModel
+import com.felixfavour.mobotithe.gui.viewModel.RegisterIncomeViewModel
 
 
 class RegisterIncomeFragment : Fragment() {

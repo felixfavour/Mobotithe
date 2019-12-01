@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/change_profile_picture"
+        android:title="@string/change_picture" />
+    <item
+        android:id="@+id/view_profile_picture"
+        android:title="@string/view_profile_picture" />
+    <item
+        android:id="@+id/delete_profile_picture"
+        android:title="@string/delete_profile_picture" />
+</menu>

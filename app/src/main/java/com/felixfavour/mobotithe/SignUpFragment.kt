@@ -10,11 +10,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.felixfavour.mobotithe.database.entity.History
 import com.felixfavour.mobotithe.database.entity.User
 import com.felixfavour.mobotithe.databinding.FragmentSignUpBinding
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -25,12 +28,9 @@ class SignUpFragment : Fragment() {
 
     private lateinit var binding: FragmentSignUpBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var firestoreDatabase: FirebaseFirestore
     private lateinit var googleSignInClient: GoogleSignInClient
     private var isFullFormVisisble = false
-
-    val user: User? = null
 
     companion object {
         const val TAG = "SignUpFragment"
@@ -42,7 +42,6 @@ class SignUpFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         auth = FirebaseAuth.getInstance()
-        firebaseDatabase = FirebaseDatabase.getInstance()
         firestoreDatabase = FirebaseFirestore.getInstance()
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container, false)
@@ -69,6 +68,7 @@ class SignUpFragment : Fragment() {
                                     if(taskEmailVerification.isSuccessful) {
                                         Snackbar.make(view!!, "E-mail Sent! Verify Email Before Filling all fields ", Snackbar.LENGTH_LONG).show()
                                         setToggleFormVisibility(false)
+                                        hideRegButton()
                                     } else {
                                         Toast.makeText(context!!.applicationContext, "${taskEmailVerification.exception?.message}", Toast.LENGTH_SHORT).show()
                                     }
@@ -84,15 +84,23 @@ class SignUpFragment : Fragment() {
             }
         }
 
+        binding.saveUserData.setOnClickListener {
+            saveUserData()
+        }
+
         // Inflate the layout for this fragment
         return binding.root
     }
 
     private fun setToggleFormVisibility(switch: Boolean) {
         /*
+        Fields: [email, password, confirmPassword] in [fullRegistrationList]
+        */
+        val introRegIndex = arrayOf(5,6,7)
+        /*
         Fields apart from: [email, password, confirmPassword] in [fullRegistrationList]
         */
-        val finalRegIndex = arrayOf(0,1,2,3,7)
+        val finalRegIndex = arrayOf(1,2,3,4,8,10)
 
         if (switch) {
             isFullFormVisisble = false
@@ -141,24 +149,37 @@ class SignUpFragment : Fragment() {
     }
 
     private fun saveUserData() {
-        val userMap = hashMapOf(
-            "first_name" to binding.inputFirstname.text.toString(),
-            "middle_name" to binding.inputMiddleName.text.toString(),
-            "last_name" to binding.inputLastname.text.toString(),
-            "username" to binding.inputUsername.text.toString(),
-            "email" to binding.inputEmail.text.toString(),
-            "date_of_birth" to binding.inputBirthday.text.toString()
+        val user = User(0,
+            firstName = binding.inputFirstname.text.toString(),
+            lastName = binding.inputLastname.text.toString(),
+            middleName = binding.inputMiddleName.text.toString(),
+            dob = binding.inputBirthday.text.toString(),
+            username = binding.inputUsername.text.toString(),
+            email = binding.inputEmail.text.toString(),
+            photoUrl = null,
+            history = null,
+            income = null
         )
+
+//        val updateUserProfile = UserProfileChangeRequest.Builder()
+//            .setDisplayName(binding.inputUsername.text.toString())
+//            .build()
 
         firestoreDatabase.collection(USERS_COLLECTION)
             .document(auth.uid!!)
-            .set(userMap).addOnCompleteListener { task ->
+            .set(user).addOnCompleteListener { task ->
                 if(task.isSuccessful) {
-                    Snackbar.make(view!!, "All fields have been Submitted", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(view!!, "Now login with your credentials", Snackbar.LENGTH_SHORT).show()
+                    findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
                 } else {
                     Snackbar.make(view!!, "${task.exception?.message}", Snackbar.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun hideRegButton() {
+        binding.submitUser.visibility = View.GONE
+        binding.saveUserData.visibility = View.VISIBLE
     }
 
 }

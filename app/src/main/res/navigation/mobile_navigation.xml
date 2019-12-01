@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/Menu"
-        android:name="com.felixfavour.mobotithe.gui.view.Menu.MenuFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.menu.MenuFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_menu" >
         <action

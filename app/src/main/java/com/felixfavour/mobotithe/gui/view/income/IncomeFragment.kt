@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.FragmentIncomeBinding
-import com.felixfavour.mobotithe.gui.ViewModel.IncomeViewModel
+import com.felixfavour.mobotithe.gui.viewModel.IncomeViewModel
 
 class IncomeFragment : Fragment() {
 

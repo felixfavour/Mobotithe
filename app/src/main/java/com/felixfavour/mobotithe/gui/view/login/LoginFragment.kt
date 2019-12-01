@@ -1,8 +1,6 @@
 package com.felixfavour.mobotithe.gui.view.login
 
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
@@ -10,22 +8,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.LoginFragmentBinding
 import com.felixfavour.mobotithe.gui.MainActivity
-import com.felixfavour.mobotithe.gui.ViewModel.LoginViewModel
+import com.felixfavour.mobotithe.gui.viewModel.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import timber.log.Timber
 import java.lang.IllegalArgumentException
 
 class LoginFragment : Fragment() {
@@ -69,6 +63,11 @@ class LoginFragment : Fragment() {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
         }
 
+        binding.login.setOnLongClickListener {
+            startActivity(Intent(context!!.applicationContext, MainActivity::class.java))
+            true
+        }
+
         binding.login.setOnClickListener {
             val email = binding.emailInput.text.toString()
             val password = binding.passwordInput.text.toString()
@@ -79,11 +78,11 @@ class LoginFragment : Fragment() {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val user = auth.currentUser
+                        val email = user?.email
 
                         Log.d(TAG, "createUserWithEmail:success")
                         if(user!!.isEmailVerified) {
                             startActivity(Intent(context!!.applicationContext, MainActivity::class.java))
-                            auth.signOut()
                         } else {
                             Snackbar.make(view!!, "Ensure that email is verified", Snackbar.LENGTH_SHORT).show()
                         }

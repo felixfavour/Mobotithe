@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.felixfavour.mobotithe.R
-import com.felixfavour.mobotithe.gui.ViewModel.SubmitIncomeViewModel
+import com.felixfavour.mobotithe.gui.viewModel.SubmitIncomeViewModel
 
 
 class SubmitIncomeFragment : Fragment() {

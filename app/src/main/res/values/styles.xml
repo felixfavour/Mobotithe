@@ -13,6 +13,7 @@
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
         <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+        <item name="popupMenuStyle">@style/Widget.MaterialComponents.PopupMenu</item>
     </style>
 
     <style name="AppTheme.NoActionBar.SplashActivity" parent="AppTheme.NoActionBar">
@@ -26,6 +27,12 @@
 
     <style name="loginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/primaryTextColor</item>
+        <item name="android:fontFamily">@font/segoeuib</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
+
+    <style name="notLoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/primaryColor</item>
         <item name="android:fontFamily">@font/segoeuib</item>
         <item name="boxStrokeWidth">2dp</item>
     </style>

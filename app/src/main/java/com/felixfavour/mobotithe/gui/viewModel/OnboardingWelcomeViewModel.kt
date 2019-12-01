@@ -1,6 +1,5 @@
-package com.felixfavour.mobotithe.gui.ViewModel
+package com.felixfavour.mobotithe.gui.viewModel
 
-import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 
 class OnboardingWelcomeViewModel : ViewModel() {

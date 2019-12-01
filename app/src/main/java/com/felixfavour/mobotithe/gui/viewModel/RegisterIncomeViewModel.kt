@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.ViewModel
+package com.felixfavour.mobotithe.gui.viewModel
 
 import androidx.lifecycle.ViewModel
 

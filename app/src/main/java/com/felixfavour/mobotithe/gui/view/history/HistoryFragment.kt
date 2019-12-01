@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.FragmentHistoryBinding
-import com.felixfavour.mobotithe.gui.ViewModel.HistoryViewModel
+import com.felixfavour.mobotithe.gui.viewModel.HistoryViewModel
 
 class HistoryFragment : Fragment() {
 
