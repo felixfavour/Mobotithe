@@ -19,7 +19,9 @@ import com.felixfavour.mobotithe.databinding.FragmentSettingsBinding
 import com.felixfavour.mobotithe.databinding.FragmentSignUpBinding
 import com.felixfavour.mobotithe.gui.MainActivity
 import com.felixfavour.mobotithe.gui.view.login.LoginActivity
+import com.felixfavour.mobotithe.util.LoginTokens
 import com.felixfavour.mobotithe.util.ThemeHelper
+import com.felixfavour.mobotithe.util.setLoginToken
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -60,7 +62,10 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
         binding.logOut.setOnClickListener {
             if (auth.currentUser != null) {
                 auth.signOut()
+                setLoginToken(context!!.applicationContext, LoginTokens.FAIL)
+
                 Toast.makeText(context!!.applicationContext, "Successfully Signed out", Toast.LENGTH_SHORT).show()
+                activity?.finishAffinity()
                 startActivity(Intent(context, LoginActivity::class.java))
             } else {
                 Toast.makeText(context!!.applicationContext, "No Account is Signed in!", Toast.LENGTH_SHORT).show()

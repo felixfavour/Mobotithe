@@ -19,6 +19,20 @@
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_Menu_to_History"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:destination="@id/History" />
+        <action
+            android:id="@+id/action_Menu_to_Income"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:destination="@id/Income" />
     </fragment>
 
     <fragment
@@ -42,13 +56,42 @@
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_Income_to_Menu"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:destination="@id/Menu" />
+        <action
+            android:id="@+id/action_Income_to_History"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:destination="@id/History" />
     </fragment>
 
     <fragment
         android:id="@+id/History"
         android:name="com.felixfavour.mobotithe.gui.view.history.HistoryFragment"
         android:label="@string/title_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_History_to_Income"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:destination="@id/Income" />
+        <action
+            android:id="@+id/action_History_to_Menu"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:destination="@id/Menu" />
+    </fragment>
 
     <fragment
         android:id="@+id/registerIncomeFragment"

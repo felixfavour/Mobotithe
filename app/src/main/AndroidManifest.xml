@@ -11,14 +11,14 @@
         android:roundIcon="@mipmap/ic_mobotithe_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar.SplashActivity">
-        <activity android:name=".gui.view.onboarding.OnboardingWelcomeActivity">
+        <activity android:noHistory="true" android:name=".gui.view.onboarding.OnboardingWelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gui.view.SplashActivity" />
+        <activity android:name=".gui.view.SplashActivity" android:noHistory="true" />
         <activity
             android:name=".gui.view.settings.SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -28,7 +28,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.felixfavour.mobotithe.gui.MainActivity" />
         </activity>
-        <activity android:name=".gui.view.login.LoginActivity" />
+        <activity android:noHistory="true" android:name=".gui.view.login.LoginActivity" />
         <activity
             android:name=".gui.MainActivity"
             android:label="@string/title_activity_main"></activity>

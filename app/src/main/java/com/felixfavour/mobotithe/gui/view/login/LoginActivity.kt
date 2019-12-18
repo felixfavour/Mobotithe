@@ -33,5 +33,4 @@ open class LoginActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, MainActivity::class.java))
         }
     }
-
 }

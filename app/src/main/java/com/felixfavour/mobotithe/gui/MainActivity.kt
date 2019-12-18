@@ -79,7 +79,9 @@ class MainActivity : AppCompatActivity() {
         val settingsIntent = Intent(this, SettingsActivity::class.java)
         
         when(item.itemId) {
-            R.id.menu_settings -> startActivity(settingsIntent)
+            R.id.menu_settings -> {
+                startActivity(settingsIntent)
+            }
         }
         return true
     }

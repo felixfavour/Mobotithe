@@ -160,10 +160,17 @@ class SignUpFragment : Fragment() {
             history = null,
             income = null
         )
+/*
+        Update the FirebaseUser data to the
+        data of Mobotithe users e.g changing the
+        value of display name to username
+        */
 
-//        val updateUserProfile = UserProfileChangeRequest.Builder()
-//            .setDisplayName(binding.inputUsername.text.toString())
-//            .build()
+        val updateUserProfile = UserProfileChangeRequest.Builder()
+            .setDisplayName(binding.inputUsername.text.toString())
+            .build()
+
+        auth.currentUser?.updateProfile(updateUserProfile)
 
         firestoreDatabase.collection(USERS_COLLECTION)
             .document(auth.uid!!)

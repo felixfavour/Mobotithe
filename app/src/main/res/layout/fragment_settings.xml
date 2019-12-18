@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
-        android:id="@+id/frameLayout10"
+        android:id="@+id/scrollView"
         layout_height="match_parent"
         layout_width="match_parent"
         android:fillViewport="true"
@@ -70,6 +70,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/account" />
+
+                <Button
+                    android:id="@+id/viewProfile"
+                    style="@style/GenericText.SettingsSubtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_profile" />
 
                 <Button
                     android:id="@+id/log_out"

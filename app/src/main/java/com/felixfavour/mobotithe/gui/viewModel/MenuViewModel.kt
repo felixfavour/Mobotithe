@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -78,16 +80,10 @@ class MenuViewModel : ViewModel() {
                 .document(auth.uid!!).get().addOnSuccessListener { documentSnapshot ->
                     _photoUrl.value = auth.currentUser?.photoUrl
                     if(documentSnapshot != null) {
-                        val url = firebaseStorage.reference.child("images/profile_pictures/${auth.uid}.png")
+                        val url = firebaseStorage.reference.child("images/profile_pictures/${auth.uid}")
                         url.downloadUrl.addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 _photoUrl.value = task.result
-                            } else {
-                                firebaseStorage.reference.child("images/profile_pictures/default_user.png").downloadUrl.addOnCompleteListener { task ->
-                                    if (task.isSuccessful) {
-                                        _photoUrl.value = task.result
-                                    }
-                                }
                             }
                         }
                     } else {
@@ -97,11 +93,6 @@ class MenuViewModel : ViewModel() {
         } catch (ex: NullPointerException) {
             //Do nothing
         }
-    }
-
-    fun getProfilePictureUrl(): Uri? {
-        val currentUser = auth.currentUser
-        return currentUser?.photoUrl
     }
 
     fun setProfilePicture(context: Context, data: Intent) {
@@ -124,16 +115,18 @@ class MenuViewModel : ViewModel() {
         }
     }
 
-    fun changeProfilePicture() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     fun viewProfilePicture() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    fun deleteProfilePicture() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    fun deleteProfilePicture(view: View) {
+        firebaseStorage.reference.child("images/profile_pictures/${auth.uid}").delete().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Snackbar.make(view, "Picture was successfully deleted!", Snackbar.LENGTH_SHORT)
+            } else {
+                Snackbar.make(view, "Picture was not deleted!", Snackbar.LENGTH_SHORT)
+            }
+        }
     }
 
 }

@@ -14,11 +14,6 @@ import com.felixfavour.mobotithe.databinding.FragmentMenuBinding
 import com.felixfavour.mobotithe.gui.viewModel.MenuViewModel
 import com.felixfavour.mobotithe.util.cropCircle
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
-import java.io.InputStream
 
 class MenuFragment : Fragment() {
 
@@ -43,7 +38,7 @@ class MenuFragment : Fragment() {
         /*
         Circle Profile Image
         */
-        binding.profilePicture.setImageDrawable(cropCircle(resources, R.drawable.profile_user))
+
         /*
         Image Popup menu on profile Picture long click
 */
@@ -70,7 +65,6 @@ class MenuFragment : Fragment() {
             when(menuItem.itemId) {
                 R.id.change_profile_picture -> {
                     pickProfileImage()
-//                    menuViewModel.changeProfilePicture()
                     true
                 }
                 R.id.view_profile_picture -> {
@@ -78,7 +72,7 @@ class MenuFragment : Fragment() {
                     true
                 }
                 R.id.delete_profile_picture -> {
-                    menuViewModel.deleteProfilePicture()
+                    menuViewModel.deleteProfilePicture(view!!)
                     true
                 }
                 else -> {
