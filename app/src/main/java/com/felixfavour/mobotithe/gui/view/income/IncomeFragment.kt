@@ -16,16 +16,29 @@ class IncomeFragment : Fragment() {
 
     private lateinit var incomeViewModel: IncomeViewModel
     private lateinit var binding: FragmentIncomeBinding
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_income, container, false)
 
-        // NAvigation
-        // Add Income Category
+        // Navigation
+        // Add Income Category Floating-Action Button
         binding.addIncomeCategory.setOnClickListener {
             findNavController().navigate(IncomeFragmentDirections.actionIncomeToRegisterIncomeFragment())
         }
+
+        binding.lifecycleOwner = this
+
+        val incomes = resources.getStringArray(R.array.income_categories)
+
+        val adapter = IncomeCategoryAdapter(context!!.applicationContext, incomes as Array<String>)
+        binding.listView.adapter = adapter
+        binding.listView.setFooterDividersEnabled(false)
+        binding.listView.setHeaderDividersEnabled(false)
+
+        binding.listView.setOnItemClickListener { adapterView, view, i, l ->
+            findNavController().navigate(IncomeFragmentDirections.actionIncomeToSubmitIncomeFragment())
+        }
+
         return binding.root
     }
 }

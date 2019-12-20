@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.transition.Transition
+import android.util.Log
+import android.view.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     companion object {
+        const val TAG = "Main Activity"
         private const val PREF = "theme_preferences"
         private lateinit var preferences: SharedPreferences
     }
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         ThemeHelper.useDefaultTheme(preferences)
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "Main Activity has been created")
 
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.activity_main, container, false)
         setContentView(binding.root)

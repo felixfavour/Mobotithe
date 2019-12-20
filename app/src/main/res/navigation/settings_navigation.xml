@@ -26,6 +26,13 @@
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"
             app:popUpTo="@+id/settingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/licensesFragment"
@@ -37,4 +44,9 @@
         android:name="com.felixfavour.mobotithe.gui.view.settings.WebFragment"
         android:label="fragment_web"
         tools:layout="@layout/fragment_web" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.felixfavour.mobotithe.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -1,13 +1,21 @@
 package com.felixfavour.mobotithe.gui.viewModel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.felixfavour.mobotithe.database.entity.Income
 
 class IncomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    private val _selectedIncomes = MutableLiveData<List<String>>()
+    val selectedIncomes: MutableLiveData<List<String>>
+        get() = _selectedIncomes
+
+    init {
+        getIncomeCategories()
     }
-    val text: LiveData<String> = _text
+
+    private fun getIncomeCategories() {
+
+    }
+
 }

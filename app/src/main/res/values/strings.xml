@@ -37,6 +37,7 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="amount">Amount</string>
+    <string name="default_amount">Default Amount</string>
     <string name="submit_amount">Submit Amount</string>
     <string name="register">Register</string>
     <string name="income_category_source">Income Category/Source</string>

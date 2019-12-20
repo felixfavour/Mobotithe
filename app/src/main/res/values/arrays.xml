@@ -16,6 +16,13 @@
         <item>Monthly</item>
     </string-array>
 
+    <string-array name="income_categories">
+        <item>Transport</item>
+        <item>Feeding</item>
+        <item>Family Expenses</item>
+        <item>Miscellaneous</item>
+    </string-array>
+
     <string-array name="ui_mode">
         <item>Light Theme</item>
         <item>Dark Theme</item>

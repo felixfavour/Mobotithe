@@ -10,15 +10,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import com.felixfavour.mobotithe.database.entity.History
 import com.felixfavour.mobotithe.database.entity.User
 import com.felixfavour.mobotithe.databinding.FragmentSignUpBinding
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 
 /**
@@ -157,8 +154,8 @@ class SignUpFragment : Fragment() {
             username = binding.inputUsername.text.toString(),
             email = binding.inputEmail.text.toString(),
             photoUrl = null,
-            history = null,
-            income = null
+            incomeHistories = arrayListOf(),
+            incomes = arrayListOf()
         )
 /*
         Update the FirebaseUser data to the

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -12,8 +12,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <ListView
+                android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:itemCount="6"
@@ -28,7 +28,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
                 android:clickable="true"
-                app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+                app:layout_constraintBottom_toBottomOf="@+id/listView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.901"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,5 +37,5 @@
                 app:srcCompat="@drawable/ic_add" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

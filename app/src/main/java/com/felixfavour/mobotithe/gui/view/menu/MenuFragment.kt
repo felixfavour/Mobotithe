@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.FragmentMenuBinding
 import com.felixfavour.mobotithe.gui.viewModel.MenuViewModel
-import com.felixfavour.mobotithe.util.cropCircle
 import com.google.firebase.auth.FirebaseAuth
 
 class MenuFragment : Fragment() {

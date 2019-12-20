@@ -2,9 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <FrameLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         tools:context=".gui.view.income.RegisterIncomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,13 +16,11 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout7"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/submitAmount"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -28,66 +28,58 @@
                 app:layout_constraintTop_toTopOf="parent">
 
 
-                <Spinner
-                    android:id="@+id/income_category"
-                    style="@style/GenericText.SettingsSubtext"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TextInputLayout2"
+                    style="@style/notLoginTextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    tools:listitem="@layout/spinner_dropdown_popup_item" />
+                    android:textColorHint="@color/primaryColor"
+                    app:boxStrokeColor="@color/primaryColor"
+                    app:boxStrokeWidth="2dp"
+                    app:hintTextColor="@color/primaryColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/income_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/segoeuib"
+                        android:hint="@string/income_category_source"
+                        android:inputType="number"
+                        android:textColorHint="@color/primaryColor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
                     android:id="@+id/interval"
                     style="@style/GenericText.SettingsSubtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     android:entries="@array/intervals"
+                    android:padding="10dp"
                     tools:listitem="@layout/spinner_dropdown_popup_item" />
 
 
-
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/notLoginTextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/primaryColor"
                     app:boxStrokeColor="@color/primaryColor"
-                    app:hintTextColor="@color/primaryColor"
-                    app:boxStrokeWidth="2dp">
+                    app:boxStrokeWidth="2dp"
+                    app:hintTextColor="@color/primaryColor">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/amount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/segoeuib"
-                        android:hint="@string/amount"
-                        android:inputType="number"
-                        android:textColorHint="@color/primaryColor" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/notLoginTextInputLayoutStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/primaryColor"
-                    app:boxStrokeColor="@color/primaryColor"
-                    app:hintTextColor="@color/primaryColor"
-                    app:boxStrokeWidth="2dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/segoeuib"
-                        android:hint="@string/currency"
+                        android:hint="@string/default_amount"
                         android:inputType="number"
                         android:textColorHint="@color/primaryColor" />
 
@@ -97,7 +89,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/submitAmount"
+                android:id="@+id/submitIncome"
                 style="@style/RoundedButton.Orange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,5 +105,5 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+    </ScrollView>
 </layout>

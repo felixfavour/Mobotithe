@@ -3,7 +3,7 @@ package com.felixfavour.mobotithe.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
+import kotlin.collections.ArrayList
 
 @Entity(tableName = "mobotithe_users")
 data class User(
@@ -32,8 +32,8 @@ data class User(
     @ColumnInfo(name = "photoUrl")
     val photoUrl: String?,
 
-    val history: History?,
-    val income: Income?
+    val incomeHistories: ArrayList<IncomeHistory?>,
+    val incomes: ArrayList<Income?>
 ) {
     companion object {
         var userID = 0
@@ -46,12 +46,11 @@ data class User(
 
 data class Income(
     val name: String,
-    val currency: String,
     val interval: String,
-    val defaultAmount_byInterval: Double
+    val usualBudget: Double
 )
 
-data class History(
+data class IncomeHistory(
     val transactionCreationDate: String,
     val amount: Double,
     val incomeCategory: Income
