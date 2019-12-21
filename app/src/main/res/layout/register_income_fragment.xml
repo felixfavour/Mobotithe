@@ -46,7 +46,7 @@
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/segoeuib"
                         android:hint="@string/income_category_source"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:textColorHint="@color/primaryColor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +80,7 @@
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/segoeuib"
                         android:hint="@string/default_amount"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:textColorHint="@color/primaryColor" />
 
                 </com.google.android.material.textfield.TextInputLayout>

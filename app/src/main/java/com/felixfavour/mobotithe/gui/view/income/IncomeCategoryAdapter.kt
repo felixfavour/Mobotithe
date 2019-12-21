@@ -1,23 +1,52 @@
 package com.felixfavour.mobotithe.gui.view.income
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import androidx.databinding.DataBindingUtil
-import com.felixfavour.mobotithe.R
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.felixfavour.mobotithe.database.entity.Income
 import com.felixfavour.mobotithe.databinding.IncomeCategoryItemBinding
 
-class IncomeCategoryAdapter(context: Context, resource: Array<String>) : ArrayAdapter<String>(context, R.layout.income_category_item, resource) {
+class IncomeCategoryAdapter(private val onIncomeClickListener: OnIncomeClickListener) : ListAdapter<Income, IncomeCategoryAdapter.ViewHolder>(DiffCallback) {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding: IncomeCategoryItemBinding = DataBindingUtil.inflate(layoutInflater, R.layout.income_category_item, parent, false)
-        val textItem = getItem(position)
+    companion object DiffCallback : DiffUtil.ItemCallback<Income>() {
+        override fun areItemsTheSame(oldItem: Income, newItem: Income): Boolean {
+            return oldItem === newItem
+        }
 
-        binding.categoryText.text = textItem
+        override fun areContentsTheSame(oldItem: Income, newItem: Income): Boolean {
+            return oldItem == newItem
+        }
 
-        return binding.root
     }
+
+    class ViewHolder(private val binding: IncomeCategoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(income: Income) {
+            binding.categoryText.text = income.name
+            binding.executePendingBindings()
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        // NOTE THERE MIGHT BE AN ERROR HERE
+        return ViewHolder(IncomeCategoryItemBinding.inflate(LayoutInflater.from(parent.context)))
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val income = getItem(position)
+        holder.itemView.setOnClickListener {
+            onIncomeClickListener.onIncomeClick(income)
+        }
+        holder.bind(income)
+    }
+
+    class OnIncomeClickListener(val clickListener: (movie: Income) -> Unit) {
+        fun onIncomeClick(movie: Income) = clickListener(movie)
+    }
+
+}
+
+class OnIncomeClickListener {
+
 }

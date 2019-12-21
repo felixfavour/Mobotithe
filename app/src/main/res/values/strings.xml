@@ -74,4 +74,7 @@
     <string name="view_profile_picture">View Picture</string>
     <string name="delete_profile_picture">Delete Picture</string>
     <string name="save_user_data">Save Data</string>
+    <string name="income_category_added_prompt">Income was Added</string>
+    <string name="income_category_not_added_prompt">Income Not Yet Added</string>
+    <string name="reload">Reload</string>
 </resources>

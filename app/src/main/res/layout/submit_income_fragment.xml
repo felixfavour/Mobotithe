@@ -53,7 +53,7 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="20dp"
                         android:hint="@string/amount"
-                        android:inputType="number" />
+                        android:inputType="numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

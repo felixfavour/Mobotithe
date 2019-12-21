@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.felixfavour.mobotithe.R
@@ -16,12 +17,16 @@ import java.net.URI
 fun convertUriToImage(imageView: ImageView, uri: Uri?) {
     Glide.with(imageView.context)
         .load(uri)
-        .apply(RequestOptions().placeholder(R.drawable.profile_user).error(R.drawable.profile_user).circleCrop())
+        .apply(RequestOptions()
+            .placeholder(R.drawable.profile_user)
+            .error(R.drawable.profile_user)
+            .circleCrop()
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
         .into(imageView)
 }
 
-//@BindingAdapter("bindRecyclerViewData")
-//fun bindRecyclerView(recyclerView: RecyclerView, incomes: List<String>?) {
-//    val adapter = recyclerView.adapter as? IncomeCategoryAdapter
-//    adapter?.submitList(incomes)
-//}
+@BindingAdapter("recyclerViewData")
+fun bindRecyclerView(recyclerView: RecyclerView, incomes: List<Income>?) {
+    val adapter = recyclerView.adapter as? IncomeCategoryAdapter
+    adapter?.submitList(incomes)
+}

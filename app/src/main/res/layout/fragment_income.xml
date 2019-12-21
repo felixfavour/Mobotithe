@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.felixfavour.mobotithe.gui.viewModel.IncomeViewModel" />
+    </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
@@ -12,11 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ListView
-                android:id="@+id/listView"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:itemCount="6"
+                app:recyclerViewData="@{viewModel.selectedIncomes}"
                 tools:listitem="@layout/income_category_item" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -28,7 +36,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
                 android:clickable="true"
-                app:layout_constraintBottom_toBottomOf="@+id/listView"
+                app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.901"
                 app:layout_constraintStart_toStartOf="parent"

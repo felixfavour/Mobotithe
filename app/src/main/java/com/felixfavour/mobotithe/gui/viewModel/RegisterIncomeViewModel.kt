@@ -11,7 +11,14 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterIncomeViewModel : ViewModel() {
+
+    companion object {
+        const val USERS_COLLECTION = "users"
+        const val INCOMES_DOCUMENT = "incomes"
+    }
+
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var currentUser = auth.currentUser!!
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     private val _taskStatus = MutableLiveData<TaskAssesor>()
