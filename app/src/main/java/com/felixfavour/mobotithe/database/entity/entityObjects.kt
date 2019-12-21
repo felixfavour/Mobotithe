@@ -1,8 +1,12 @@
 package com.felixfavour.mobotithe.database.entity
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.versionedparcelable.ParcelField
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
@@ -35,19 +39,21 @@ data class User(
     @ColumnInfo(name = "photoUrl")
     val photoUrl: String?="",
 
-    val incomeHistories: ArrayList<IncomeHistory> = arrayListOf(),
-    val incomes: ArrayList<Income> = arrayListOf()
+    val incomeHistories: MutableList<IncomeHistory> = arrayListOf(),
+    val incomes: MutableList<Income> = arrayListOf()
 ) {
 }
 
-data class Income(
-    val name: String,
-    val interval: String,
-    val usualBudget: Double
-)
+@Parcelize
+data class Income (
+    val name: String = "",
+    val interval: String = "",
+    val usualBudget: Double = 0.0
+) : Parcelable
 
+@Parcelize
 data class IncomeHistory(
     val transactionCreationDate: Date = Date(7248942848487),
     val amount: Double = 0.00,
-    val incomeCategory: Income = Income("jhdd", "jkhdjhd", 333.33)
-)
+    val incomeCategory: Income? = Income("jhdd", "jkhdjhd", 333.33)
+) : Parcelable

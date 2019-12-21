@@ -16,7 +16,7 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="login">Login</string>
     <string name="hello">Hello,</string>
-    <string name="total_savings">Total Savings</string>
+    <string name="total_savings">Week\'s Total</string>
     <string name="title_income">Income</string>
     <string name="title_history">History</string>
     <string name="register_new_income">Register New Income</string>

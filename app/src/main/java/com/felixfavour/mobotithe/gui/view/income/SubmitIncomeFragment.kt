@@ -2,47 +2,45 @@ package com.felixfavour.mobotithe.gui.view.income
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.felixfavour.mobotithe.DataBinderMapperImpl
+import androidx.lifecycle.ViewModelProvider
 import com.felixfavour.mobotithe.R
-import com.felixfavour.mobotithe.database.entity.Income
 import com.felixfavour.mobotithe.database.entity.IncomeHistory
-import com.felixfavour.mobotithe.databinding.IncomeCategoryItemBinding
 import com.felixfavour.mobotithe.databinding.SubmitIncomeFragmentBinding
 import com.felixfavour.mobotithe.gui.viewModel.SubmitIncomeViewModel
-import java.time.LocalDate
-import java.time.ZoneId
+import com.felixfavour.mobotithe.gui.viewModel.SubmitIncomeViewModelFactory
 import java.util.*
 
 
 class SubmitIncomeFragment : Fragment() {
 
     private lateinit var viewModel: SubmitIncomeViewModel
+    private lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var binding: SubmitIncomeFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModel = ViewModelProviders.of(this).get(SubmitIncomeViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater, R.layout.submit_income_fragment, container, false)
 
-        //Get Default date from Calendar
-        val date = Date(binding.calendar.date)
+        val income = SubmitIncomeFragmentArgs.fromBundle(arguments!!).income
+        val application = this.activity!!.application
+
+        viewModelFactory = SubmitIncomeViewModelFactory(income, application)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(SubmitIncomeViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater, R.layout.submit_income_fragment, container, false)
 
         binding.submitAmount.setOnClickListener {
 
             // Creation of an IncomeHistory Object
-            val income = IncomeHistory(
-                date,
+            val incomeHistory = IncomeHistory(
+                Date(binding.calendar.date),
                 binding.amount.text.toString().toDouble(),
-                Income("Test", "Weekly", 500.00)
+                income
             )
 
-            viewModel.submitIncome(income, view!!, context!!.applicationContext)
+            viewModel.submitIncome(incomeHistory, view!!, context!!.applicationContext)
         }
 
         return binding.root

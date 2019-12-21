@@ -16,7 +16,9 @@ class IncomeFragment : Fragment() {
 
     private lateinit var incomeViewModel: IncomeViewModel
     private lateinit var binding: FragmentIncomeBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_income, container, false)
 
@@ -28,12 +30,14 @@ class IncomeFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = incomeViewModel
+        binding.swipeRefresh.setOnRefreshListener {
+            incomeViewModel.getIncomeCategories()
+        }
 
-        // Get data before initializing recycler view adapter
-        incomeViewModel.getIncomeCategories()
-
-        binding.recyclerView.adapter = IncomeCategoryAdapter(IncomeCategoryAdapter.OnIncomeClickListener {
-            // Do something
+        // Add OnClickListener to the list items in the recyclerView
+        binding.recyclerView.adapter = IncomeCategoryAdapter(IncomeCategoryAdapter.OnIncomeClickListener {income ->
+            val action = IncomeFragmentDirections.actionIncomeToSubmitIncomeFragment(income)
+            findNavController().navigate(action)
         })
 
         return binding.root

@@ -26,7 +26,7 @@ fun convertUriToImage(imageView: ImageView, uri: Uri?) {
 }
 
 @BindingAdapter("recyclerViewData")
-fun bindRecyclerView(recyclerView: RecyclerView, incomes: List<Income>?) {
+fun bindRecyclerView(recyclerView: RecyclerView, incomes: MutableList<Income>?) {
     val adapter = recyclerView.adapter as? IncomeCategoryAdapter
     adapter?.submitList(incomes)
 }

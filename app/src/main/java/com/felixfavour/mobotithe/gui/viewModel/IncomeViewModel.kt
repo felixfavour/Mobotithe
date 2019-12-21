@@ -1,40 +1,58 @@
 package com.felixfavour.mobotithe.gui.viewModel
 
+import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.felixfavour.mobotithe.database.entity.Income
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Source
 
-class IncomeViewModel : ViewModel() {
+class IncomeViewModel: ViewModel() {
+
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+    init {
+        getIncomeCategories()
+    }
 
     companion object {
         const val USERS_COLLECTION = "users"
         const val INCOMES_DOCUMENT = "incomes"
     }
 
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private var currentUser = auth.currentUser!!
-    private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-
     private val _selectedIncomes = MutableLiveData<List<Income>>()
     val selectedIncomes: LiveData<List<Income>>
         get() = _selectedIncomes
 
+    // LiveData of Error Status
+    private val _retrievalStatus = MutableLiveData<String>()
+    val retrievalStatus : LiveData<String>
+        get() = _retrievalStatus
+
     fun getIncomeCategories() {
-        val incomes = arrayListOf<Income>()
-        firestore.collection(USERS_COLLECTION).document(currentUser.uid).get().addOnSuccessListener { documentSnapshot ->
-            val listOfHashMaps = documentSnapshot?.get(INCOMES_DOCUMENT) as List<HashMap<String, Any>>
-            for (hashmap in listOfHashMaps) {
-                val income = Income(
-                    hashmap.get("name") as String,
-                    hashmap.get("interval") as String,
-                    hashmap.get("usualBudget").toString().toDouble()
-                )
-                incomes.add(income)
-            }
-            _selectedIncomes.value = incomes
+        firestore.collection(USERS_COLLECTION)
+            .document(auth.uid!!).get().addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot != null) {
+                    val listOfHashMaps = documentSnapshot?.get(INCOMES_DOCUMENT) as MutableList<HashMap<String, Any>>
+                    val incomes = mutableListOf<Income>()
+                    for (hashmap in listOfHashMaps) {
+                        val income = Income(
+                            hashmap["name"] as String,
+                            hashmap["interval"] as String,
+                            hashmap["usualBudget"].toString().toDouble()
+                        )
+                        incomes.add(income)
+                    }
+                    _selectedIncomes.value = incomes
+                } else {
+                    Log.e("IVM","Could not find requested Document")
+                }
         }
     }
 

@@ -11,6 +11,7 @@
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -24,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:itemCount="6"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:recyclerViewData="@{viewModel.selectedIncomes}"
                 tools:listitem="@layout/income_category_item" />
 

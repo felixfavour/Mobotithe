@@ -96,9 +96,15 @@
     <fragment
         android:id="@+id/registerIncomeFragment"
         android:name="com.felixfavour.mobotithe.gui.view.income.RegisterIncomeFragment"
+        tools:layout="@layout/register_income_fragment"
         android:label="Register Income" />
     <fragment
         android:id="@+id/submitIncomeFragment"
         android:name="com.felixfavour.mobotithe.gui.view.income.SubmitIncomeFragment"
-        android:label="Submit Income" />
+        tools:layout="@layout/submit_income_fragment"
+        android:label="Submit Income" >
+        <argument
+            android:name="income"
+            app:argType="com.felixfavour.mobotithe.database.entity.Income" />
+    </fragment>
 </navigation>

@@ -18,6 +18,10 @@ android {
         enabled true
     }
 
+    androidExtensions {
+        experimental true
+    }
+
     defaultConfig {
         applicationId "com.felixfavour.mobotithe"
         minSdkVersion 21

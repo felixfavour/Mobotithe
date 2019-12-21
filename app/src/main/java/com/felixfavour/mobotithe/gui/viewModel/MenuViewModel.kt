@@ -6,16 +6,23 @@ import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.felixfavour.mobotithe.database.entity.Income
+import com.felixfavour.mobotithe.database.entity.IncomeHistory
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Source
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.InputStream
 import java.lang.NullPointerException
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 class MenuViewModel : ViewModel() {
 
@@ -48,15 +55,20 @@ class MenuViewModel : ViewModel() {
     val photoUrl: LiveData<Uri>
         get() = _photoUrl
 
-    private val _totalSavings = MutableLiveData<Double>()
-    val totalSavings: LiveData<Double>
+    private val _totalSavings = MutableLiveData<String>()
+    val totalSavings: LiveData<String>
         get() = _totalSavings
 
     private val _currency = MutableLiveData<String>()
     val currency: LiveData<String>
         get() = _currency
 
-    private fun getFields() {
+    fun getFields() {
+        getUsernameAndProfilePicture()
+        getWeeksTotal()
+    }
+
+    private fun getUsernameAndProfilePicture() {
         try {
             /*
         Get Username
@@ -64,23 +76,25 @@ class MenuViewModel : ViewModel() {
             firestoreDatabase.collection(USERS_COLLECTION)
                 .document(auth.uid!!).get().addOnSuccessListener { documentSnapshot ->
                     if (documentSnapshot != null) {
-                        if(documentSnapshot.get("username") != null) {
+                        if (documentSnapshot.get("username") != null) {
                             _username.value = documentSnapshot.get("username") as? String
                         } else {
                             _username.value = auth.currentUser?.displayName
                         }
                     } else {
-                        Log.e(TAG,"Could not find requested Document")
+                        Log.e(TAG, "Could not find requested Document")
                     }
                 }
             /*
             Get Profile Picture
             */
             firestoreDatabase.collection(USERS_UTIL_COLLECTION)
-                .document(auth.uid!!).get().addOnSuccessListener { documentSnapshot ->
+                .document(auth.uid!!).get()
+                .addOnSuccessListener { documentSnapshot ->
                     _photoUrl.value = auth.currentUser?.photoUrl
-                    if(documentSnapshot != null) {
-                        val url = firebaseStorage.reference.child("images/profile_pictures/${auth.uid}")
+                    if (documentSnapshot != null) {
+                        val url =
+                            firebaseStorage.reference.child("images/profile_pictures/${auth.uid}")
                         url.downloadUrl.addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 _photoUrl.value = task.result
@@ -93,6 +107,28 @@ class MenuViewModel : ViewModel() {
         } catch (ex: NullPointerException) {
             //Do nothing
         }
+    }
+
+    fun getCurrency(locale: Locale) {
+        // Using java.text NumberFormat API to get the currency of the locale
+        _currency.value = Currency.getInstance(locale).currencyCode
+    }
+
+    private fun getWeeksTotal() {
+
+        firestoreDatabase.collection(HistoryViewModel.USERS_COLLECTION).document(auth.uid!!).collection(HistoryViewModel.INCOME_SUB_COLLECTION)
+            .document(auth.uid!!).get().addOnSuccessListener { documentSnapshot ->
+                var sumOfAmounts = 0.00
+                // Get the whole hashmap of income_histories as a list of hashmaps
+                val listOfHashmaps = documentSnapshot?.get(HistoryViewModel.INCOME_HISTORIES) as MutableList<HashMap<String, Any>>
+
+                // Loop through each hashmap to find the [name] key-value in the hashmap
+                for (hashmap in listOfHashmaps) {
+                    val amount = hashmap["amount"] as Long
+                    sumOfAmounts += amount
+                }
+                _totalSavings.value = NumberFormat.getInstance().format(sumOfAmounts).plus(".00")
+            }
     }
 
     fun setProfilePicture(context: Context, data: Intent) {

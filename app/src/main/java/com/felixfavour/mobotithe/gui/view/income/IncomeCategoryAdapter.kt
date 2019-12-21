@@ -23,7 +23,7 @@ class IncomeCategoryAdapter(private val onIncomeClickListener: OnIncomeClickList
 
     class ViewHolder(private val binding: IncomeCategoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(income: Income) {
-            binding.categoryText.text = income.name
+            binding.income = income
             binding.executePendingBindings()
         }
     }
@@ -41,12 +41,8 @@ class IncomeCategoryAdapter(private val onIncomeClickListener: OnIncomeClickList
         holder.bind(income)
     }
 
-    class OnIncomeClickListener(val clickListener: (movie: Income) -> Unit) {
-        fun onIncomeClick(movie: Income) = clickListener(movie)
+    class OnIncomeClickListener(val clickListener: (income: Income) -> Unit) {
+        fun onIncomeClick(income: Income) = clickListener(income)
     }
-
-}
-
-class OnIncomeClickListener {
 
 }

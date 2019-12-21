@@ -2,9 +2,12 @@ package com.felixfavour.mobotithe.gui.view.menu
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.core.os.ConfigurationCompat
+import androidx.core.widget.TextViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -13,6 +16,8 @@ import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.FragmentMenuBinding
 import com.felixfavour.mobotithe.gui.viewModel.MenuViewModel
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
 class MenuFragment : Fragment() {
 
@@ -34,9 +39,10 @@ class MenuFragment : Fragment() {
 
         menuViewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu, container, false)
-        /*
-        Circle Profile Image
-        */
+
+        // GET currency using CURRENT LOCALE
+        val locale = ConfigurationCompat.getLocales(resources.configuration)[0]
+        menuViewModel.getCurrency(locale)
 
         /*
         Image Popup menu on profile Picture long click
@@ -49,6 +55,21 @@ class MenuFragment : Fragment() {
         binding.registerNewIncome.setOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuToRegisterIncomeFragment())
         }
+
+        //Refresh the info on Swipe-Refresh
+        binding.dashboardRefresh.run {
+            setOnRefreshListener {
+                menuViewModel.getFields()
+                val workerScope = CoroutineScope(Dispatchers.IO)
+                workerScope.launch {
+                    delay(3000)
+                    isRefreshing = false
+                }
+            }
+        }
+
+        // Set Amount TextView to automatically resize text based on size and volume
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(binding.totalSavings, TypedValue.COMPLEX_UNIT_DIP)
 
         binding.lifecycleOwner = this
         binding.viewModel = menuViewModel
