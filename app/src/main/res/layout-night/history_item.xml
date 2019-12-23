@@ -24,6 +24,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/PrimaryGreyColor"
             style="@style/Widget.MaterialComponents.CardView.IncomeCategory"
             app:cardCornerRadius="20dp"
             app:cardUseCompatPadding="true"
@@ -38,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:padding="32dp">
 
-<!--                Text Value for id [date] and [amount] is assigned programmatically-->
+                <!--                Text Value for id [date] and [amount] is assigned programmatically-->
 
                 <TextView
                     android:id="@+id/income_category"
@@ -56,9 +57,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primaryTextColor"
-                    android:textSize="@dimen/little_text"
                     android:backgroundTint="@color/secondaryColor"
                     android:background="@drawable/cornered"
+                    android:textSize="@dimen/little_text"
                     android:padding="4dp"
                     android:text="@{dateFormatter.format(incomeHistory.transactionCreationDate)}"
                     tools:text="July, 2019 23:00" />

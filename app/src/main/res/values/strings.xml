@@ -77,4 +77,7 @@
     <string name="income_category_added_prompt">Income was Added</string>
     <string name="income_category_not_added_prompt">Income Not Yet Added</string>
     <string name="reload">Reload</string>
+    <string name="this_week">This Week</string>
+    <string name="this_month">This Month</string>
+    <string name="today">Today</string>
 </resources>

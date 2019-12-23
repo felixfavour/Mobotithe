@@ -18,8 +18,7 @@ class SubmitIncomeViewModel(income: Income, application: Application) : ViewMode
 
     companion object {
         const val USERS_COLLECTION = "users"
-        const val INCOME_SUB_COLLECTION = "income_histories"
-        const val INCOME_HISTORIES = "income_histories_array"
+        const val INCOME_HISTORIES = "income_histories"
     }
 
     private val auth = FirebaseAuth.getInstance()
@@ -36,7 +35,7 @@ class SubmitIncomeViewModel(income: Income, application: Application) : ViewMode
 
     fun submitIncome(incomeHistory: IncomeHistory, view: View, context: Context) {
         firestore.collection(USERS_COLLECTION).document(user!!.uid)
-            .collection(INCOME_SUB_COLLECTION).document(user.uid).update(INCOME_HISTORIES, FieldValue.arrayUnion(incomeHistory))
+            .update(INCOME_HISTORIES, FieldValue.arrayUnion(incomeHistory))
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Snackbar.make(view, context.getString(R.string.income_category_added_prompt), Snackbar.LENGTH_SHORT).show()

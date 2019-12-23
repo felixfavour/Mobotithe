@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.felixfavour.mobotithe.gui.viewModel.MenuViewModel" />
+    </data>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/dashboardRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/profilePictureLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:background="@drawable/image_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/profilePicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_centerInParent="true"
+                        app:photoUri="@{viewModel.photoUrl}" />
+
+                    <ProgressBar
+                        android:id="@+id/imageProgressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="24dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profilePictureLayout">
+
+                    <TextView
+                        android:id="@+id/hello"
+                        style="@style/GenericText"
+                        android:textColor="@color/primaryLightColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hello"
+                        android:textSize="@dimen/medium_text" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        style="@style/GenericText"
+                        android:textColor="@color/primaryTextColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.username}"
+                        android:textSize="@dimen/large_text"
+                        tools:text="John" />
+
+                    <Button
+                        android:id="@+id/register_new_income"
+                        style="@style/RoundedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/button_padding"
+                        android:backgroundTint="@color/secondaryColor"
+                        android:drawableEnd="@drawable/ic_arrow_right"
+                        android:drawableRight="@drawable/ic_arrow_right"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="30dp"
+                        android:paddingRight="30dp"
+                        android:text="@string/register_new_income" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="@dimen/cardview_radius"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/cardview_padding">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/currency"
+                                style="@style/GenericText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/primaryLightColor"
+                                android:text="@{viewModel.currency.toString()}"
+                                android:textAllCaps="true"
+                                android:textSize="@dimen/medium_text"
+                                tools:text="USD" />
+
+                            <TextView
+                                android:id="@+id/totalSavings"
+                                style="@style/GenericText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignBaseline="@id/currency"
+                                android:layout_marginRight="-1dp"
+                                android:gravity="end"
+                                android:text="@string/total_savings"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/primaryLightColor"
+                                android:textSize="@dimen/little_medium_text" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/amount"
+                            style="@style/GenericText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="20sp"
+                            android:autoSizeMaxTextSize="35sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/really_large_text"
+                            android:textColor="@color/primaryLightColor"
+                            android:text="@{viewModel.totalSavings.toString()}"
+                            tools:text="20,000.00" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

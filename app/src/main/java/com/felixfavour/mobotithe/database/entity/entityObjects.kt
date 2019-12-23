@@ -4,13 +4,8 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.versionedparcelable.ParcelField
 import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
-import java.time.LocalDateTime
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 @Entity(tableName = "mobotithe_users")
 data class User(
@@ -53,7 +48,7 @@ data class Income (
 
 @Parcelize
 data class IncomeHistory(
-    val transactionCreationDate: Date = Date(7248942848487),
-    val amount: Double = 0.00,
-    val incomeCategory: Income? = Income("jhdd", "jkhdjhd", 333.33)
+    val transactionCreationDate: Date = Date(),
+    val amount: Int = 0,
+    val incomeCategory: Income? = Income("", "", 333.33)
 ) : Parcelable

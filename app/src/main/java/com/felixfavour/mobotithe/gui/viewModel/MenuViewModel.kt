@@ -25,7 +25,6 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class MenuViewModel : ViewModel() {
-
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var firestoreDatabase: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var firestoreImage: StorageReference
@@ -39,6 +38,7 @@ class MenuViewModel : ViewModel() {
     }
 
     companion object {
+        const val INCOME_HISTORY = "income_histories"
         const val TAG = "MenuFragment"
         const val USERS_COLLECTION = "users"
         const val USERS_UTIL_COLLECTION = "users_utils"
@@ -116,11 +116,11 @@ class MenuViewModel : ViewModel() {
 
     private fun getWeeksTotal() {
 
-        firestoreDatabase.collection(HistoryViewModel.USERS_COLLECTION).document(auth.uid!!).collection(HistoryViewModel.INCOME_SUB_COLLECTION)
-            .document(auth.uid!!).get().addOnSuccessListener { documentSnapshot ->
-                var sumOfAmounts = 0.00
+        firestoreDatabase.collection(HistoryViewModel.USERS_COLLECTION).document(auth.uid!!)
+            .get().addOnSuccessListener { documentSnapshot ->
+                var sumOfAmounts = 0L
                 // Get the whole hashmap of income_histories as a list of hashmaps
-                val listOfHashmaps = documentSnapshot?.get(HistoryViewModel.INCOME_HISTORIES) as MutableList<HashMap<String, Any>>
+                val listOfHashmaps = documentSnapshot?.get(INCOME_HISTORY) as MutableList<HashMap<String, Any>>
 
                 // Loop through each hashmap to find the [name] key-value in the hashmap
                 for (hashmap in listOfHashmaps) {

@@ -7,6 +7,7 @@
     <dimen name="drawable_gap">10dp</dimen>
     <dimen name="button_padding">30dp</dimen>
     <dimen name="editText_padding">40dp</dimen>
+    <dimen name="little_text">14sp</dimen>
     <dimen name="little_medium_text">17sp</dimen>
     <dimen name="medium_text">20sp</dimen>
     <dimen name="large_text">40sp</dimen>

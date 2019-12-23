@@ -60,13 +60,10 @@ class MenuFragment : Fragment() {
         binding.dashboardRefresh.run {
             setOnRefreshListener {
                 menuViewModel.getFields()
-                val workerScope = CoroutineScope(Dispatchers.IO)
-                workerScope.launch {
-                    delay(3000)
-                    isRefreshing = false
-                }
             }
         }
+
+        binding.dashboardRefresh.isRefreshing = false
 
         // Set Amount TextView to automatically resize text based on size and volume
         TextViewCompat.setAutoSizeTextTypeWithDefaults(binding.totalSavings, TypedValue.COMPLEX_UNIT_DIP)
