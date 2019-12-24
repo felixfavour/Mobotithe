@@ -49,6 +49,6 @@ data class Income (
 @Parcelize
 data class IncomeHistory(
     val transactionCreationDate: Date = Date(),
-    val amount: Int = 0,
+    val amount: Long = 0,
     val incomeCategory: Income? = Income("", "", 333.33)
 ) : Parcelable

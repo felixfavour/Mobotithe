@@ -120,6 +120,7 @@
 
     <style name="Widget.MaterialComponents.Chip.Filter.Mobotithe" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipBackgroundColor">@color/secondaryColor</item>
+        <item name="android:fontFamily">@font/segoeuib</item>
         <item name="chipStrokeColor">@color/primaryTextColor</item>
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.forEach
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -29,6 +30,32 @@ class HistoryFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = historyViewModel
+
+        binding.filterByDay.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked) {
+                historyViewModel.filterHistoriesByToday()
+            } else {
+                historyViewModel.getListOfIncomeHistories()
+            }
+        }
+
+
+        binding.filterByWeek.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked) {
+                historyViewModel.filterHistoriesByWeek()
+            } else {
+                historyViewModel.getListOfIncomeHistories()
+            }
+        }
+
+
+        binding.filterByMonth.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked) {
+                historyViewModel.filterHistoriesByMonth()
+            } else {
+                historyViewModel.getListOfIncomeHistories()
+            }
+        }
 
         val adapter = HistoryAdapter()
         binding.incomeHistoriesList.adapter = adapter

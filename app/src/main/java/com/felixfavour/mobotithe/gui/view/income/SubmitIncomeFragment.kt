@@ -36,7 +36,7 @@ class SubmitIncomeFragment : Fragment() {
             // Creation of an IncomeHistory Object
             val incomeHistory = IncomeHistory(
                 Date(binding.calendar.date),
-                binding.amount.text.toString().toInt(),
+                binding.amount.text.toString().toLong(),
                 income
             )
 

@@ -12,6 +12,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.felixfavour.mobotithe.database.entity.Income
 import com.felixfavour.mobotithe.database.entity.IncomeHistory
+import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,6 +20,7 @@ import com.google.firebase.firestore.Source
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.InputStream
+import java.lang.Exception
 import java.lang.NullPointerException
 import java.text.NumberFormat
 import java.util.*
@@ -62,6 +64,10 @@ class MenuViewModel : ViewModel() {
     private val _currency = MutableLiveData<String>()
     val currency: LiveData<String>
         get() = _currency
+
+    private val _errorStatus = MutableLiveData<TaskAssesor>()
+    val errorStatus : LiveData<TaskAssesor>
+        get() = _errorStatus
 
     fun getFields() {
         getUsernameAndProfilePicture()
@@ -116,19 +122,30 @@ class MenuViewModel : ViewModel() {
 
     private fun getWeeksTotal() {
 
-        firestoreDatabase.collection(HistoryViewModel.USERS_COLLECTION).document(auth.uid!!)
-            .get().addOnSuccessListener { documentSnapshot ->
-                var sumOfAmounts = 0L
-                // Get the whole hashmap of income_histories as a list of hashmaps
-                val listOfHashmaps = documentSnapshot?.get(INCOME_HISTORY) as MutableList<HashMap<String, Any>>
+        try {
+            firestoreDatabase.collection(HistoryViewModel.USERS_COLLECTION).document(auth.uid!!)
+                .get().addOnSuccessListener { documentSnapshot ->
+                    var sumOfAmounts = 0L
+                    // Get the whole hashmap of income_histories as a list of hashmaps
+                    var listOfHashmaps = mutableListOf<HashMap<String, Any>>()
 
-                // Loop through each hashmap to find the [name] key-value in the hashmap
-                for (hashmap in listOfHashmaps) {
-                    val amount = hashmap["amount"] as Long
-                    sumOfAmounts += amount
+                    try {
+                        listOfHashmaps = documentSnapshot?.get(INCOME_HISTORY) as MutableList<HashMap<String, Any>>
+                    } catch (ex: Exception) {
+                        _errorStatus.value = TaskAssesor.EMPTY_SNAPSHOT
+                    }
+
+                    // Loop through each hashmap to find the [name] key-value in the hashmap
+                    for (hashmap in listOfHashmaps) {
+                        val amount = hashmap["amount"] as Long
+                        sumOfAmounts += amount
+                    }
+                    _totalSavings.value = NumberFormat.getInstance().format(sumOfAmounts).plus(".00")
                 }
-                _totalSavings.value = NumberFormat.getInstance().format(sumOfAmounts).plus(".00")
-            }
+        } catch (ex: Exception) {
+
+        }
+
     }
 
     fun setProfilePicture(context: Context, data: Intent) {

@@ -6,11 +6,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.felixfavour.mobotithe.database.entity.Income
+import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Source
+import java.lang.Exception
 
 class IncomeViewModel: ViewModel() {
 
@@ -31,15 +33,22 @@ class IncomeViewModel: ViewModel() {
         get() = _selectedIncomes
 
     // LiveData of Error Status
-    private val _retrievalStatus = MutableLiveData<String>()
-    val retrievalStatus : LiveData<String>
-        get() = _retrievalStatus
+    private val _errorStatus = MutableLiveData<TaskAssesor>()
+    val errorStatus : LiveData<TaskAssesor>
+        get() = _errorStatus
 
     fun getIncomeCategories() {
         firestore.collection(USERS_COLLECTION)
             .document(auth.uid!!).get().addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot != null) {
-                    val listOfHashMaps = documentSnapshot?.get(INCOMES_DOCUMENT) as MutableList<HashMap<String, Any>>
+                    var listOfHashMaps = mutableListOf<HashMap<String, Any>>()
+
+                    try {
+                        listOfHashMaps = documentSnapshot?.get(INCOMES_DOCUMENT) as MutableList<HashMap<String, Any>>
+                    } catch (ex: Exception) {
+                        _errorStatus.value = TaskAssesor.EMPTY_SNAPSHOT
+                    }
+
                     val incomes = mutableListOf<Income>()
                     for (hashmap in listOfHashMaps) {
                         val income = Income(

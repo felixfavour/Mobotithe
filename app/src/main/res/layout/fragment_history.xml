@@ -23,21 +23,25 @@
                 android:id="@+id/chip_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:singleLine="true"
                 android:padding="16dp">
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_by_day"
                     style="@style/Widget.MaterialComponents.Chip.Filter.Mobotithe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/today" />
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_by_week"
                     style="@style/Widget.MaterialComponents.Chip.Filter.Mobotithe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/this_week" />
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_by_month"
                     style="@style/Widget.MaterialComponents.Chip.Filter.Mobotithe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
