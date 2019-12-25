@@ -4,16 +4,25 @@
     <item
         android:id="@+id/Menu"
         android:icon="@drawable/ic_menu"
+        android:iconTint="@color/primaryColor"
         android:title="@string/title_dashboard" />
 
     <item
-        android:id="@+id/Income"
+        android:id="@+id/Transaction"
         android:icon="@drawable/ic_add"
-        android:title="@string/title_income" />
+        android:iconTint="@color/primaryColor"
+        android:title="@string/title_transactions" />
 
     <item
         android:id="@+id/History"
         android:icon="@drawable/ic_history"
+        android:iconTint="@color/primaryColor"
         android:title="@string/title_history" />
+
+    <item
+        android:id="@+id/Profile"
+        android:icon="@drawable/ic_user_icon"
+        android:iconTint="@color/primaryColor"
+        android:title="@string/my_profile" />
 
 </menu>

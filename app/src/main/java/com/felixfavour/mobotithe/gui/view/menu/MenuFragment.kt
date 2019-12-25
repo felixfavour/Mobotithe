@@ -51,7 +51,7 @@ class MenuFragment : Fragment() {
             showMenu(binding.profilePicture)
         }
         // Navigation
-        // Register New Income
+        // Register New Transaction
         binding.registerNewIncome.setOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuToRegisterIncomeFragment())
         }

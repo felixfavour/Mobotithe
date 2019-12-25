@@ -51,7 +51,7 @@ class HistoryViewModel : ViewModel() {
                     for (incomeHistory in incomeHistories) {
 
                         /*
-                            Creating a skeleton for the class [Income]
+                            Creating a skeleton for the class [Transaction]
                             to simplify the collection of data from database
                         */
                         val dateTimestamp = incomeHistory["transactionCreationDate"] as Timestamp

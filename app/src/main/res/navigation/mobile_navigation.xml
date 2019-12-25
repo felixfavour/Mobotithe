@@ -32,13 +32,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"
-            app:destination="@id/Income" />
+            app:destination="@id/Transaction" />
     </fragment>
 
     <fragment
-        android:id="@+id/Income"
+        android:id="@+id/Transaction"
         android:name="com.felixfavour.mobotithe.gui.view.transactions.income.IncomeFragment"
-        android:label="Income Sources"
+        android:label="@string/transactions"
         tools:layout="@layout/fragment_income" >
         <action
             android:id="@+id/action_Income_to_submitIncomeFragment"
@@ -83,7 +83,7 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"
-            app:destination="@id/Income" />
+            app:destination="@id/Transaction" />
         <action
             android:id="@+id/action_History_to_Menu"
             app:enterAnim="@anim/slide_in_right"
@@ -97,14 +97,21 @@
         android:id="@+id/registerIncomeFragment"
         android:name="com.felixfavour.mobotithe.gui.view.transactions.income.RegisterIncomeFragment"
         tools:layout="@layout/register_income_fragment"
-        android:label="Register Income" />
+        android:label="@string/register_income" />
     <fragment
         android:id="@+id/submitIncomeFragment"
         android:name="com.felixfavour.mobotithe.gui.view.transactions.income.SubmitIncomeFragment"
         tools:layout="@layout/submit_income_fragment"
-        android:label="Submit Income" >
+        android:label="@string/submit_income" >
         <argument
             android:name="income"
             app:argType="com.felixfavour.mobotithe.database.entity.Income" />
+    </fragment>
+    <fragment
+        android:id="@+id/Profile"
+        android:name="com.felixfavour.mobotithe.gui.view.ProfileFragment"
+        android:label="@string/my_profile"
+        tools:layout="@layout/profile_fragment">
+
     </fragment>
 </navigation>

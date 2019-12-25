@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.transition.Transition
 import android.util.Log
 import android.view.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val appBarConfiguration = AppBarConfiguration(setOf(R.id.Menu, R.id.Income, R.id.History))
+    private val appBarConfiguration = AppBarConfiguration(setOf(R.id.Menu, R.id.Transaction, R.id.History, R.id.Profile))
     private lateinit var binding: ActivityMainBinding
 
     companion object {

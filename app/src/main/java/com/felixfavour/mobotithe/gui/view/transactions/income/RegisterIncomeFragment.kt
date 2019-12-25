@@ -53,20 +53,20 @@ class RegisterIncomeFragment : Fragment() {
 
         /*
         Listen to LiveData to know when the
-        Income has been fully registered and submitted to
+        Transaction has been fully registered and submitted to
         the database.
         */
         viewModel.taskStatus.observe(this, androidx.lifecycle.Observer { taskStatus ->
             if(taskStatus == TaskAssesor.PASS) {
-                Snackbar.make(view!!, "Income was Successfully Registered", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(view!!, "Transaction was Successfully Registered", Snackbar.LENGTH_SHORT).show()
             } else {
-                Snackbar.make(view!!, "Income was Successfully Registered", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(view!!, "Transaction was Successfully Registered", Snackbar.LENGTH_SHORT).show()
             }
         })
 
         binding.submitIncome.setOnClickListener {
 
-            // Set income to follow the pattern of Income class in Entities
+            // Set income to follow the pattern of Transaction class in Entities
             var userIncome: Income
             try {
                 userIncome = Income(

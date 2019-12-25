@@ -76,6 +76,7 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0'
     kapt "androidx.room:room-compiler:$version_room"
     implementation "androidx.multidex:multidex:$version_multidex"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     // Retrofit...Moshi
     // Retrofit for HTTP requests on the server and Moshi to adapt retrofit to use kotlin
