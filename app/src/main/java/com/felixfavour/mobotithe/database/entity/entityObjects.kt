@@ -43,12 +43,12 @@ data class User(
 data class Income (
     val name: String = "",
     val interval: String = "",
-    val usualBudget: Double = 0.0
+    val usualBudget: Long = 0
 ) : Parcelable
 
 @Parcelize
 data class IncomeHistory(
     val transactionCreationDate: Date = Date(),
     val amount: Long = 0,
-    val incomeCategory: Income? = Income("", "", 333.33)
+    val incomeCategory: Income? = Income("", "", 0)
 ) : Parcelable

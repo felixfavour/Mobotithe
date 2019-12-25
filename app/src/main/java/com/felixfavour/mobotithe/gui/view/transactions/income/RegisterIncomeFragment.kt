@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.view.income
+package com.felixfavour.mobotithe.gui.view.transactions.income
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -16,7 +16,7 @@ import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
+import java.lang.NumberFormatException
 
 
 class RegisterIncomeFragment : Fragment() {
@@ -67,11 +67,18 @@ class RegisterIncomeFragment : Fragment() {
         binding.submitIncome.setOnClickListener {
 
             // Set income to follow the pattern of Income class in Entities
-            val userIncome = Income(
+            var userIncome: Income
+            try {
+                userIncome = Income(
                 binding.incomeCategory.text.toString(),
                 intervalsSpinner.selectedItem as String,
-                binding.amount.text.toString().toDouble()
-            )
+                binding.amount.text.toString().toLong())
+            } catch (ex: NumberFormatException) {
+                userIncome = Income(
+                binding.incomeCategory.text.toString(),
+                intervalsSpinner.selectedItem as String,
+                0)
+            }
 
 //            Save newly defined income to database
             viewModel.saveIncome(userIncome)

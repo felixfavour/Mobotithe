@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.felixfavour.mobotithe.database.entity.Income
-import com.felixfavour.mobotithe.gui.view.income.RegisterIncomeFragment
+import com.felixfavour.mobotithe.gui.view.transactions.income.RegisterIncomeFragment
 import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue

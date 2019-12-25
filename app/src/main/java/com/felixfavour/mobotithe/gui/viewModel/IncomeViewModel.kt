@@ -54,7 +54,7 @@ class IncomeViewModel: ViewModel() {
                         val income = Income(
                             hashmap["name"] as String,
                             hashmap["interval"] as String,
-                            hashmap["usualBudget"].toString().toDouble()
+                            hashmap["usualBudget"].toString().toDouble().toLong()
                         )
                         incomes.add(income)
                     }

@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.view.income
+package com.felixfavour.mobotithe.gui.view.transactions.income
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -13,6 +13,7 @@ import com.felixfavour.mobotithe.database.entity.IncomeHistory
 import com.felixfavour.mobotithe.databinding.SubmitIncomeFragmentBinding
 import com.felixfavour.mobotithe.gui.viewModel.SubmitIncomeViewModel
 import com.felixfavour.mobotithe.gui.viewModel.SubmitIncomeViewModelFactory
+import java.lang.NumberFormatException
 import java.util.*
 
 
@@ -34,11 +35,18 @@ class SubmitIncomeFragment : Fragment() {
         binding.submitAmount.setOnClickListener {
 
             // Creation of an IncomeHistory Object
-            val incomeHistory = IncomeHistory(
+            var incomeHistory: IncomeHistory
+            try {
+                incomeHistory = IncomeHistory(
                 Date(binding.calendar.date),
                 binding.amount.text.toString().toLong(),
-                income
-            )
+                income)
+            } catch (ex: NumberFormatException) {
+                incomeHistory = IncomeHistory(
+                Date(binding.calendar.date),
+                0L,
+                income)
+            }
 
             viewModel.submitIncome(incomeHistory, view!!, context!!.applicationContext)
         }

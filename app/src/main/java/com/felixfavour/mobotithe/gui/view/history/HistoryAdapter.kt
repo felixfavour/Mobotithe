@@ -1,7 +1,5 @@
 package com.felixfavour.mobotithe.gui.view.history
 
-import android.icu.util.Currency
-import android.icu.util.CurrencyAmount
 import java.text.SimpleDateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,10 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.felixfavour.mobotithe.database.entity.IncomeHistory
 import com.felixfavour.mobotithe.databinding.HistoryItemBinding
-import com.felixfavour.mobotithe.gui.view.income.IncomeCategoryAdapter
-import com.felixfavour.mobotithe.gui.viewModel.HistoryViewModel
 import java.text.NumberFormat
-import java.util.*
 
 class HistoryAdapter : ListAdapter<IncomeHistory, HistoryAdapter.HistoryViewHolder>(DiffCallback) {
 

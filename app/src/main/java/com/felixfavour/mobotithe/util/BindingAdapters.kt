@@ -11,7 +11,7 @@ import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.database.entity.Income
 import com.felixfavour.mobotithe.database.entity.IncomeHistory
 import com.felixfavour.mobotithe.gui.view.history.HistoryAdapter
-import com.felixfavour.mobotithe.gui.view.income.IncomeCategoryAdapter
+import com.felixfavour.mobotithe.gui.view.transactions.income.IncomeCategoryAdapter
 
 @BindingAdapter("photoUri")
 fun convertUriToImage(imageView: ImageView, uri: Uri?) {

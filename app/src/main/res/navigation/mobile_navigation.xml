@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/Income"
-        android:name="com.felixfavour.mobotithe.gui.view.income.IncomeFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.transactions.income.IncomeFragment"
         android:label="Income Sources"
         tools:layout="@layout/fragment_income" >
         <action
@@ -95,12 +95,12 @@
 
     <fragment
         android:id="@+id/registerIncomeFragment"
-        android:name="com.felixfavour.mobotithe.gui.view.income.RegisterIncomeFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.transactions.income.RegisterIncomeFragment"
         tools:layout="@layout/register_income_fragment"
         android:label="Register Income" />
     <fragment
         android:id="@+id/submitIncomeFragment"
-        android:name="com.felixfavour.mobotithe.gui.view.income.SubmitIncomeFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.transactions.income.SubmitIncomeFragment"
         tools:layout="@layout/submit_income_fragment"
         android:label="Submit Income" >
         <argument

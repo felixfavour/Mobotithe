@@ -64,7 +64,7 @@ class HistoryViewModel : ViewModel() {
                         val income = Income(
                             incomeDeferredAsHashMap["name"] as String,
                             incomeDeferredAsHashMap["interval"] as String,
-                            amountIncome.toDouble()
+                            amountIncome
                         )
 
                         val history = IncomeHistory(

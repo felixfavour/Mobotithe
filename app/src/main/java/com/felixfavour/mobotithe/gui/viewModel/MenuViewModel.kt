@@ -32,11 +32,16 @@ class MenuViewModel : ViewModel() {
     private var firestoreImage: StorageReference
     private var firebaseStorage: FirebaseStorage
     private lateinit var profileImage: InputStream
+    private var profileImageUri: Uri? = Uri.EMPTY
 
     init {
         getFields()
+        getUsernameAndProfilePicture()
         firebaseStorage = FirebaseStorage.getInstance()
         firestoreImage = firebaseStorage.reference.child("images/profile_pictures/${auth.uid}")
+        firestoreImage.downloadUrl.addOnCompleteListener { task ->
+            _photoUrl.value = task.result
+        }
     }
 
     companion object {
@@ -70,7 +75,6 @@ class MenuViewModel : ViewModel() {
         get() = _errorStatus
 
     fun getFields() {
-        getUsernameAndProfilePicture()
         getWeeksTotal()
     }
 
@@ -99,8 +103,7 @@ class MenuViewModel : ViewModel() {
                 .addOnSuccessListener { documentSnapshot ->
                     _photoUrl.value = auth.currentUser?.photoUrl
                     if (documentSnapshot != null) {
-                        val url =
-                            firebaseStorage.reference.child("images/profile_pictures/${auth.uid}")
+                        val url = firebaseStorage.reference.child("images/profile_pictures/${auth.uid}")
                         url.downloadUrl.addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 _photoUrl.value = task.result
