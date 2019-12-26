@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        tools:context=".gui.view.transactions.income.RegisterIncomeFragment">
+        tools:context=".gui.view.transactions.RegisterTransactionsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -89,7 +89,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/submitIncome"
+                android:id="@+id/submit_transaction"
                 style="@style/RoundedButton.Orange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

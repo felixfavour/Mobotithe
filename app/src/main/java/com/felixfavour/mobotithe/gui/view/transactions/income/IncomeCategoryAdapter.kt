@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.felixfavour.mobotithe.database.entity.Income
-import com.felixfavour.mobotithe.databinding.IncomeCategoryItemBinding
+import com.felixfavour.mobotithe.databinding.TransactionItemBinding
 
 class IncomeCategoryAdapter(private val onIncomeClickListener: OnIncomeClickListener) : ListAdapter<Income, IncomeCategoryAdapter.ViewHolder>(DiffCallback) {
 
@@ -21,7 +21,7 @@ class IncomeCategoryAdapter(private val onIncomeClickListener: OnIncomeClickList
 
     }
 
-    class ViewHolder(private val binding: IncomeCategoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: TransactionItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(income: Income) {
             binding.income = income
             binding.executePendingBindings()
@@ -30,7 +30,7 @@ class IncomeCategoryAdapter(private val onIncomeClickListener: OnIncomeClickList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // NOTE THERE MIGHT BE AN ERROR HERE
-        return ViewHolder(IncomeCategoryItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return ViewHolder(TransactionItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

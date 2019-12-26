@@ -6,17 +6,13 @@ import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.felixfavour.mobotithe.database.entity.Income
-import com.felixfavour.mobotithe.database.entity.IncomeHistory
 import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Source
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.InputStream

@@ -24,10 +24,6 @@ class IncomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_income, container, false)
 
         // Navigation
-        // Add Transaction Category Floating-Action Button
-        binding.addIncomeCategory.setOnClickListener {
-            findNavController().navigate(TransactionsFragmentDirections.actionTransactionToRegisterIncomeFragment2())
-        }
 
         binding.lifecycleOwner = this
         binding.viewModel = incomeViewModel

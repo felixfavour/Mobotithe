@@ -31,25 +31,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                bind:recyclerViewData="@{viewModel.selectedIncomes}"
+                bind:incomesData="@{viewModel.selectedIncomes}"
                 tools:itemCount="6"
-                tools:listitem="@layout/income_category_item" />
+                tools:listitem="@layout/transaction_item" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/add_income_category"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="32dp"
-                android:backgroundTint="@color/secondaryColor"
-                android:clickable="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@drawable/ic_add" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

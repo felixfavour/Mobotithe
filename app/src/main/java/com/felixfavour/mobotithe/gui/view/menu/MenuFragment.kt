@@ -53,7 +53,7 @@ class MenuFragment : Fragment() {
         // Navigation
         // Register New Transaction
         binding.registerNewIncome.setOnClickListener {
-            findNavController().navigate(MenuFragmentDirections.actionMenuToRegisterIncomeFragment())
+            findNavController().navigate(MenuFragmentDirections.actionMenuToRegisterIncomeFragment(true))
         }
 
         //Refresh the info on Swipe-Refresh

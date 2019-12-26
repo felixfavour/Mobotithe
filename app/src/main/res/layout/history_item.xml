@@ -6,7 +6,7 @@
     <data>
         <variable
             name="incomeHistory"
-            type="com.felixfavour.mobotithe.database.entity.IncomeHistory" />
+            type="com.felixfavour.mobotithe.database.entity.History" />
         <variable
             name="dateFormatter"
             type="java.text.SimpleDateFormat" />

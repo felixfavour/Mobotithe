@@ -3,7 +3,7 @@
     <color name="primaryColor">#0054c7</color>
     <color name="primaryLightColor">#5c80fb</color>
     <color name="primaryDarkColor">#002d95</color>
-    <color name="secondaryColor">#ff9800</color>
+    <color name="secondaryColor">#FF9800</color>
     <color name="secondaryLightColor">#ffc947</color>
     <color name="secondaryDarkColor">#c66900</color>
     <color name="primaryTextColor">#ffffff</color>
@@ -13,6 +13,8 @@
     <color name="appColor">#f78e37</color>
     <color name="PrimaryGreyColor">#696969</color>
     <color name="TransparentPrimaryGreyColor">#B0000000</color>
+    <color name="Green">#009E3D</color>
+    <color name="Red">#D50000</color>
 
     Changing the boxStrokeColor in TextInputLayout to work
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/primaryTextColor</color>

@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.felixfavour.mobotithe.database.entity.Income
 import java.lang.IllegalArgumentException
 
-class SubmitIncomeViewModelFactory(private val income: Income, private val application: Application) : ViewModelProvider.Factory {
+class SubmitTransactionsViewModelFactory(private val income: Income, private val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(SubmitIncomeViewModel::class.java)) {
-            return SubmitIncomeViewModel(income, application) as T
+        if (modelClass.isAssignableFrom(SubmitTransactionsViewModel::class.java)) {
+            return SubmitTransactionsViewModel(income, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

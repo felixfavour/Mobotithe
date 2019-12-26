@@ -6,18 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.felixfavour.mobotithe.database.entity.IncomeHistory
+import com.felixfavour.mobotithe.database.entity.History
 import com.felixfavour.mobotithe.databinding.HistoryItemBinding
 import java.text.NumberFormat
 
-class HistoryAdapter : ListAdapter<IncomeHistory, HistoryAdapter.HistoryViewHolder>(DiffCallback) {
+class HistoryAdapter : ListAdapter<History, HistoryAdapter.HistoryViewHolder>(DiffCallback) {
 
-    companion object DiffCallback : DiffUtil.ItemCallback<IncomeHistory>() {
-        override fun areItemsTheSame(oldItem: IncomeHistory, newItem: IncomeHistory): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<History>() {
+        override fun areItemsTheSame(oldItem: History, newItem: History): Boolean {
             return oldItem === newItem
         }
 
-        override fun areContentsTheSame(oldItem: IncomeHistory, newItem: IncomeHistory): Boolean {
+        override fun areContentsTheSame(oldItem: History, newItem: History): Boolean {
             return oldItem == newItem
         }
     }
@@ -33,8 +33,8 @@ class HistoryAdapter : ListAdapter<IncomeHistory, HistoryAdapter.HistoryViewHold
     }
 
     class HistoryViewHolder(private val binding: HistoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(incomeHistory: IncomeHistory) {
-            binding.incomeHistory = incomeHistory
+        fun bind(history: History) {
+            binding.incomeHistory = history
             binding.dateFormatter = SimpleDateFormat("dd MMM, kk:mm")
             binding.amountFormatter = NumberFormat.getCurrencyInstance()
         }

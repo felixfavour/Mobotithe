@@ -34,7 +34,7 @@ data class User(
     @ColumnInfo(name = "photoUrl")
     val photoUrl: String?="",
 
-    val incomeHistories: MutableList<IncomeHistory> = arrayListOf(),
+    val histories: MutableList<History> = arrayListOf(),
     val incomes: MutableList<Income> = arrayListOf()
 ) {
 }
@@ -47,8 +47,19 @@ data class Income (
 ) : Parcelable
 
 @Parcelize
-data class IncomeHistory(
+data class Expense(
+    val name: String = "",
+    val interval: String = "",
+    val usualBudget: Long = 0
+) : Parcelable
+
+@Parcelize
+data class History(
     val transactionCreationDate: Date = Date(),
     val amount: Long = 0,
-    val incomeCategory: Income? = Income("", "", 0)
-) : Parcelable
+    val incomeCategory: Income? = Income("", "", 0),
+    val expenseCategory: Expense? = Expense("", "", 0),
+    val isIncome : Boolean = false,
+    val isExpense: Boolean = false
+) : Parcelable {
+}

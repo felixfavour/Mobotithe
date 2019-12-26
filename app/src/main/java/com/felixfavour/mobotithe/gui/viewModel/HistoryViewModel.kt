@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.felixfavour.mobotithe.database.entity.Income
-import com.felixfavour.mobotithe.database.entity.IncomeHistory
+import com.felixfavour.mobotithe.database.entity.History
 import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
@@ -19,8 +19,8 @@ class HistoryViewModel : ViewModel() {
         const val INCOME_HISTORIES = "income_histories"
     }
     // LiveData of income histories
-    private val _incomeHistories = MutableLiveData<List<IncomeHistory>>()
-    val incomeHistories : LiveData<List<IncomeHistory>>
+    private val _incomeHistories = MutableLiveData<List<History>>()
+    val incomeHistories : LiveData<List<History>>
         get() = _incomeHistories
 
     // LiveData of Error Status
@@ -31,7 +31,7 @@ class HistoryViewModel : ViewModel() {
     private val auth = FirebaseAuth.getInstance()
     private val currentUser = auth.currentUser
     private val firestore = FirebaseFirestore.getInstance()
-    private val histories = mutableListOf<IncomeHistory>()
+    private val histories = mutableListOf<History>()
 
     init {
         getListOfIncomeHistories()
@@ -67,7 +67,7 @@ class HistoryViewModel : ViewModel() {
                             amountIncome
                         )
 
-                        val history = IncomeHistory(
+                        val history = History(
                             date,
                             amountHistory,
                             income
@@ -85,7 +85,7 @@ class HistoryViewModel : ViewModel() {
     }
 
     fun filterHistoriesByToday() {
-        val historiesByDay = mutableListOf<IncomeHistory>()
+        val historiesByDay = mutableListOf<History>()
         val dateNow = LocalDate.now()
 
         for(incomeHistory in histories) {
@@ -100,7 +100,7 @@ class HistoryViewModel : ViewModel() {
     }
 
     fun filterHistoriesByWeek() {
-        val historiesByWeek = mutableListOf<IncomeHistory>()
+        val historiesByWeek = mutableListOf<History>()
         val dateNow = LocalDate.now()
 
         for(incomeHistory in histories) {
@@ -115,7 +115,7 @@ class HistoryViewModel : ViewModel() {
     }
 
     fun filterHistoriesByMonth() {
-        val historiesByMonth = mutableListOf<IncomeHistory>()
+        val historiesByMonth = mutableListOf<History>()
         val dateNow = LocalDate.now()
 
         for(incomeHistory in histories) {

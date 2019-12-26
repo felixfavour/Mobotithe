@@ -64,7 +64,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:historiesData="@{viewModel.incomeHistories}"
+                    bind:historiesData="@{viewModel.incomeHistories}"
                     tools:itemCount="6"
                     tools:listitem="@layout/history_item" />
 

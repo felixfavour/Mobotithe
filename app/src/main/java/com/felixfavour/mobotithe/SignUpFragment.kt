@@ -154,7 +154,7 @@ class SignUpFragment : Fragment() {
             username = binding.inputUsername.text.toString(),
             email = binding.inputEmail.text.toString(),
             photoUrl = null,
-            incomeHistories = arrayListOf(),
+            histories = arrayListOf(),
             incomes = arrayListOf()
         )
 /*

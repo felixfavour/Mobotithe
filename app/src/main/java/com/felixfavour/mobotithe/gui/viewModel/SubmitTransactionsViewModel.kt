@@ -8,13 +8,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.database.entity.Income
-import com.felixfavour.mobotithe.database.entity.IncomeHistory
+import com.felixfavour.mobotithe.database.entity.History
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
-class SubmitIncomeViewModel(income: Income, application: Application) : ViewModel() {
+class SubmitTransactionsViewModel(income: Income, application: Application) : ViewModel() {
 
     companion object {
         const val USERS_COLLECTION = "users"
@@ -33,9 +33,9 @@ class SubmitIncomeViewModel(income: Income, application: Application) : ViewMode
         _selectedIncome.value = income
     }
 
-    fun submitIncome(incomeHistory: IncomeHistory, view: View, context: Context) {
+    fun submitIncome(history: History, view: View, context: Context) {
         firestore.collection(USERS_COLLECTION).document(user!!.uid)
-            .update(INCOME_HISTORIES, FieldValue.arrayUnion(incomeHistory))
+            .update(INCOME_HISTORIES, FieldValue.arrayUnion(history))
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Snackbar.make(view, context.getString(R.string.income_category_added_prompt), Snackbar.LENGTH_SHORT).show()

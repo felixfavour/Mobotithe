@@ -19,15 +19,9 @@ class TransactionsVPAdapter(private val fragmentActivity: FragmentActivity) : Fr
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> {
-                IncomeFragment()
-            }
-            1 -> {
-                ExpensesFragment()
-            }
-            else -> {
-                IncomeFragment()
-            }
+            0 -> IncomeFragment()
+            1 -> ExpensesFragment()
+            else -> IncomeFragment()
         }
     }
 

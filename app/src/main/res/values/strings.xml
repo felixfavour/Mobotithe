@@ -41,6 +41,7 @@
     <string name="submit_amount">Submit Amount</string>
     <string name="register">Register</string>
     <string name="income_category_source">Income Category/Source</string>
+    <string name="expense_category_source">Expense Category/Source</string>
     <string name="monthly_weekly_daily">Monthly/Weekly/Daily</string>
     <string name="currency">Currency</string>
     <string name="display_options">Display Options</string>
@@ -82,6 +83,8 @@
     <string name="today">Today</string>
     <string name="transactions">Transactions</string>
     <string name="register_income">Register Income</string>
+    <string name="register_expense">Register Expense</string>
+    <string name="register_transaction">Register Transaction</string>
     <string name="submit_income">Submit Income</string>
     <string name="expenses">Expenses</string>
     <string name="incomes">Incomes</string>

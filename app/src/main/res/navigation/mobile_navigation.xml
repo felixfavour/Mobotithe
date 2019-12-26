@@ -35,13 +35,16 @@
 
     <fragment
         android:id="@+id/registerIncomeFragment"
-        android:name="com.felixfavour.mobotithe.gui.view.transactions.income.RegisterIncomeFragment"
-        tools:layout="@layout/register_income_fragment"
-        android:label="@string/register_income" />
+        android:name="com.felixfavour.mobotithe.gui.view.transactions.RegisterTransactionsFragment"
+        tools:layout="@layout/register_transaction_fragment"
+        android:label="@string/register_transaction" >
+        <argument android:name="isIncome"
+            app:argType="boolean" />
+    </fragment>
 
     <fragment
         android:id="@+id/submitIncomeFragment"
-        android:name="com.felixfavour.mobotithe.gui.view.transactions.income.SubmitIncomeFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.transactions.SubmitTransactionsFragment"
         tools:layout="@layout/submit_income_fragment"
         android:label="@string/submit_income" >
         <argument
