@@ -15,89 +15,30 @@
             app:destination="@id/registerIncomeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
             app:launchSingleTop="false"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
             app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_Menu_to_History"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
-            app:destination="@id/History" />
-        <action
-            android:id="@+id/action_Menu_to_Income"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
-            app:destination="@id/Transaction" />
     </fragment>
 
     <fragment
-        android:id="@+id/Transaction"
+        android:id="@+id/Income"
         android:name="com.felixfavour.mobotithe.gui.view.transactions.income.IncomeFragment"
-        android:label="@string/transactions"
-        tools:layout="@layout/fragment_income" >
-        <action
-            android:id="@+id/action_Income_to_submitIncomeFragment"
-            app:destination="@id/submitIncomeFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_Income_to_registerIncomeFragment"
-            app:destination="@id/registerIncomeFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_Income_to_Menu"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
-            app:destination="@id/Menu" />
-        <action
-            android:id="@+id/action_Income_to_History"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
-            app:destination="@id/History" />
-    </fragment>
+        android:label="@string/income_category_source"
+        tools:layout="@layout/fragment_income" />
 
     <fragment
         android:id="@+id/History"
         android:name="com.felixfavour.mobotithe.gui.view.history.HistoryFragment"
         android:label="@string/title_history"
-        tools:layout="@layout/fragment_history" >
-        <action
-            android:id="@+id/action_History_to_Income"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
-            app:destination="@id/Transaction" />
-        <action
-            android:id="@+id/action_History_to_Menu"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
-            app:destination="@id/Menu" />
-    </fragment>
+        tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/registerIncomeFragment"
         android:name="com.felixfavour.mobotithe.gui.view.transactions.income.RegisterIncomeFragment"
         tools:layout="@layout/register_income_fragment"
         android:label="@string/register_income" />
+
     <fragment
         android:id="@+id/submitIncomeFragment"
         android:name="com.felixfavour.mobotithe.gui.view.transactions.income.SubmitIncomeFragment"
@@ -107,11 +48,39 @@
             android:name="income"
             app:argType="com.felixfavour.mobotithe.database.entity.Income" />
     </fragment>
+
     <fragment
         android:id="@+id/Profile"
-        android:name="com.felixfavour.mobotithe.gui.view.ProfileFragment"
+        android:name="com.felixfavour.mobotithe.gui.view.profile.ProfileFragment"
         android:label="@string/my_profile"
         tools:layout="@layout/profile_fragment">
 
     </fragment>
+
+    <fragment
+        android:id="@+id/Transaction"
+        android:name="com.felixfavour.mobotithe.gui.view.transactions.TransactionsFragment"
+        android:label="@string/transactions"
+        tools:layout="@layout/transactions_fragment" >
+        <action
+            android:id="@+id/action_Transaction_to_registerIncomeFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:destination="@id/registerIncomeFragment" />
+        <action
+            android:id="@+id/action_Transaction_to_submitIncomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:destination="@id/submitIncomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/Expenses"
+        android:name="com.felixfavour.mobotithe.gui.view.transactions.expense.ExpensesFragment"
+        android:label="@string/expenses"
+        tools:layout="@layout/expenses_fragment" />
 </navigation>

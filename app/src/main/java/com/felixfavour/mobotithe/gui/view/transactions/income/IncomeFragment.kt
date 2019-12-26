@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.FragmentIncomeBinding
+import com.felixfavour.mobotithe.gui.view.transactions.TransactionsFragmentDirections
 import com.felixfavour.mobotithe.gui.viewModel.IncomeViewModel
 
 class IncomeFragment : Fragment() {
@@ -25,7 +26,7 @@ class IncomeFragment : Fragment() {
         // Navigation
         // Add Transaction Category Floating-Action Button
         binding.addIncomeCategory.setOnClickListener {
-            findNavController().navigate(IncomeFragmentDirections.actionIncomeToRegisterIncomeFragment())
+            findNavController().navigate(TransactionsFragmentDirections.actionTransactionToRegisterIncomeFragment2())
         }
 
         binding.lifecycleOwner = this
@@ -36,7 +37,7 @@ class IncomeFragment : Fragment() {
 
         // Add OnClickListener to the list items in the recyclerView
         binding.recyclerView.adapter = IncomeCategoryAdapter(IncomeCategoryAdapter.OnIncomeClickListener {income ->
-            val action = IncomeFragmentDirections.actionIncomeToSubmitIncomeFragment(income)
+            val action = TransactionsFragmentDirections.actionTransactionToSubmitIncomeFragment(income)
             findNavController().navigate(action)
         })
 

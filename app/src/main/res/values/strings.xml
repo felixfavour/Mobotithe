@@ -83,4 +83,6 @@
     <string name="transactions">Transactions</string>
     <string name="register_income">Register Income</string>
     <string name="submit_income">Submit Income</string>
+    <string name="expenses">Expenses</string>
+    <string name="incomes">Incomes</string>
 </resources>

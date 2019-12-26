@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.view
+package com.felixfavour.mobotithe.gui.view.profile
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.ProfileFragmentBinding
+import com.felixfavour.mobotithe.gui.viewModel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
 

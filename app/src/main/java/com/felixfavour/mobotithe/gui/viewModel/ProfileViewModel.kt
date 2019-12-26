@@ -1,4 +1,4 @@
-package com.felixfavour.mobotithe.gui.view
+package com.felixfavour.mobotithe.gui.viewModel
 
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel

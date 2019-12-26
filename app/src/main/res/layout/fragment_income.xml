@@ -31,7 +31,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:recyclerViewData="@{viewModel.selectedIncomes}"
+                bind:recyclerViewData="@{viewModel.selectedIncomes}"
                 tools:itemCount="6"
                 tools:listitem="@layout/income_category_item" />
 

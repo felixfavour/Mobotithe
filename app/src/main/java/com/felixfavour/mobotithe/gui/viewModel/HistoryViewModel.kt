@@ -75,7 +75,9 @@ class HistoryViewModel : ViewModel() {
 
                         histories.add(history)
                     }
-                    _incomeHistories.value = histories
+                    _incomeHistories.value = histories.sortedByDescending { incomeHistoryParam ->
+                        incomeHistoryParam.transactionCreationDate
+                    }
                 } catch (ex: TypeCastException) {
                     _errorStatus.value = TaskAssesor.EMPTY_SNAPSHOT
                 }
@@ -90,7 +92,9 @@ class HistoryViewModel : ViewModel() {
             val dateThen = LocalDate.fromDateFields(incomeHistory.transactionCreationDate)
             if (dateNow.dayOfYear == dateThen.dayOfYear) {
                 historiesByDay.add(incomeHistory)
-                _incomeHistories.value = historiesByDay
+            }
+            _incomeHistories.value = historiesByDay.sortedByDescending { incomeHistoryParam ->
+                incomeHistoryParam.transactionCreationDate
             }
         }
     }
@@ -103,7 +107,9 @@ class HistoryViewModel : ViewModel() {
             val dateThen = LocalDate.fromDateFields(incomeHistory.transactionCreationDate)
             if (dateNow.weekOfWeekyear == dateThen.weekOfWeekyear) {
                 historiesByWeek.add(incomeHistory)
-                _incomeHistories.value = historiesByWeek
+            }
+            _incomeHistories.value = historiesByWeek.sortedByDescending { incomeHistoryParam ->
+                incomeHistoryParam.transactionCreationDate
             }
         }
     }
@@ -116,7 +122,9 @@ class HistoryViewModel : ViewModel() {
             val dateThen = LocalDate.fromDateFields(incomeHistory.transactionCreationDate)
             if (dateNow.monthOfYear == dateThen.monthOfYear) {
                 historiesByMonth.add(incomeHistory)
-                _incomeHistories.value = historiesByMonth
+            }
+            _incomeHistories.value = historiesByMonth.sortedByDescending { incomeHistoryParam ->
+                incomeHistoryParam.transactionCreationDate
             }
         }
     }
