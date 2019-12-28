@@ -28,19 +28,19 @@ fun convertUriToImage(imageView: ImageView, uri: Uri?) {
 }
 
 @BindingAdapter("historiesData")
-fun bindHistories(recyclerView: RecyclerView, incomes: MutableList<History>?) {
+fun bindHistories(recyclerView: RecyclerView, histories: List<History>?) {
     val adapter = recyclerView.adapter as? HistoryAdapter
-    adapter?.submitList(incomes)
+    adapter?.submitList(histories)
 }
 
 @BindingAdapter("incomesData")
-fun bindIncomes(recyclerView: RecyclerView, histories: List<Income>?) {
+fun bindIncomes(recyclerView: RecyclerView, incomes: List<Income>?) {
     val adapter = recyclerView.adapter as? IncomeCategoryAdapter
-    adapter?.submitList(histories)
+    adapter?.submitList(incomes)
 }
 
 @BindingAdapter("expensesData")
 fun bindExpenses(recyclerView: RecyclerView, expenses: List<Expense>?) {
     val adapter = recyclerView.adapter as? ExpenseCategoryAdapter
-//    adapter?.submitList(expenses)
+    adapter?.submitList(expenses)
 }

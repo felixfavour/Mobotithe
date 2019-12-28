@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="incomeHistory"
+            name="history"
             type="com.felixfavour.mobotithe.database.entity.History" />
         <variable
             name="dateFormatter"
@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_text"
-                    android:text="@{incomeHistory.incomeCategory.name}"
+                    android:text="@{history.transactionName}"
                     tools:text="Income Category" />
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:backgroundTint="@color/secondaryColor"
                     android:background="@drawable/cornered"
                     android:padding="4dp"
-                    android:text="@{dateFormatter.format(incomeHistory.transactionCreationDate)}"
+                    android:text="@{dateFormatter.format(history.transactionCreationDate)}"
                     tools:text="July, 2019 23:00" />
 
                 <TextView
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_text"
                     tools:text="1000"
-                    android:text="@{amountFormatter.format(incomeHistory.amount)}" />
+                    android:text="@{amountFormatter.format(history.amount)}" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

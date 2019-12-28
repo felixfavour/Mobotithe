@@ -5,8 +5,8 @@
     
     <data>
         <variable
-            name="income"
-            type="com.felixfavour.mobotithe.database.entity.Income" />
+            name="transaction"
+            type="com.felixfavour.mobotithe.database.entity.Transaction" />
     </data>
 
     <LinearLayout
@@ -40,7 +40,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_alignParentLeft="true"
                     android:layout_toRightOf="@id/arrowImg"
-                    android:text="@{income.name}"
+                    android:text="@{transaction.transactionName}"
                     tools:text="TextView" />
 
                 <ImageView

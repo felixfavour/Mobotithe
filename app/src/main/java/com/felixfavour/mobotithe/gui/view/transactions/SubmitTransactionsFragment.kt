@@ -25,12 +25,10 @@ class SubmitTransactionsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val income = SubmitTransactionsFragmentArgs.fromBundle(
-            arguments!!
-        ).income
+        val transaction = SubmitTransactionsFragmentArgs.fromBundle(arguments!!).transaction
         val application = this.activity!!.application
 
-        viewModelFactory = SubmitTransactionsViewModelFactory(income, application)
+        viewModelFactory = SubmitTransactionsViewModelFactory(transaction, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(SubmitTransactionsViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.submit_income_fragment, container, false)
 
@@ -40,14 +38,17 @@ class SubmitTransactionsFragment : Fragment() {
             var history: History
             try {
                 history = History(
-                Date(binding.calendar.date),
-                binding.amount.text.toString().toLong(),
-                income)
+                    transactionCreationDate = Date(binding.calendar.date),
+                    amount = binding.amount.text.toString().toLong(),
+                    income = transaction.getIsIncome,
+                    transactionName = transaction.transactionName)
             } catch (ex: NumberFormatException) {
                 history = History(
-                Date(binding.calendar.date),
-                0L,
-                income)
+                    transactionCreationDate = Date(binding.calendar.date),
+                    amount = 0L,
+                    income = transaction.getIsIncome,
+                    transactionName = transaction.transactionName
+                )
             }
 
             viewModel.submitIncome(history, view!!, context!!.applicationContext)

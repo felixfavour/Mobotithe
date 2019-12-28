@@ -7,35 +7,35 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.felixfavour.mobotithe.R
-import com.felixfavour.mobotithe.database.entity.Income
 import com.felixfavour.mobotithe.database.entity.History
+import com.felixfavour.mobotithe.database.entity.Transaction
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
-class SubmitTransactionsViewModel(income: Income, application: Application) : ViewModel() {
+class SubmitTransactionsViewModel(transaction: Transaction, application: Application) : ViewModel() {
 
     companion object {
         const val USERS_COLLECTION = "users"
-        const val INCOME_HISTORIES = "income_histories"
+        const val TRANSACTION_HISTORIES = "transaction_histories"
     }
 
     private val auth = FirebaseAuth.getInstance()
     private val user = auth.currentUser
     private val firestore = FirebaseFirestore.getInstance()
 
-    private val _selectedIncome = MutableLiveData<Income>()
-    val selectedIncome : LiveData<Income>
+    private val _selectedIncome = MutableLiveData<Transaction>()
+    val selectedIncome : LiveData<Transaction>
         get() = _selectedIncome
 
     init {
-        _selectedIncome.value = income
+        _selectedIncome.value = transaction
     }
 
     fun submitIncome(history: History, view: View, context: Context) {
         firestore.collection(USERS_COLLECTION).document(user!!.uid)
-            .update(INCOME_HISTORIES, FieldValue.arrayUnion(history))
+            .update(TRANSACTION_HISTORIES, FieldValue.arrayUnion(history))
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Snackbar.make(view, context.getString(R.string.income_category_added_prompt), Snackbar.LENGTH_SHORT).show()

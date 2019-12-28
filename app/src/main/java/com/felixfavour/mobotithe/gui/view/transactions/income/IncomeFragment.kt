@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.felixfavour.mobotithe.R
+import com.felixfavour.mobotithe.database.entity.Transaction
 import com.felixfavour.mobotithe.databinding.FragmentIncomeBinding
 import com.felixfavour.mobotithe.gui.view.transactions.TransactionsFragmentDirections
 import com.felixfavour.mobotithe.gui.viewModel.IncomeViewModel
@@ -32,8 +33,14 @@ class IncomeFragment : Fragment() {
         }
 
         // Add OnClickListener to the list items in the recyclerView
-        binding.recyclerView.adapter = IncomeCategoryAdapter(IncomeCategoryAdapter.OnIncomeClickListener {income ->
-            val action = TransactionsFragmentDirections.actionTransactionToSubmitIncomeFragment(income)
+        binding.recyclerView.adapter = IncomeCategoryAdapter(IncomeCategoryAdapter.OnIncomeClickListener { income->
+            val transaction = Transaction(
+                income = income,
+                transactionName = income.name,
+                expense = null,
+                getIsIncome = true
+            )
+            val action = TransactionsFragmentDirections.actionTransactionToSubmitIncomeFragment(transaction)
             findNavController().navigate(action)
         })
 

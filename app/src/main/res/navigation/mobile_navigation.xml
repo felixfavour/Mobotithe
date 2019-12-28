@@ -48,8 +48,8 @@
         tools:layout="@layout/submit_income_fragment"
         android:label="@string/submit_income" >
         <argument
-            android:name="income"
-            app:argType="com.felixfavour.mobotithe.database.entity.Income" />
+            android:name="transaction"
+            app:argType="com.felixfavour.mobotithe.database.entity.Transaction" />
     </fragment>
 
     <fragment

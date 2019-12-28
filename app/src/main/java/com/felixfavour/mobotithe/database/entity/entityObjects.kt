@@ -54,12 +54,17 @@ data class Expense(
 ) : Parcelable
 
 @Parcelize
+data class Transaction(
+    val income: Income? = null,
+    val expense: Expense? = null,
+    val getIsIncome: Boolean = (expense == null),
+    val transactionName: String? = income?.name ?: expense?.name
+) : Parcelable
+
+@Parcelize
 data class History(
-    val transactionCreationDate: Date = Date(),
+    val transactionCreationDate: Date? = null,
     val amount: Long = 0,
-    val incomeCategory: Income? = Income("", "", 0),
-    val expenseCategory: Expense? = Expense("", "", 0),
-    val isIncome : Boolean = false,
-    val isExpense: Boolean = false
-) : Parcelable {
-}
+    val income : Boolean = false,
+    val transactionName: String? = null
+) : Parcelable

@@ -28,7 +28,7 @@ class HistoryFragment : Fragment() {
             if(isChecked) {
                 historyViewModel.filterHistoriesByToday()
             } else {
-                historyViewModel.getListOfIncomeHistories()
+                historyViewModel.getListOfTransactionHistories()
             }
         }
 
@@ -37,7 +37,7 @@ class HistoryFragment : Fragment() {
             if(isChecked) {
                 historyViewModel.filterHistoriesByWeek()
             } else {
-                historyViewModel.getListOfIncomeHistories()
+                historyViewModel.getListOfTransactionHistories()
             }
         }
 
@@ -46,11 +46,13 @@ class HistoryFragment : Fragment() {
             if(isChecked) {
                 historyViewModel.filterHistoriesByMonth()
             } else {
-                historyViewModel.getListOfIncomeHistories()
+                historyViewModel.getListOfTransactionHistories()
             }
         }
 
-        val adapter = HistoryAdapter()
+        val adapter = HistoryAdapter(HistoryAdapter.OnHistoryClickListener {
+            //Do nothing
+        })
         binding.incomeHistoriesList.adapter = adapter
 
         return binding.root
