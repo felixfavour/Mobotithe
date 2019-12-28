@@ -44,6 +44,9 @@ class MenuFragment : Fragment() {
         val locale = ConfigurationCompat.getLocales(resources.configuration)[0]
         menuViewModel.getCurrency(locale)
 
+        // get greeting
+        binding.greetingText.text = menuViewModel.getGreeting(context!!.applicationContext)
+
         /*
         Image Popup menu on profile Picture long click
 */

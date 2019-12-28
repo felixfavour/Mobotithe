@@ -1,12 +1,16 @@
 package com.felixfavour.mobotithe.gui.viewModel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.database.entity.History
 import com.felixfavour.mobotithe.util.TaskAssesor
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import org.joda.time.LocalDate
 import kotlin.collections.HashMap
@@ -79,6 +83,19 @@ class HistoryViewModel : ViewModel() {
                     _errorStatus.value = TaskAssesor.EMPTY_SNAPSHOT
                 }
             }
+    }
+
+    fun deleteTransactionHistories() {
+        val updates = hashMapOf<String, Any>(
+            TRANSACTION_HISTORIES to FieldValue.delete()
+        )
+        firestore.collection(USERS_COLLECTION).document(auth.uid!!).update(updates).addOnCompleteListener {task ->
+            if (task.isSuccessful) {
+                // Do Nothing
+            } else {
+                // Do nothing
+            }
+        }
     }
 
     fun filterHistoriesByToday() {

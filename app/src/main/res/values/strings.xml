@@ -16,7 +16,7 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="login">Login</string>
     <string name="hello">Hello,</string>
-    <string name="total_savings">Week\'s Total</string>
+    <string name="total_savings">Week\'s Savings</string>
     <string name="title_transactions">Transaction</string>
     <string name="title_history">History</string>
     <string name="register_new_income">Register New Income</string>
@@ -75,8 +75,8 @@
     <string name="view_profile_picture">View Picture</string>
     <string name="delete_profile_picture">Delete Picture</string>
     <string name="save_user_data">Save Data</string>
-    <string name="income_category_added_prompt">Income was Added</string>
-    <string name="income_category_not_added_prompt">Income Not Yet Added</string>
+    <string name="income_category_added_prompt">Transaction was Successful</string>
+    <string name="income_category_not_added_prompt">Transaction Not Yet Successful</string>
     <string name="reload">Reload</string>
     <string name="this_week">This Week</string>
     <string name="this_month">This Month</string>
@@ -88,4 +88,10 @@
     <string name="submit_income">Submit Income</string>
     <string name="expenses">Expenses</string>
     <string name="incomes">Incomes</string>
+    <string name="greeting_morning">Good Morning,</string>
+    <string name="greeting_afternoon">Good Afternoon,</string>
+    <string name="greeting_evening">Good Evening,</string>
+    <string name="history_deletion_success">Histories were deleted Successfully</string>
+    <string name="income_deletion_success">Incomes were deleted Successfully</string>
+    <string name="expense_deletion_success">Expenses were deleted Successfully</string>
 </resources>

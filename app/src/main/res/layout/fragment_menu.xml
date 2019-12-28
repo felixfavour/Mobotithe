@@ -66,12 +66,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/profilePictureLayout">
 
                     <TextView
-                        android:id="@+id/hello"
+                        android:id="@+id/greeting_text"
                         style="@style/GenericText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/hello"
-                        android:textSize="@dimen/medium_text" />
+                        tools:text="@string/greeting_morning"
+                        android:textSize="@dimen/larger_medium_text" />
 
                     <TextView
                         android:id="@+id/name"

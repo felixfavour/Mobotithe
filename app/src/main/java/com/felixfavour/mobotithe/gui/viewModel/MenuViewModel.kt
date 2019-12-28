@@ -9,12 +9,15 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import org.joda.time.LocalTime
 import java.io.InputStream
 import java.lang.Exception
 import java.lang.NullPointerException
@@ -41,7 +44,7 @@ class MenuViewModel : ViewModel() {
     }
 
     companion object {
-        const val INCOME_HISTORY = "income_histories"
+        const val TRANSACTION_HISTORIES = "transaction_histories"
         const val TAG = "MenuFragment"
         const val USERS_COLLECTION = "users"
         const val USERS_UTIL_COLLECTION = "users_utils"
@@ -110,7 +113,7 @@ class MenuViewModel : ViewModel() {
                     }
                 }
         } catch (ex: NullPointerException) {
-            //Do nothing
+            //Do nothing yet
         }
     }
 
@@ -125,26 +128,47 @@ class MenuViewModel : ViewModel() {
             firestoreDatabase.collection(HistoryViewModel.USERS_COLLECTION).document(auth.uid!!)
                 .get().addOnSuccessListener { documentSnapshot ->
                     var sumOfAmounts = 0L
-                    // Get the whole hashmap of income_histories as a list of hashmaps
-                    var listOfHashmaps = mutableListOf<HashMap<String, Any>>()
+                    val transactionHistoriesHashMaps = documentSnapshot?.get(TRANSACTION_HISTORIES) as MutableList<HashMap<String, Any>>?
 
-                    try {
-                        listOfHashmaps = documentSnapshot?.get(INCOME_HISTORY) as MutableList<HashMap<String, Any>>
-                    } catch (ex: Exception) {
-                        _errorStatus.value = TaskAssesor.EMPTY_SNAPSHOT
+                    if (transactionHistoriesHashMaps != null) {
+                        for (transactionHistoryHashMap in transactionHistoriesHashMaps) {
+
+                            // History object has four properties; transactionCreationDate, amount, income, transactionName
+                            // The goal is to get only two properties from the Hashmap since we need to add
+                            // amount if it is an income and subtract if it is an expense
+
+                            // FOR [amount]
+                            val transactionAmount = transactionHistoryHashMap["amount"].toString().toLong()
+                            // FOR [income]
+                            val isTransactionIncome = transactionHistoryHashMap["income"] as Boolean
+
+                            if (isTransactionIncome) {
+                                sumOfAmounts += transactionAmount
+                            } else {
+                                sumOfAmounts -= transactionAmount
+                            }
+
+                        }
                     }
 
-                    // Loop through each hashmap to find the [name] key-value in the hashmap
-                    for (hashmap in listOfHashmaps) {
-                        val amount = hashmap["amount"] as Long
-                        sumOfAmounts += amount
-                    }
                     _totalSavings.value = NumberFormat.getInstance().format(sumOfAmounts).plus(".00")
                 }
         } catch (ex: Exception) {
-
+            // Do nothing yet
         }
 
+    }
+
+    fun getGreeting(context: Context) : String {
+        val time = LocalTime.now()
+
+        if (time.hourOfDay in 12..16) {
+            return context.getString(R.string.greeting_afternoon)
+        } else if (time.hourOfDay in 0..11) {
+            return context.getString(R.string.greeting_morning)
+        } else {
+            return context.getString(R.string.greeting_evening)
+        }
     }
 
     fun setProfilePicture(context: Context, data: Intent) {

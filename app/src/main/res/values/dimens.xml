@@ -10,6 +10,7 @@
     <dimen name="little_text">14sp</dimen>
     <dimen name="little_medium_text">17sp</dimen>
     <dimen name="medium_text">20sp</dimen>
+    <dimen name="larger_medium_text">23sp</dimen>
     <dimen name="large_text">40sp</dimen>
     <dimen name="really_large_text">50sp</dimen>
     <dimen name="cardview_padding">20dp</dimen>

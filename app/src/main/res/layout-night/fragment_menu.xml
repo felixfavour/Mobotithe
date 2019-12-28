@@ -66,7 +66,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/profilePictureLayout">
 
                     <TextView
-                        android:id="@+id/hello"
+                        android:id="@+id/greeting_text"
                         style="@style/GenericText"
                         android:textColor="@color/primaryLightColor"
                         android:layout_width="match_parent"

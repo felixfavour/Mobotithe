@@ -51,7 +51,7 @@ class HistoryFragment : Fragment() {
         }
 
         val adapter = HistoryAdapter(HistoryAdapter.OnHistoryClickListener {
-            //Do nothing
+            // Do nothing
         })
         binding.incomeHistoriesList.adapter = adapter
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.felixfavour.mobotithe.database.entity.Expense
 import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.Exception
 
@@ -59,5 +60,18 @@ class ExpensesViewModel : ViewModel() {
                     Log.e("IVM","Could not find requested Document")
                 }
             }
+    }
+
+    fun deleteExpensesCategories() {
+        val updates = hashMapOf<String, Any>(
+            EXPENSES_DOCUMENTS to FieldValue.delete()
+        )
+        firestore.collection(USERS_COLLECTION).document(auth.uid!!).update(updates).addOnCompleteListener {task ->
+            if (task.isSuccessful) {
+                // Do Nothing
+            } else {
+                // Do nothing
+            }
+        }
     }
 }

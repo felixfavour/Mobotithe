@@ -26,6 +26,8 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.CardView.IncomeCategory"
             app:cardCornerRadius="20dp"
+            android:clickable="true"
+            android:longClickable="true"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

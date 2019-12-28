@@ -10,6 +10,7 @@ import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Source
 import java.lang.Exception
@@ -62,6 +63,19 @@ class IncomeViewModel: ViewModel() {
                 } else {
                     Log.e("IVM","Could not find requested Document")
                 }
+        }
+    }
+
+    fun deleteIncomeCategories() {
+        val updates = hashMapOf<String, Any>(
+            INCOMES_DOCUMENT to FieldValue.delete()
+        )
+        firestore.collection(USERS_COLLECTION).document(auth.uid!!).update(updates).addOnCompleteListener {task ->
+            if (task.isSuccessful) {
+                // Do Nothing
+            } else {
+                // Do nothing
+            }
         }
     }
 
