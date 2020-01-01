@@ -1,6 +1,7 @@
 package com.felixfavour.mobotithe
 
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,10 +14,13 @@ import androidx.navigation.fragment.findNavController
 import com.felixfavour.mobotithe.database.entity.User
 import com.felixfavour.mobotithe.databinding.FragmentSignUpBinding
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 /**
  * A simple [Fragment] subclass.
@@ -25,7 +29,8 @@ class SignUpFragment : Fragment() {
 
     private lateinit var binding: FragmentSignUpBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var firestoreDatabase: FirebaseFirestore
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var storage: FirebaseStorage
     private lateinit var googleSignInClient: GoogleSignInClient
     private var isFullFormVisisble = false
 
@@ -39,7 +44,8 @@ class SignUpFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         auth = FirebaseAuth.getInstance()
-        firestoreDatabase = FirebaseFirestore.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+        storage = FirebaseStorage.getInstance()
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container, false)
         /*
@@ -87,6 +93,54 @@ class SignUpFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    private fun saveUserData() {
+        var storageReference = Uri.EMPTY
+        storage.reference.child("images/profile_pictures/${auth.uid}").downloadUrl.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                storageReference = task.result
+            }
+        }
+        val user = User(0,
+            firstName = binding.inputFirstname.text.toString(),
+            lastName = binding.inputLastname.text.toString(),
+            middleName = binding.inputMiddleName.text.toString(),
+            dob = binding.inputBirthday.text.toString(),
+            username = binding.inputUsername.text.toString(),
+            email = binding.inputEmail.text.toString(),
+            photoUrl = storageReference,
+            histories = arrayListOf(),
+            incomes = arrayListOf(),
+            weeklyBudget = binding.inputWeeklyBudget.text.toString().toLong()
+        )
+/*
+        Update the FirebaseUser data to the
+        data of Mobotithe users e.g changing the
+        value of display name to username
+        */
+
+        val updateUserProfile = UserProfileChangeRequest.Builder()
+            .setDisplayName(binding.inputUsername.text.toString())
+            .build()
+
+        auth.currentUser?.updateProfile(updateUserProfile)
+
+        firestore.collection(USERS_COLLECTION)
+            .document(auth.uid!!)
+            .set(user).addOnCompleteListener { task ->
+                if(task.isSuccessful) {
+                    Snackbar.make(view!!, "Now login with your credentials", Snackbar.LENGTH_SHORT).show()
+                    findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
+                } else {
+                    Snackbar.make(view!!, "${task.exception?.message}", Snackbar.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun hideRegButton() {
+        binding.submitUser.visibility = View.GONE
+        binding.saveUserData.visibility = View.VISIBLE
     }
 
     private fun setToggleFormVisibility(switch: Boolean) {
@@ -143,47 +197,6 @@ class SignUpFragment : Fragment() {
             password == confirmPassword
         }
 
-    }
-
-    private fun saveUserData() {
-        val user = User(0,
-            firstName = binding.inputFirstname.text.toString(),
-            lastName = binding.inputLastname.text.toString(),
-            middleName = binding.inputMiddleName.text.toString(),
-            dob = binding.inputBirthday.text.toString(),
-            username = binding.inputUsername.text.toString(),
-            email = binding.inputEmail.text.toString(),
-            photoUrl = null,
-            histories = arrayListOf(),
-            incomes = arrayListOf()
-        )
-/*
-        Update the FirebaseUser data to the
-        data of Mobotithe users e.g changing the
-        value of display name to username
-        */
-
-        val updateUserProfile = UserProfileChangeRequest.Builder()
-            .setDisplayName(binding.inputUsername.text.toString())
-            .build()
-
-        auth.currentUser?.updateProfile(updateUserProfile)
-
-        firestoreDatabase.collection(USERS_COLLECTION)
-            .document(auth.uid!!)
-            .set(user).addOnCompleteListener { task ->
-                if(task.isSuccessful) {
-                    Snackbar.make(view!!, "Now login with your credentials", Snackbar.LENGTH_SHORT).show()
-                    findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
-                } else {
-                    Snackbar.make(view!!, "${task.exception?.message}", Snackbar.LENGTH_SHORT).show()
-                }
-            }
-    }
-
-    private fun hideRegButton() {
-        binding.submitUser.visibility = View.GONE
-        binding.saveUserData.visibility = View.VISIBLE
     }
 
 }

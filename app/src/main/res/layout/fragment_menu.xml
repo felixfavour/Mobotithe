@@ -21,73 +21,51 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/profilePictureLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:background="@drawable/image_border"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/profilePicture"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="10dp"
-                        android:layout_centerInParent="true"
-                        app:photoUri="@{viewModel.photoUrl}" />
-
-                    <ProgressBar
-                        android:id="@+id/imageProgressBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:visibility="gone" />
-
-                </RelativeLayout>
-
                 <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.47"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profilePictureLayout">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/greeting_text"
+                        android:paddingTop="40dp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="40dp"
+                        android:textAlignment="textEnd"
                         style="@style/GenericText"
+                        android:textColor="@color/primaryTextColor"
+                        android:background="@drawable/morning"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:text="@string/greeting_morning"
-                        android:textSize="@dimen/larger_medium_text" />
+                        android:layout_height="125dp"
+                        android:textSize="@dimen/larger_medium_text"
+                        tools:text="@string/greeting_morning" />
 
                     <TextView
                         android:id="@+id/name"
                         style="@style/GenericText"
                         android:layout_width="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.username}"
                         android:textSize="@dimen/large_text"
                         tools:text="John" />
 
                     <Button
-                        android:id="@+id/register_new_income"
+                        android:id="@+id/register_new_transaction"
                         style="@style/RoundedButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/button_padding"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:backgroundTint="@color/secondaryColor"
                         android:drawableEnd="@drawable/ic_arrow_right"
                         android:drawableRight="@drawable/ic_arrow_right"
@@ -95,7 +73,7 @@
                         android:paddingLeft="30dp"
                         android:paddingEnd="30dp"
                         android:paddingRight="30dp"
-                        android:text="@string/register_new_income" />
+                        android:text="@string/register_new_transaction" />
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
@@ -103,15 +81,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
                     app:cardCornerRadius="@dimen/cardview_radius"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:cardElevation="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.47"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
@@ -141,8 +115,8 @@
                                 style="@style/GenericText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
                                 android:layout_alignBaseline="@id/currency"
+                                android:layout_alignParentRight="true"
                                 android:layout_marginRight="-1dp"
                                 android:gravity="end"
                                 android:text="@string/total_savings"
@@ -156,17 +130,48 @@
                             style="@style/GenericText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:autoSizeTextType="uniform"
-                            android:autoSizeMinTextSize="20sp"
                             android:autoSizeMaxTextSize="35sp"
+                            android:autoSizeMinTextSize="20sp"
                             android:autoSizeStepGranularity="2sp"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/really_large_text"
+                            android:autoSizeTextType="uniform"
                             android:text="@{viewModel.totalSavings.toString()}"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/really_large_text"
+                            android:textStyle="bold"
                             tools:text="20,000.00" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/graphView"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="21dp"
+                    app:cardCornerRadius="@dimen/cardview_radius"
+                    app:cardElevation="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="20dp">
+
+                        <com.jjoe64.graphview.helper.GraphViewXML
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/graph"
+                            app:seriesColor="@color/secondaryColor"
+                            app:seriesData="0=5;2=5;3=0;4=2"
+                            app:seriesType="bar" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

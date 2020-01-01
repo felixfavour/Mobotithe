@@ -40,7 +40,7 @@
             android:layout_height="@dimen/bottomNavBar_Height"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
-            app:labelVisibilityMode="selected"
+            app:labelVisibilityMode="labeled"
             app:itemIconSize="30dp"
             android:background="?android:attr/windowBackground"
             app:layout_constraintBottom_toBottomOf="parent"

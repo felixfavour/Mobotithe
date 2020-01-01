@@ -49,10 +49,13 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
+
 /*
         Change ActionBar to toolbar
 */
         setSupportActionBar(binding.toolbar)
+
+
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
@@ -86,10 +89,4 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
-
 }

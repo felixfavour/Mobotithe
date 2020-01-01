@@ -22,7 +22,6 @@ fun convertUriToImage(imageView: ImageView, uri: Uri?) {
         .apply(RequestOptions()
             .placeholder(R.drawable.profile_user)
             .error(R.drawable.profile_user)
-            .circleCrop()
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
         .into(imageView)
 }

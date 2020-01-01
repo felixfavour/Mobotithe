@@ -7,9 +7,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.felixfavour.mobotithe.R
+import com.felixfavour.mobotithe.databinding.FragmentMenuBinding
 import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp
@@ -17,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import org.joda.time.DateTime
+import org.joda.time.LocalDate
 import org.joda.time.LocalTime
 import java.io.InputStream
 import java.lang.Exception
@@ -28,19 +32,10 @@ import kotlin.collections.HashMap
 class MenuViewModel : ViewModel() {
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var firestoreDatabase: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private var firestoreImage: StorageReference
-    private var firebaseStorage: FirebaseStorage
-    private lateinit var profileImage: InputStream
-    private var profileImageUri: Uri? = Uri.EMPTY
 
     init {
         getFields()
         getUsernameAndProfilePicture()
-        firebaseStorage = FirebaseStorage.getInstance()
-        firestoreImage = firebaseStorage.reference.child("images/profile_pictures/${auth.uid}")
-        firestoreImage.downloadUrl.addOnCompleteListener { task ->
-            _photoUrl.value = task.result
-        }
     }
 
     companion object {
@@ -57,10 +52,6 @@ class MenuViewModel : ViewModel() {
     val username: LiveData<String>
         get() = _username
 
-    private val _photoUrl = MutableLiveData<Uri>()
-    val photoUrl: LiveData<Uri>
-        get() = _photoUrl
-
     private val _totalSavings = MutableLiveData<String>()
     val totalSavings: LiveData<String>
         get() = _totalSavings
@@ -69,12 +60,27 @@ class MenuViewModel : ViewModel() {
     val currency: LiveData<String>
         get() = _currency
 
+    private val _weeksTotalIncome = MutableLiveData<Long>()
+    val weeksTotalIncome: LiveData<Long>
+        get() = _weeksTotalIncome
+
+    private val _weeksTotalExpense = MutableLiveData<Long>()
+    val weeksTotalExpense: LiveData<Long>
+        get() = _weeksTotalExpense
+
+    private val _weeklyBudgetGoal = MutableLiveData<Long>()
+    val weeklyBudgetGoal: LiveData<Long>
+        get() = _weeklyBudgetGoal
+
     private val _errorStatus = MutableLiveData<TaskAssesor>()
     val errorStatus : LiveData<TaskAssesor>
         get() = _errorStatus
 
     fun getFields() {
         getWeeksTotal()
+        getWeeksDefaultBudget()
+        getWeeksTotalExpenses()
+        getWeeksTotalIncome()
     }
 
     private fun getUsernameAndProfilePicture() {
@@ -92,24 +98,6 @@ class MenuViewModel : ViewModel() {
                         }
                     } else {
                         Log.e(TAG, "Could not find requested Document")
-                    }
-                }
-            /*
-            Get Profile Picture
-            */
-            firestoreDatabase.collection(USERS_UTIL_COLLECTION)
-                .document(auth.uid!!).get()
-                .addOnSuccessListener { documentSnapshot ->
-                    _photoUrl.value = auth.currentUser?.photoUrl
-                    if (documentSnapshot != null) {
-                        val url = firebaseStorage.reference.child("images/profile_pictures/${auth.uid}")
-                        url.downloadUrl.addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                _photoUrl.value = task.result
-                            }
-                        }
-                    } else {
-                        _photoUrl.value = auth.currentUser?.photoUrl
                     }
                 }
         } catch (ex: NullPointerException) {
@@ -131,21 +119,29 @@ class MenuViewModel : ViewModel() {
                     val transactionHistoriesHashMaps = documentSnapshot?.get(TRANSACTION_HISTORIES) as MutableList<HashMap<String, Any>>?
 
                     if (transactionHistoriesHashMaps != null) {
+                        val presentDate = LocalDate.now()
                         for (transactionHistoryHashMap in transactionHistoriesHashMaps) {
 
                             // History object has four properties; transactionCreationDate, amount, income, transactionName
                             // The goal is to get only two properties from the Hashmap since we need to add
                             // amount if it is an income and subtract if it is an expense
 
-                            // FOR [amount]
-                            val transactionAmount = transactionHistoryHashMap["amount"].toString().toLong()
-                            // FOR [income]
-                            val isTransactionIncome = transactionHistoryHashMap["income"] as Boolean
+                            // FOR [transactionCreationDate]
+                            val transactionCreationDate = (transactionHistoryHashMap["transactionCreationDate"] as Timestamp).toDate()
 
-                            if (isTransactionIncome) {
-                                sumOfAmounts += transactionAmount
-                            } else {
-                                sumOfAmounts -= transactionAmount
+                            //IF present Week is equal to week of transaction carry on with operation.
+
+                            if (presentDate.weekOfWeekyear == LocalDate.fromDateFields(transactionCreationDate).weekOfWeekyear) {
+                                // FOR [amount]
+                                val transactionAmount = transactionHistoryHashMap["amount"].toString().toLong()
+                                // FOR [income]
+                                val isTransactionIncome = transactionHistoryHashMap["income"] as Boolean
+
+                                if (isTransactionIncome) {
+                                    sumOfAmounts += transactionAmount
+                                } else {
+                                    sumOfAmounts -= transactionAmount
+                                }
                             }
 
                         }
@@ -159,49 +155,113 @@ class MenuViewModel : ViewModel() {
 
     }
 
-    fun getGreeting(context: Context) : String {
+    private fun getWeeksTotalIncome() {
+        try {
+            firestoreDatabase.collection(HistoryViewModel.USERS_COLLECTION).document(auth.uid!!)
+                .get().addOnSuccessListener { documentSnapshot ->
+                    var sumOfAmounts = 0L
+                    val transactionHistoriesHashMaps = documentSnapshot?.get(TRANSACTION_HISTORIES) as MutableList<HashMap<String, Any>>?
+
+                    if (transactionHistoriesHashMaps != null) {
+                        val presentDate = LocalDate.now()
+                        for (transactionHistoryHashMap in transactionHistoriesHashMaps) {
+
+                            // History object has four properties; transactionCreationDate, amount, income, transactionName
+                            // The goal is to get only two properties from the Hashmap since we need to add
+                            // amount if it is an income and subtract if it is an expense
+
+                            // FOR [transactionCreationDate]
+                            val transactionCreationDate = (transactionHistoryHashMap["transactionCreationDate"] as Timestamp).toDate()
+
+                            //IF present Week is equal to week of transaction carry on with operation.
+
+                            if (presentDate.weekOfWeekyear != LocalDate.fromDateFields(transactionCreationDate).weekOfWeekyear) {
+                                // FOR [amount]
+                                val transactionAmount = transactionHistoryHashMap["amount"].toString().toLong()
+                                // FOR [income]
+                                val isTransactionIncome = transactionHistoryHashMap["income"] as Boolean
+
+                                if (isTransactionIncome) {
+                                    sumOfAmounts += transactionAmount
+                                }
+                            }
+
+                        }
+                    }
+
+                    _weeksTotalIncome.value = sumOfAmounts
+                }
+        } catch (ex: Exception) {
+            // Do nothing yet
+        }
+    }
+
+    private fun getWeeksTotalExpenses() {
+        try {
+            firestoreDatabase.collection(HistoryViewModel.USERS_COLLECTION).document(auth.uid!!)
+                .get().addOnSuccessListener { documentSnapshot ->
+                    var sumOfAmounts = 0L
+                    val transactionHistoriesHashMaps = documentSnapshot?.get(TRANSACTION_HISTORIES) as MutableList<HashMap<String, Any>>?
+
+                    if (transactionHistoriesHashMaps != null) {
+                        val presentDate = LocalDate.now()
+                        for (transactionHistoryHashMap in transactionHistoriesHashMaps) {
+
+                            // History object has four properties; transactionCreationDate, amount, income, transactionName
+                            // The goal is to get only two properties from the Hashmap since we need to add
+                            // amount if it is an income and subtract if it is an expense
+
+                            // FOR [transactionCreationDate]
+                            val transactionCreationDate = (transactionHistoryHashMap["transactionCreationDate"] as Timestamp).toDate()
+
+                            //IF present Week is equal to week of transaction carry on with operation.
+
+                            if (presentDate.weekOfWeekyear != LocalDate.fromDateFields(transactionCreationDate).weekOfWeekyear) {
+                                // FOR [amount]
+                                val transactionAmount = transactionHistoryHashMap["amount"].toString().toLong()
+                                // FOR [income]
+                                val isTransactionIncome = transactionHistoryHashMap["income"] as Boolean
+
+                                if (!isTransactionIncome) {
+                                    sumOfAmounts += transactionAmount
+                                }
+                            }
+
+                        }
+                    }
+
+                    _weeksTotalExpense.value = sumOfAmounts
+                }
+        } catch (ex: Exception) {
+            // Do nothing yet
+        }
+    }
+
+    private fun getWeeksDefaultBudget() {
+        try {
+            firestoreDatabase.collection(HistoryViewModel.USERS_COLLECTION).document(auth.uid!!)
+                .get().addOnSuccessListener { documentSnapshot ->
+                    val weeklyBudget = documentSnapshot?.get("weekly_budget")?.toString()?.toLong()
+
+                    _weeklyBudgetGoal.value = weeklyBudget?:0
+                }
+        } catch (ex: Exception) {
+            // Do nothing yet
+        }
+    }
+
+    fun getGreeting(context: Context, binding: FragmentMenuBinding) : String {
         val time = LocalTime.now()
 
         if (time.hourOfDay in 12..16) {
+            binding.greetingText.background = context.getDrawable(R.drawable.morning)
             return context.getString(R.string.greeting_afternoon)
         } else if (time.hourOfDay in 0..11) {
+            binding.greetingText.background = context.getDrawable(R.drawable.morning)
             return context.getString(R.string.greeting_morning)
         } else {
+            binding.greetingText.background = context.getDrawable(R.drawable.evening)
             return context.getString(R.string.greeting_evening)
-        }
-    }
-
-    fun setProfilePicture(context: Context, data: Intent) {
-        profileImage = context.contentResolver?.openInputStream(data.data!!)!!
-        val uploadTask = firestoreImage.putStream(profileImage)
-        uploadTask.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(context, "Photo Uploaded Successfully", Toast.LENGTH_SHORT).show()
-                firestoreImage.downloadUrl.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        _photoUrl.value = task.result
-                    } else {
-                        Toast.makeText(context, task.exception?.message, Toast.LENGTH_SHORT).show()
-                    }
-                }
-            } else {
-                Toast.makeText(context, "Photo not Uploaded Successfully", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        }
-    }
-
-    fun viewProfilePicture() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    fun deleteProfilePicture(view: View) {
-        firebaseStorage.reference.child("images/profile_pictures/${auth.uid}").delete().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Snackbar.make(view, "Picture was successfully deleted!", Snackbar.LENGTH_SHORT)
-            } else {
-                Snackbar.make(view, "Picture was not deleted!", Snackbar.LENGTH_SHORT)
-            }
         }
     }
 

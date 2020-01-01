@@ -1,5 +1,6 @@
 package com.felixfavour.mobotithe.database.entity
 
+import android.net.Uri
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -32,11 +33,18 @@ data class User(
     val email: String="",
 
     @ColumnInfo(name = "photoUrl")
-    val photoUrl: String?="",
+    val photoUrl: Uri?= Uri.EMPTY,
+
+    @ColumnInfo(name = "weekly_budget")
+    val weeklyBudget: Long?=0,
 
     val histories: MutableList<History> = arrayListOf(),
-    val incomes: MutableList<Income> = arrayListOf()
+    val incomes: MutableList<Income> = arrayListOf(),
+    var fullName: String = ""
 ) {
+    init {
+        fullName = "$firstName $lastName"
+    }
 }
 
 @Parcelize

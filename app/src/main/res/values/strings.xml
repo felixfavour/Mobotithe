@@ -19,7 +19,7 @@
     <string name="total_savings">Week\'s Savings</string>
     <string name="title_transactions">Transaction</string>
     <string name="title_history">History</string>
-    <string name="register_new_income">Register New Income</string>
+    <string name="register_new_transaction">Create Transaction</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
@@ -94,4 +94,11 @@
     <string name="history_deletion_success">Histories were deleted Successfully</string>
     <string name="income_deletion_success">Incomes were deleted Successfully</string>
     <string name="expense_deletion_success">Expenses were deleted Successfully</string>
+    <string name="weekly_budget">Weekly Budget</string>
+    <string name="what_transaction_are_you_registering">What Transaction are you Registering?</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+    <string name="updated_profile_successfully">Profile was Updated Successfully</string>
+    <string name="updated_profile_unsuccessfully">Profile was not updated</string>
+    <string name="will_be_updated">Profile will be Updated after connecting to the Internet</string>
 </resources>

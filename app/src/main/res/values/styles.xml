@@ -125,5 +125,18 @@
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
+    <style name="GenericText.ProfileText" parent="GenericText">
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+
+    <style name="ProfileTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+
+    </style>
+
+    <style name="ToolbarText">
+        <item name="android:fontFamily">@font/segoeuib</item>
+    </style>
+
 
 </resources>
