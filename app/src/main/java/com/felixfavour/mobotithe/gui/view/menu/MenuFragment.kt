@@ -35,6 +35,7 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import java.lang.NumberFormatException
 import java.text.NumberFormat
+import java.util.*
 
 class MenuFragment : Fragment() {
 
@@ -59,12 +60,8 @@ class MenuFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu, container, false)
 
         // GET currency using CURRENT LOCALE
-//        val locationServices = LocationServices.getFusedLocationProviderClient(this.context!!)
-//        locationServices.lastLocation.addOnCompleteListener {
-//            val location =  it.result
-//        }
-
-        val locale = ConfigurationCompat.getLocales(resources.configuration)[0]
+        val tm = activity!!.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        val locale = Locale(Locale.getDefault().language, tm.networkCountryIso)
         menuViewModel.getCurrency(locale)
 
         //----------------------------------------------------------------------------------------------------------------------------

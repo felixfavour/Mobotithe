@@ -40,7 +40,7 @@
                         android:textAlignment="textEnd"
                         style="@style/GenericText"
                         android:textColor="@color/primaryTextColor"
-                        android:background="@drawable/morning"
+                        android:background="@drawable/ic_evening"
                         android:layout_width="match_parent"
                         android:layout_height="125dp"
                         android:textSize="@dimen/larger_medium_text"

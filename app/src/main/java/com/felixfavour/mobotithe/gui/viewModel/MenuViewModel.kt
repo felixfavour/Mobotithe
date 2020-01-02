@@ -253,14 +253,14 @@ class MenuViewModel : ViewModel() {
     fun getGreeting(context: Context, binding: FragmentMenuBinding) : String {
         val time = LocalTime.now()
 
-        if (time.hourOfDay in 12..16) {
-            binding.greetingText.background = context.getDrawable(R.drawable.morning)
+        if (time.hourOfDay in 12..15) {
+            binding.greetingText.background = context.getDrawable(R.drawable.ic_morning)
             return context.getString(R.string.greeting_afternoon)
         } else if (time.hourOfDay in 0..11) {
-            binding.greetingText.background = context.getDrawable(R.drawable.morning)
+            binding.greetingText.background = context.getDrawable(R.drawable.ic_morning)
             return context.getString(R.string.greeting_morning)
         } else {
-            binding.greetingText.background = context.getDrawable(R.drawable.evening)
+            binding.greetingText.background = context.getDrawable(R.drawable.ic_evening)
             return context.getString(R.string.greeting_evening)
         }
     }

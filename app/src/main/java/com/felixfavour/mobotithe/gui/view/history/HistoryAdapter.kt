@@ -3,6 +3,7 @@ package com.felixfavour.mobotithe.gui.view.history
 import android.content.Context
 import android.graphics.Color
 import android.icu.util.CurrencyAmount
+import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -13,6 +14,7 @@ import com.felixfavour.mobotithe.database.entity.History
 import com.felixfavour.mobotithe.databinding.HistoryItemBinding
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
+import java.util.*
 
 class HistoryAdapter(private val onHistoryClickListener: OnHistoryClickListener) : ListAdapter<History, HistoryAdapter.ViewHolder>(DiffCallback) {
 
@@ -27,11 +29,12 @@ class HistoryAdapter(private val onHistoryClickListener: OnHistoryClickListener)
 
     }
 
-    class ViewHolder(private val binding: HistoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: HistoryItemBinding, private val context: Context) : RecyclerView.ViewHolder(binding.root) {
         fun bind(history: History) {
             binding.history = history
             binding.dateFormatter = SimpleDateFormat("dd MMM, HH:mm")
-            binding.amountFormatter = NumberFormat.getCurrencyInstance()
+            val isoCode = (context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).networkCountryIso
+            binding.amountFormatter = NumberFormat.getCurrencyInstance(Locale(Locale.getDefault().language, isoCode))
 
             // Set Color of History Item Amount based on [isIncome] property
             if (history.income) {
@@ -46,7 +49,7 @@ class HistoryAdapter(private val onHistoryClickListener: OnHistoryClickListener)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // NOTE THERE MIGHT BE AN ERROR HERE
-        return ViewHolder(HistoryItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return ViewHolder(HistoryItemBinding.inflate(LayoutInflater.from(parent.context)), parent.context)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
