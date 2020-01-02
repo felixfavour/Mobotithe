@@ -1,9 +1,13 @@
 package com.felixfavour.mobotithe.gui.view.menu
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
+import android.telephony.TelephonyManager
 import android.util.TypedValue
 import android.view.*
 import android.widget.PopupMenu
@@ -19,6 +23,8 @@ import androidx.navigation.fragment.findNavController
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.FragmentMenuBinding
 import com.felixfavour.mobotithe.gui.viewModel.MenuViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.jjoe64.graphview.DefaultLabelFormatter
@@ -35,6 +41,7 @@ class MenuFragment : Fragment() {
     private lateinit var menuViewModel: MenuViewModel
     private lateinit var binding: FragmentMenuBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     companion object {
         const val TAG = "SignUpFragment"
@@ -52,6 +59,11 @@ class MenuFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu, container, false)
 
         // GET currency using CURRENT LOCALE
+//        val locationServices = LocationServices.getFusedLocationProviderClient(this.context!!)
+//        locationServices.lastLocation.addOnCompleteListener {
+//            val location =  it.result
+//        }
+
         val locale = ConfigurationCompat.getLocales(resources.configuration)[0]
         menuViewModel.getCurrency(locale)
 

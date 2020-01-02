@@ -9,10 +9,9 @@
             type="com.felixfavour.mobotithe.gui.viewModel.SubmitTransactionsViewModel" />
     </data>
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".gui.view.transactions.SubmitTransactionsFragment">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,11 +23,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_vertical_margin"
-                android:selectedWeekBackgroundColor="@color/primaryDarkColor"
-                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:forceDarkAllowed="false"
+                android:selectedWeekBackgroundColor="@color/primaryDarkColor"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.548"
@@ -40,9 +38,8 @@
                 android:layout_width="346dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,5 +73,5 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+    </ScrollView>
 </layout>

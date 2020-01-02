@@ -14,6 +14,7 @@ import com.felixfavour.mobotithe.database.entity.Transaction
 import com.felixfavour.mobotithe.databinding.ExpensesFragmentBinding
 import com.felixfavour.mobotithe.gui.view.transactions.TransactionsFragmentDirections
 import com.felixfavour.mobotithe.gui.viewModel.ExpensesViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class ExpensesFragment : Fragment() {
 
@@ -42,6 +43,14 @@ class ExpensesFragment : Fragment() {
             )
             val action = TransactionsFragmentDirections.actionTransactionToSubmitIncomeFragment(transaction)
             findNavController().navigate(action)
+        }, ExpenseCategoryAdapter.OnExpenseLongClickListener { expense ->
+
+            val bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet)
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            binding.deleteExpense.setOnClickListener {
+                viewModel.deleteExpensesCategories(expense)
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            }
         })
 
         return binding.root

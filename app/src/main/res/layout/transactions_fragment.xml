@@ -29,15 +29,17 @@
 
         </androidx.viewpager2.widget.ViewPager2>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/secondaryColor"
             android:backgroundTintMode="screen"
             android:clickable="true"
+            android:text="@string/add_income"
+            android:textColor="@color/primaryTextColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -45,7 +47,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             app:maxImageSize="30dp"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            app:icon="@android:drawable/ic_input_add" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

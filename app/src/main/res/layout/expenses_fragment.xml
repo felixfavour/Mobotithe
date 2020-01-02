@@ -16,6 +16,10 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -36,6 +40,34 @@
                 tools:listitem="@layout/transaction_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_sheet"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/PrimaryGreyColor"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:id="@+id/delete_expense"
+                android:textAllCaps="false"
+                android:textColor="@color/Red"
+                android:textSize="@dimen/medium_text"
+                android:drawableEnd="@drawable/ic_delete"
+                android:layout_margin="16dp"
+                android:drawableTint="@color/Red"
+                android:textAlignment="textStart"
+                android:text="@string/delete_expense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

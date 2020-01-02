@@ -12,8 +12,10 @@ import androidx.navigation.fragment.findNavController
 import com.felixfavour.mobotithe.R
 import com.felixfavour.mobotithe.databinding.TransactionsFragmentBinding
 import com.felixfavour.mobotithe.gui.viewModel.TransactionsViewModel
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.*
 
 class TransactionsFragment : Fragment() {
 
@@ -25,6 +27,7 @@ class TransactionsFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.transactions_fragment, container, false)
 
         binding.transactionsPager.adapter = TransactionsVPAdapter(this.requireActivity())
+        binding.floatingActionButton.shrink()
 
         binding.tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -60,13 +63,27 @@ class TransactionsFragment : Fragment() {
         return binding.root
     }
 
+
+
     private fun modifyIncomeTab() {
+        binding.floatingActionButton.text = getString(R.string.add_income)
+        binding.floatingActionButton.shrink()
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(500)
+            binding.floatingActionButton.extend()
+        }
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(TransactionsFragmentDirections.actionTransactionToRegisterIncomeFragment2(true))
         }
     }
 
     private fun modifyExpenseTab() {
+        binding.floatingActionButton.text = getString(R.string.add_expense)
+        binding.floatingActionButton.shrink()
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(500)
+            binding.floatingActionButton.extend()
+        }
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(TransactionsFragmentDirections.actionTransactionToRegisterIncomeFragment2(false))
         }

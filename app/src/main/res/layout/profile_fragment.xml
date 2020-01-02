@@ -30,8 +30,7 @@
                 app:expandedTitleMarginEnd="56dp"
                 app:expandedTitleMarginStart="40dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-                tools:title="John Doe"
-                app:title="@{viewModel.currentUser.username}">
+                tools:title="John Doe">
 
                 <ImageView
                     android:id="@+id/profile_picture"
@@ -50,6 +49,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@drawable/toolbar_bg"
+                    app:title="@{viewModel.currentUser.username}"
+                    app:titleTextColor="@color/PrimaryGreyColor"
                     app:titleTextAppearance="@style/ToolbarText"
                     app:layout_collapseMode="pin" />
 
@@ -240,7 +241,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/segoeuib"
                             android:hint="@string/email"
-                            android:inputType="text"
+                            android:inputType="none"
                             android:textColor="@color/primaryColor"
                             app:hintTextColor="@color/primaryColor"
                             tools:layout_conversion_absoluteHeight="0dp"
@@ -280,7 +281,7 @@
                                 android:focusable="false"
                                 android:fontFamily="@font/segoeuib"
                                 android:hint="@string/dob"
-                                android:inputType="date"
+                                android:inputType="none"
                                 android:text="@{viewModel.currentUser.dob}"
                                 android:textColor="@color/primaryColor"
                                 android:textColorHint="@color/PrimaryGreyColor"

@@ -66,9 +66,9 @@ class IncomeViewModel: ViewModel() {
         }
     }
 
-    fun deleteIncomeCategories() {
+    fun deleteIncomeCategories(income: Income) {
         val updates = hashMapOf<String, Any>(
-            INCOMES_DOCUMENT to FieldValue.delete()
+            INCOMES_DOCUMENT to FieldValue.arrayRemove(income)
         )
         firestore.collection(USERS_COLLECTION).document(auth.uid!!).update(updates).addOnCompleteListener {task ->
             if (task.isSuccessful) {

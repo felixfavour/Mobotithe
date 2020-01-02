@@ -9,7 +9,7 @@ import com.felixfavour.mobotithe.database.entity.Expense
 import com.felixfavour.mobotithe.database.entity.Transaction
 import com.felixfavour.mobotithe.databinding.TransactionItemBinding
 
-class ExpenseCategoryAdapter(private val onExpenseClickListener: OnExpenseClickListener) : ListAdapter<Expense, ExpenseCategoryAdapter.ViewHolder>(DiffCallback) {
+class ExpenseCategoryAdapter(private val onExpenseClickListener: OnExpenseClickListener, private val onExpenseLongClickListener: OnExpenseLongClickListener) : ListAdapter<Expense, ExpenseCategoryAdapter.ViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<Expense>() {
         override fun areItemsTheSame(oldItem: Expense, newItem: Expense): Boolean {
@@ -44,11 +44,19 @@ class ExpenseCategoryAdapter(private val onExpenseClickListener: OnExpenseClickL
         holder.itemView.setOnClickListener {
             onExpenseClickListener.onExpenseClick(expense)
         }
+        holder.itemView.setOnLongClickListener {
+            onExpenseLongClickListener.onExpenseLongClick(expense)
+            true
+        }
         holder.bind(expense)
     }
 
     class OnExpenseClickListener(val clickListener: (expense: Expense) -> Unit) {
         fun onExpenseClick(expense: Expense) = clickListener(expense)
+    }
+
+    class OnExpenseLongClickListener(val longClickListener: (expense: Expense) -> Unit) {
+        fun onExpenseLongClick(expense: Expense) = longClickListener(expense)
     }
 
 }

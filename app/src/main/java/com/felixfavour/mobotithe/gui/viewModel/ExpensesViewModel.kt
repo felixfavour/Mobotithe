@@ -62,9 +62,9 @@ class ExpensesViewModel : ViewModel() {
             }
     }
 
-    fun deleteExpensesCategories() {
+    fun deleteExpensesCategories(expense: Expense) {
         val updates = hashMapOf<String, Any>(
-            EXPENSES_DOCUMENTS to FieldValue.delete()
+            EXPENSES_DOCUMENTS to FieldValue.arrayRemove(expense)
         )
         firestore.collection(USERS_COLLECTION).document(auth.uid!!).update(updates).addOnCompleteListener {task ->
             if (task.isSuccessful) {

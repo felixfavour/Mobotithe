@@ -16,26 +16,59 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                bind:incomesData="@{viewModel.selectedIncomes}"
-                tools:itemCount="6"
-                tools:listitem="@layout/transaction_item" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:incomesData="@{viewModel.selectedIncomes}"
+                    tools:itemCount="6"
+                    tools:listitem="@layout/transaction_item" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RelativeLayout
+                android:id="@+id/bottom_sheet"
+                android:background="@drawable/rounded_corners"
+                android:backgroundTint="@color/PrimaryGreyColor"
+                app:layout_behavior="@string/bottom_sheet_behavior"
+                app:behavior_hideable="true"
+                app:behavior_peekHeight="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:id="@+id/delete_income"
+                    android:textAllCaps="false"
+                    android:textColor="@color/Red"
+                    android:textSize="@dimen/medium_text"
+                    android:drawableEnd="@drawable/ic_delete"
+                    android:layout_margin="16dp"
+                    android:drawableTint="@color/Red"
+                    android:textAlignment="textStart"
+                    android:text="@string/delete_income"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

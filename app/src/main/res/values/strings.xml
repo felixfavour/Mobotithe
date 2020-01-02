@@ -101,4 +101,8 @@
     <string name="updated_profile_successfully">Profile was Updated Successfully</string>
     <string name="updated_profile_unsuccessfully">Profile was not updated</string>
     <string name="will_be_updated">Profile will be Updated after connecting to the Internet</string>
+    <string name="add_income">Add Income</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="delete_income">Delete Income</string>
+    <string name="delete_expense">Delete Expense</string>
 </resources>
