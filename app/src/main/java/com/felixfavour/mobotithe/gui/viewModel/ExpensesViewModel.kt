@@ -56,8 +56,9 @@ class ExpensesViewModel : ViewModel() {
                         expenses.add(expense)
                     }
                     _selectedExpenses.value = expenses
+                    _errorStatus.value = TaskAssesor.PASS
                 } else {
-                    Log.e("IVM","Could not find requested Document")
+                    _errorStatus.value = TaskAssesor.FAIL
                 }
             }
     }
@@ -68,7 +69,7 @@ class ExpensesViewModel : ViewModel() {
         )
         firestore.collection(USERS_COLLECTION).document(auth.uid!!).update(updates).addOnCompleteListener {task ->
             if (task.isSuccessful) {
-                // Do Nothing
+                getExpenseCategories()
             } else {
                 // Do nothing
             }

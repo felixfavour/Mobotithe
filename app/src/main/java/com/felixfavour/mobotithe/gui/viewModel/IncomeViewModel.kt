@@ -60,8 +60,9 @@ class IncomeViewModel: ViewModel() {
                         incomes.add(income)
                     }
                     _selectedIncomes.value = incomes
+                    _errorStatus.value = TaskAssesor.PASS
                 } else {
-                    Log.e("IVM","Could not find requested Document")
+                    _errorStatus.value = TaskAssesor.FAIL
                 }
         }
     }
@@ -72,7 +73,7 @@ class IncomeViewModel: ViewModel() {
         )
         firestore.collection(USERS_COLLECTION).document(auth.uid!!).update(updates).addOnCompleteListener {task ->
             if (task.isSuccessful) {
-                // Do Nothing
+                getIncomeCategories()
             } else {
                 // Do nothing
             }

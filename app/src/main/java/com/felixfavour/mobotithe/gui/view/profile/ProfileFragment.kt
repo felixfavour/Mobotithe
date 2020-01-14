@@ -46,6 +46,11 @@ class ProfileFragment : Fragment() {
         activityMain.supportActionBar!!.show()
     }
 
+    override fun onStart() {
+        super.onStart()
+        activityMain.supportActionBar!!.hide()
+    }
+
     override fun onResume() {
         super.onResume()
         activityMain.supportActionBar!!.hide()
@@ -61,10 +66,7 @@ class ProfileFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.setProfilePicture.setOnClickListener {
-            MaterialAlertDialogBuilder(this.context).setPositiveButton("Update Profile Picture") { _, _ -> pickProfileImage() }
-                .setPositiveButton("Delete Profile Picture", null)
-                .setPositiveButton("View Profile Picture", null)
-                .show()
+            pickProfileImage()
         }
 
         binding.saveUserData.setOnClickListener {

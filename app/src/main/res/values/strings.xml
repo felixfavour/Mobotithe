@@ -6,7 +6,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="motto">Let us keep track of your income for you</string>
+    <string name="motto">Let us keep track of your Transactions for you</string>
     <string name="i_already_have_an_account">I already have an account</string>
     <string name="sign_in_with">Sign In with:</string>
     <string name="facebook">Facebook</string>
@@ -105,4 +105,11 @@
     <string name="add_expense">Add Expense</string>
     <string name="delete_income">Delete Income</string>
     <string name="delete_expense">Delete Expense</string>
+    <string name="fill_all_fields">Fill all required Fields</string>
+    <string name="unhealthy_internet">You are not connected to a Healthy Internet Connection</string>
+    <string name="email_sent">E-mail Sent! Verify Email Before Filling all fields</string>
+    <string name="ensure_email_is_verified">Ensure that email is verified</string>
+    <string name="welcome">Welcome! Edit your data in Profile</string>
+    <string name="empty_income">Oops! Looks like you have not saved any Incomes yet.</string>
+    <string name="empty_expense">Oops! Looks like you have not saved any Expenses yet.</string>
 </resources>

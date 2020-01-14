@@ -64,28 +64,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-            <TextView
-                android:id="@+id/signIn_options"
-                android:layout_width="0dp"
-                android:layout_height="26dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/segoeuib"
-                android:text="@string/sign_in_with"
-                android:textAlignment="center"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/onboarding_texts"
-                app:layout_constraintBottom_toTopOf="@+id/facebookLogin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.808" />
-
             <Button
                 android:id="@+id/googleLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="154dp"
+                android:layout_height="50dp"
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="@color/primaryTextColor"
                 android:drawableLeft="@drawable/ic_google"
@@ -95,29 +77,10 @@
                 android:paddingEnd="15dp"
                 android:text="@string/google"
                 android:textColor="@color/onboardingColor"
-                app:layout_constraintBaseline_toBaselineOf="@+id/facebookLogin"
-                app:layout_constraintEnd_toStartOf="@+id/facebookLogin"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
-                android:id="@+id/facebookLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/rounded_button"
-                android:backgroundTint="@color/primaryTextColor"
-                android:drawableLeft="@drawable/ic_facebook"
-                android:drawablePadding="@dimen/drawable_gap"
-                android:fontFamily="@font/segoeuib"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:text="@string/facebook"
-                android:textColor="@color/onboardingColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/googleLogin" />
+                app:layout_constraintStart_toStartOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button

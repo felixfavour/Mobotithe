@@ -1,6 +1,7 @@
 package com.felixfavour.mobotithe
 
 
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -8,19 +9,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.felixfavour.mobotithe.database.entity.User
 import com.felixfavour.mobotithe.databinding.FragmentSignUpBinding
+import com.felixfavour.mobotithe.util.isInternetConnected
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.tasks.Task
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
@@ -53,38 +61,8 @@ class SignUpFragment : Fragment() {
         */
         setToggleFormVisibility(true)
 
-
         binding.submitUser.setOnClickListener {
-            val email = binding.inputEmail.text.toString()
-            val password = binding.inputPassword.text.toString()
-            /*
-                Create A User
-            */
-            if(isFieldsAccuratelyFilled()) {
-                try {
-                    auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener {taskRegistration ->
-                            if (taskRegistration.isSuccessful) {
-                                Log.d(TAG, "user successfully Created")
-                                val user = auth.currentUser
-                                user?.sendEmailVerification()?.addOnCompleteListener {taskEmailVerification ->
-                                    if(taskEmailVerification.isSuccessful) {
-                                        Snackbar.make(view!!, "E-mail Sent! Verify Email Before Filling all fields ", Snackbar.LENGTH_LONG).show()
-                                        setToggleFormVisibility(false)
-                                        hideRegButton()
-                                    } else {
-                                        Toast.makeText(context!!.applicationContext, "${taskEmailVerification.exception?.message}", Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                            } else {
-                                Log.d(TAG, "user Creation failed")
-                                Snackbar.make(view!!, "${taskRegistration.exception?.message}", Snackbar.LENGTH_SHORT).show()
-                            }
-                        }
-                } catch (ex: Exception) {
-                    Snackbar.make(view!!, "Fill all required Fields", Snackbar.LENGTH_SHORT).show()
-                }
-            }
+            createUser()
         }
 
         binding.saveUserData.setOnClickListener {
@@ -95,8 +73,37 @@ class SignUpFragment : Fragment() {
         return binding.root
     }
 
+    private fun createUser() {
+
+        if(isFieldsAccuratelyFilled()) {
+            val email = binding.inputEmail.text.toString()
+            val password = binding.inputPassword.text.toString()
+
+            try {
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnSuccessListener {taskRegistration ->
+                        Log.d(TAG, "user successfully Created")
+                        val user = auth.currentUser
+                        user?.sendEmailVerification()?.addOnCompleteListener {taskEmailVerification ->
+                            if(taskEmailVerification.isSuccessful) {
+                                Snackbar.make(view!!, getString(R.string.email_sent), Snackbar.LENGTH_LONG).show()
+                                setToggleFormVisibility(false)
+                                hideRegButton()
+                            } else {
+                                Toast.makeText(context!!.applicationContext, "${taskEmailVerification.exception?.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }.addOnFailureListener {
+                        Snackbar.make(view!!, "ERR: ${it.localizedMessage}", Snackbar.LENGTH_SHORT).show()
+                    }
+            } catch (ex: Exception) {
+                Snackbar.make(view!!, getString(R.string.fill_all_fields), Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun saveUserData() {
-        var storageReference = Uri.EMPTY
+        var storageReference: Uri? = null
         storage.reference.child("images/profile_pictures/${auth.uid}").downloadUrl.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 storageReference = task.result
@@ -112,7 +119,7 @@ class SignUpFragment : Fragment() {
             photoUrl = storageReference,
             histories = arrayListOf(),
             incomes = arrayListOf(),
-            weeklyBudget = binding.inputWeeklyBudget.text.toString().toLong()
+            weeklyBudget = binding.inputWeeklyBudget.text.toString().toLongOrNull()
         )
 /*
         Update the FirebaseUser data to the
@@ -147,11 +154,11 @@ class SignUpFragment : Fragment() {
         /*
         Fields: [email, password, confirmPassword] in [fullRegistrationList]
         */
-        val introRegIndex = arrayOf(5,6,7)
+//        val introRegIndex = arrayOf(5,6,7,10)
         /*
         Fields apart from: [email, password, confirmPassword] in [fullRegistrationList]
         */
-        val finalRegIndex = arrayOf(1,2,3,4,8,10)
+        val finalRegIndex = arrayOf(1,2,3,4,8,9,11)
 
         if (switch) {
             isFullFormVisisble = false
@@ -196,6 +203,10 @@ class SignUpFragment : Fragment() {
         } else {
             password == confirmPassword
         }
+
+    }
+
+    private fun datePicker() {
 
     }
 

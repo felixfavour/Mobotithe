@@ -55,6 +55,8 @@ class ProfileViewModel : ViewModel() {
         storage.reference.child("images/profile_pictures/${auth.uid}").downloadUrl.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 _photoUrl.value = task.result
+            } else {
+                _photoUrl.value = auth.currentUser?.photoUrl
             }
         }
     }
@@ -88,7 +90,7 @@ class ProfileViewModel : ViewModel() {
                         _photoUrl.value = task.result
 
                         // Add Image url to User data immediately photo is uploaded
-                        firestore.collection(USERS_COLLECTION).document(auth.uid!!).update("photoUrl", task.result)
+//                        firestore.collection(USERS_COLLECTION).document(auth.uid!!).update("photoUrl", task.result!!)
 
                     } else {
                         Toast.makeText(context, task.exception?.message, Toast.LENGTH_SHORT).show()

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.felixfavour.mobotithe.R
@@ -14,6 +15,7 @@ import com.felixfavour.mobotithe.database.entity.Transaction
 import com.felixfavour.mobotithe.databinding.ExpensesFragmentBinding
 import com.felixfavour.mobotithe.gui.view.transactions.TransactionsFragmentDirections
 import com.felixfavour.mobotithe.gui.viewModel.ExpensesViewModel
+import com.felixfavour.mobotithe.util.TaskAssesor
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class ExpensesFragment : Fragment() {
@@ -29,8 +31,15 @@ class ExpensesFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        // Set on Swipe Refresh Listener
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.getExpenseCategories()
+            viewModel.errorStatus.observe(this, Observer { task ->
+                if (task == TaskAssesor.FAIL || task == TaskAssesor.PASS) {
+                    binding.swipeRefresh.isRefreshing = false
+                }
+            })
         }
 
         // Add OnClickListener to the list items in the recyclerView
@@ -53,7 +62,27 @@ class ExpensesFragment : Fragment() {
             }
         })
 
+        isExpenseEmpty()
+
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getExpenseCategories()
+    }
+
+    private fun isExpenseEmpty() {
+        viewModel.selectedExpenses.observe(this, Observer {expenses->
+            if (expenses.isEmpty()) {
+                binding.recyclerView.visibility = View.GONE
+                binding.emptyWalletLayout.visibility = View.VISIBLE
+
+            } else {
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.emptyWalletLayout.visibility = View.GONE
+            }
+        })
     }
 
 }

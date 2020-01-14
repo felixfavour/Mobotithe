@@ -55,6 +55,8 @@ class HistoryFragment : Fragment() {
         })
         binding.incomeHistoriesList.adapter = adapter
 
+        adapter.currentList
+
         return binding.root
     }
 }

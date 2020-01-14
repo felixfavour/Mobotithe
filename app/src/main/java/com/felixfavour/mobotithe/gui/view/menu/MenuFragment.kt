@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
@@ -76,7 +77,6 @@ class MenuFragment : Fragment() {
                 binding.graph.addSeries(graphSeries)
             })
         })
-
 
         val numberFormatter = NumberFormat.getInstance()
         numberFormatter.apply {

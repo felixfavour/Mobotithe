@@ -58,6 +58,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/Red"
                     android:textSize="@dimen/medium_text"
+
                     android:drawableEnd="@drawable/ic_delete"
                     android:layout_margin="16dp"
                     android:drawableTint="@color/Red"
@@ -67,6 +68,30 @@
                     android:layout_height="wrap_content"/>
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/emptyWalletLayout"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_empty_wallet" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageView4"
+                    android:text="@string/empty_income"
+                    android:textAlignment="center"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/webFragment"
         android:name="com.felixfavour.mobotithe.gui.view.settings.WebFragment"
-        android:label="fragment_web"
+        android:label="Developer's Page"
         tools:layout="@layout/fragment_web" />
     <fragment
         android:id="@+id/profileFragment"

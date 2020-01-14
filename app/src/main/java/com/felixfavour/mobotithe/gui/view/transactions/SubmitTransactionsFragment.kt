@@ -34,6 +34,7 @@ class SubmitTransactionsFragment : Fragment() {
 
         binding.submitAmount.setOnClickListener {
 
+            viewModel.createNotification(this.context!!)
             // Creation of an History Object
             var history: History
             try {
@@ -51,7 +52,7 @@ class SubmitTransactionsFragment : Fragment() {
                 )
             }
 
-            viewModel.submitIncome(history, view!!, context!!.applicationContext)
+            viewModel.submitTransaction(history, view!!, context!!.applicationContext)
         }
 
         return binding.root

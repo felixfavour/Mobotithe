@@ -59,6 +59,12 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
             findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToLicensesFragment())
         }
 
+        binding.viewProfile.setOnClickListener {
+            val intent = Intent(context!!.applicationContext, MainActivity::class.java)
+                .putExtra("toProfile", true)
+            startActivity(intent)
+        }
+
         binding.logOut.setOnClickListener {
             if (auth.currentUser != null) {
                 auth.signOut()

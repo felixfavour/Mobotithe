@@ -33,7 +33,7 @@ data class User(
     val email: String="",
 
     @ColumnInfo(name = "photoUrl")
-    val photoUrl: Uri?= Uri.EMPTY,
+    val photoUrl: Uri?= null,
 
     @ColumnInfo(name = "weekly_budget")
     val weeklyBudget: Long?=0,

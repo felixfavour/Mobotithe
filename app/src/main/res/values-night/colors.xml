@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorAccent">@color/secondaryColor</color>
+    <color name="primaryColor">#4B61DB</color>
+    <color name="primaryLightColor">#4B61DB</color>
+    <color name="primaryDarkColor">#4B61DB</color>
+    <color name="secondaryColor">#B64900</color>
+    <color name="secondaryLightColor">#B64900</color>
+    <color name="secondaryDarkColor">#B64900</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
+    <color name="onboardingColor">#003B8C</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="menuCardColor">#829EFD</color>
+    <color name="appColor">#f78e37</color>
+    <color name="PrimaryGreyColor">#696969</color>
+    <color name="TransparentPrimaryGreyColor">#B0000000</color>
+    <color name="Green">#009E3D</color>
+    <color name="Red">#FF5F5F</color>
+    <color name="primaryWhite">#000</color>
+
+    Changing the boxStrokeColor in TextInputLayout to work
+<!--    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/primaryTextColor</color>-->
+<!--    <color name="mtrl_textinput_focused_box_stroke_color" tools:override="true">@color/primaryTextColor</color>-->
+</resources>

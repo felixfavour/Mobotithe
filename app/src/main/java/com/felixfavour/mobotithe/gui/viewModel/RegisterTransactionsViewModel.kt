@@ -29,13 +29,14 @@ class RegisterTransactionsViewModel : ViewModel() {
 
 
     fun saveIncome(income: Income) {
-        firestore.collection(USERS_COLLECTION).document(auth.uid!!).update(INCOMES_DOCUMENT, FieldValue.arrayUnion(income)).addOnCompleteListener { task ->
+        firestore.collection(USERS_COLLECTION).document(auth.uid!!)
+            .update(INCOMES_DOCUMENT, FieldValue.arrayUnion(income)).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 _taskStatus.value = TaskAssesor.PASS
-            } else if (task.isCanceled) {
+            } else if (!task.isSuccessful) {
                 _taskStatus.value = TaskAssesor.FAIL
             }
-        }
+        }.exception
     }
 
     fun saveExpense(expense: Expense) {

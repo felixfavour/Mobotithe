@@ -80,11 +80,11 @@ dependencies {
 
     // Retrofit...Moshi
     // Retrofit for HTTP requests on the server and Moshi to adapt retrofit to use kotlin
-    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
-    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
-    implementation "com.squareup.moshi:moshi:$version_moshi"
-    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+//    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+//    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+//    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+//    implementation "com.squareup.moshi:moshi:$version_moshi"
+//    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$version_glide"

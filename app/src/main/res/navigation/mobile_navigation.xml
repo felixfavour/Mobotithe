@@ -19,6 +19,9 @@
             app:popExitAnim="@anim/slide_out_left"
             app:launchSingleTop="false"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_Menu_to_Profile"
+            app:destination="@id/Profile" />
     </fragment>
 
     <fragment

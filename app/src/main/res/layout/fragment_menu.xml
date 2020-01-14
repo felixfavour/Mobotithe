@@ -24,7 +24,6 @@
                 <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -37,10 +36,10 @@
                         android:paddingStart="20dp"
                         android:paddingEnd="20dp"
                         android:paddingBottom="40dp"
+                        android:background="@drawable/menu_bg"
                         android:textAlignment="textEnd"
                         style="@style/GenericText"
                         android:textColor="@color/primaryTextColor"
-                        android:background="@drawable/ic_evening"
                         android:layout_width="match_parent"
                         android:layout_height="125dp"
                         android:textSize="@dimen/larger_medium_text"
@@ -102,6 +101,7 @@
                             <TextView
                                 android:id="@+id/currency"
                                 style="@style/GenericText"
+                                android:textColor="@color/menuCardColor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
@@ -121,12 +121,13 @@
                                 android:gravity="end"
                                 android:text="@string/total_savings"
                                 android:textAlignment="textEnd"
-                                android:textColor="@color/primaryLightColor"
+                                android:textColor="@color/menuCardColor"
                                 android:textSize="@dimen/little_medium_text" />
                         </RelativeLayout>
 
                         <TextView
                             android:id="@+id/amount"
+                            android:textColor="@color/menuCardColor"
                             style="@style/GenericText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
